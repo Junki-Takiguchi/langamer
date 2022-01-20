@@ -1,0 +1,21 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: <%= ENV.fetch("POSTGRES_USER")%>
+  password: <%= ENV.fetch("POSTGRES_PASSWORD")%>
+  host: db
+
+development:
+  <<: *default
+  database: langamer_development
+
+test:
+  <<: *default
+  database: langamer_test
+
+production:
+  <<: *default
+  database: langamer_production
+  username: langamer
+  password: <%= ENV['LANGAMER_DATABASE_PASSWORD'] %>
