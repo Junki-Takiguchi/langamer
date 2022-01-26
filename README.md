@@ -51,6 +51,10 @@ $ docker-compose run app
 
 6. bundle install を実行
 
+```
+$ bundle install
+```
+
 7. db を作成する
 
 ```
