@@ -62,3 +62,15 @@ $ rails db:create
 ```
 $ rails server -b 0.0.0.0
 ```
+
+- カタログ設計、テーブル定義書の URL
+  ![カタログ設計、テーブル定義書](https://docs.google.com/spreadsheets/d/12Lw16JhcY7DwdeNVp7J68OEt14decfDoZw2hDI-oTEo/edit?usp=sharing)
+
+- ワイヤーフレームの URL
+  ![ワイヤーフレーム](https://drive.google.com/file/d/1ZFj1g5KjL58iOdleaSZqAbxB5T0XJ4aT/view?usp=sharing)
+
+- ER 図のスクリーンショット
+  ![Entity Relationship Diagram](https://user-images.githubusercontent.com/92371564/151182644-4767d07d-5b66-48ea-9a3d-324baf8bfc32.png)
+
+- 画面遷移図のスクリーンショット
+  ![screen_transition_diagram](https://user-images.githubusercontent.com/92371564/151182896-39280e34-a894-4443-b474-7676c9676016.png)
