@@ -1,6 +1,6 @@
 class RecruitmentsController < ApplicationController
 
-  before_action :set_recruitment_params, only: [:show, :edit, :update, :destroy]
+  before_action :set_recruitment, only: [:show, :edit, :update, :destroy]
 
 
   def index
@@ -21,7 +21,7 @@ class RecruitmentsController < ApplicationController
       render :new
     else
       if @recruitment.save
-        redirect_to recruitment_path(@recruitment.id), notice: "新規募集を投稿しました。"
+        redirect_to recruitments_path, notice: "新規募集を投稿しました。"
       else
         render :new
       end
