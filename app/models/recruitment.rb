@@ -1,4 +1,5 @@
 class Recruitment < ApplicationRecord
-  validates :name, presence: true, length: { maximum: 30}
-  validates :email, presence: true, length: { maximum: 1000}
+  belongs_to :user
+  validates :title, presence: true, length: { maximum: 32}
+  validates :content, presence: true, length: { maximum: 1000}
 end

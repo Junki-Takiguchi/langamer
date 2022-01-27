@@ -1,2 +1,19 @@
 <h1>Recruitments#index</h1>
-<p>Find me in app/views/recruitments/index.html.erb</p>
+<p>投稿一覧画面</p>
+<table>
+    <tr>
+        <th>タイトル</th>
+        <th>内容</th>
+    </tr>
+    <% @recruitments.each do |recruitment| %>
+    <tr>
+        <td><%= recruitment.title %></td>
+        <td><%= recruitment.content %></td>
+        <td><%= recruitment.user.email %>
+        <td><%= link_to '詳細を確認する', recruitment_path(recruitment.id)%></td>
+        <td><%= link_to '投稿を編集する', edit_recruitment_path(recruitment.id), data: { confirm: '本当に編集していいですか？' }%></td>
+        <td><%= link_to '投稿を削除する', recruitment_path(recruitment.id), method: :delete ,data: { confirm: '本当に削除していいですか？' }%></td>
+    </tr>
+    <% end %>
+    <%= link_to "新しく募集を作成する", new_recruitment_path %>
+</table>
