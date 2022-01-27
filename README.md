@@ -81,3 +81,5 @@ $ rails server -b 0.0.0.0
 
 - 作成した各ファイルは以下の URL に格納されています。
   [DIC*卒業課題*設計資料](https://drive.google.com/drive/folders/1k4fdALXObLL_1xP7nWCBqqavKQHhvWXM?usp=sharing)
+
+a
