@@ -1,0 +1,22 @@
+<%= form_with(model: @recruitment, local: true) do |form| %>
+  <% if @recruitment.errors.any? %>
+    <div id="error_explanation">
+      <p class="error"><%= @recruitment.errors.count %>件のエラーがあります。</p>
+      <ul>
+        <% @recruitment.errors.full_messages.each do |msg| %>
+          <li class="error"><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="recruitment_post">
+    <p class="main-info-post"><%= form.label "タイトル" %></p>
+    <p class="main-info-post"><%= form.text_field :title, id: 'recruitment_title' %></p>
+  </div>
+  <div class="recruitment_post">
+    <p class="main-info-post"><%= form.label "募集内容" %></p>
+    <p class="main-info-post"><%= form.text_field :content, id: 'recruitment_content' %></p>
+  </div>
+  <p class="main-info-post"><%= form.submit '登録する', id: '登録する' %></p>
+<% end %>
+<p class="main-info-post"><%= link_to "TOPに戻る", recruitments_path %></p>
