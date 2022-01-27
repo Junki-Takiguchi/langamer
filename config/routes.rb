@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
 
-  devise_for :users
   root 'recruitments#index'
+  devise_for :users, controllers: {
+        registrations: 'users/registrations'
+        #sessions: 'users/sessions'
+  }
   resources :recruitments
+  resources :users, only: [:show]
 
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"

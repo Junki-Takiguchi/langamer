@@ -79,6 +79,12 @@ $ rails webpacker:compile
 https://qiita.com/shizen-shin/items/38fd774ffc87bc8838c9
 https://prograshi.com/framework/rails/git-clone-webpacker-not-found/
 
+サインイン URL
+http://localhost:3000/users/sign_in
+
+登録確認メール
+http://localhost:3000/letter_opener
+
 - カタログ設計、テーブル定義書の URL
   [カタログ設計、テーブル定義書](https://docs.google.com/spreadsheets/d/12Lw16JhcY7DwdeNVp7J68OEt14decfDoZw2hDI-oTEo/edit?usp=sharing)
 
