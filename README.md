@@ -67,6 +67,18 @@ $ rails db:create
 $ rails server -b 0.0.0.0
 ```
 
+- Note
+  Webpacker::Manifest::MissingEntryError in...
+  というエラーで web ページがうまく立ち上がらないときの対処法
+
+```
+$ rails webpacker:install
+$ rails webpacker:compile
+```
+
+https://qiita.com/shizen-shin/items/38fd774ffc87bc8838c9
+https://prograshi.com/framework/rails/git-clone-webpacker-not-found/
+
 - カタログ設計、テーブル定義書の URL
   [カタログ設計、テーブル定義書](https://docs.google.com/spreadsheets/d/12Lw16JhcY7DwdeNVp7J68OEt14decfDoZw2hDI-oTEo/edit?usp=sharing)
 
@@ -81,5 +93,3 @@ $ rails server -b 0.0.0.0
 
 - 作成した各ファイルは以下の URL に格納されています。
   [DIC*卒業課題*設計資料](https://drive.google.com/drive/folders/1k4fdALXObLL_1xP7nWCBqqavKQHhvWXM?usp=sharing)
-
-a
