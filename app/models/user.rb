@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_many :game_relations, dependent: :destroy
   has_many :recruitments, dependent: :destroy
   has_one :user_details, dependent: :destroy
 
