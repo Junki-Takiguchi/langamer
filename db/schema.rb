@@ -10,10 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_28_103318) do
+ActiveRecord::Schema.define(version: 2022_01_28_110757) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "game_accounts", force: :cascade do |t|
+    t.string "discord_id"
+    t.string "steam_id"
+    t.string "origin_id"
+    t.string "riot_id"
+    t.string "psn_id"
+    t.string "xbox_id"
+    t.string "nintendo_id"
+    t.string "other_id"
+    t.string "twitter_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_game_accounts_on_user_id"
+  end
 
   create_table "game_platforms", force: :cascade do |t|
     t.string "name"
@@ -89,6 +105,7 @@ ActiveRecord::Schema.define(version: 2022_01_28_103318) do
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
+  add_foreign_key "game_accounts", "users"
   add_foreign_key "recruitments", "users"
   add_foreign_key "user_details", "users"
 end

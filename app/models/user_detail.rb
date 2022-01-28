@@ -1,5 +1,5 @@
 class UserDetail < ApplicationRecord
-  belongs_to :user
+  belongs_to :user, dependent: :destroy
 
   validates :account_name, presence: true, length: { maximum: 16}
   validates :profile_name, length: { maximum: 255}
