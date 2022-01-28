@@ -10,10 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_28_113500) do
+ActiveRecord::Schema.define(version: 2022_01_28_122118) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "friend_relations", force: :cascade do |t|
+    t.integer "from_applicant"
+    t.integer "to_target"
+    t.integer "status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["from_applicant", "to_target"], name: "index_friend_relations_on_from_applicant_and_to_target", unique: true
+    t.index ["from_applicant"], name: "index_friend_relations_on_from_applicant"
+    t.index ["to_target"], name: "index_friend_relations_on_to_target"
+  end
 
   create_table "game_accounts", force: :cascade do |t|
     t.string "discord_id"
