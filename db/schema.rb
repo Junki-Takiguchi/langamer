@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_27_120917) do
+ActiveRecord::Schema.define(version: 2022_01_28_090915) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,23 @@ ActiveRecord::Schema.define(version: 2022_01_27_120917) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id", null: false
     t.index ["user_id"], name: "index_recruitments_on_user_id"
+  end
+
+  create_table "user_details", force: :cascade do |t|
+    t.string "acount_name"
+    t.text "profile_picture"
+    t.text "self_introduction"
+    t.string "learn_language"
+    t.string "first_language"
+    t.string "second_language"
+    t.string "living_country"
+    t.string "native_country"
+    t.date "date_of_birth"
+    t.integer "gender"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_user_details_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -51,4 +68,5 @@ ActiveRecord::Schema.define(version: 2022_01_27_120917) do
   end
 
   add_foreign_key "recruitments", "users"
+  add_foreign_key "user_details", "users"
 end
