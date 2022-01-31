@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'friend_relations/create'
-  get 'friend_relations/destroy'
   root 'recruitments#index'
   devise_for :users, controllers: {
         #registrations: 'users/registrations'
