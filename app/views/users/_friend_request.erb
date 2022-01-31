@@ -1,0 +1,6 @@
+<div id="friend_request_<%= user.id %>">
+  <%= form_with(model: current_user.friend_relations.build(to_target_id: user.id))  do |f| %>
+    <%= f.hidden_field :from_applicant_id %>
+    <%= f.submit "フレンド申請" %>
+  <% end %>
+</div>
