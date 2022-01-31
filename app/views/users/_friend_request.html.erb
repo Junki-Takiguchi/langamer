@@ -1,6 +1,12 @@
 <div id="friend_request_<%= user.id %>">
-  <%= form_with(model: current_user.friend_relations.build(to_target_id: user.id))  do |f| %>
-    <%= f.hidden_field :from_applicant_id %>
-    <%= f.submit "フレンド申請" %>
+  <% unless check_already_friend?(user) %>
+    <%= form_with(model: current_user.friend_relations.build(to_target_id: user.id))  do |f| %>
+      <%= f.hidden_field :to_target_id %>
+      <%= f.submit "フレンド申請" %>
+    <% end %>
+  <% else %>
+    <%= form_with(model: current_user.friend_relations.find_by(to_target_id: user.id), method: :delete ) do |f| %>
+      <%= f.submit "フレンドを解除" %>
+    <% end %>
   <% end %>
 </div>
