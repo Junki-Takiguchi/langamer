@@ -20,7 +20,8 @@ class User < ApplicationRecord
   end
 
   def check_already_friend?(other_user)
-    friend_relations.find_by!(to_target_id: other_user.id)
+    binding.pry
+    friend_relations.find_by(to_target_id: other_user.id)
   end
 
   def delete_friend!(other_user)
