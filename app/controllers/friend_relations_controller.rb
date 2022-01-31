@@ -1,6 +1,6 @@
 class FriendRelationsController < ApplicationController
   before_action :authenticate_user!
-  #respond_to? :js # 存在するアクションのrespondを全てjsで返す場合はこのような記述でも可能。
+  respond_to? :js # 存在するアクションのrespondを全てjsで返す場合はこのような記述でも可能。
 
   def create
     #paramsで送られているデータはfriend_relatiosnか？
