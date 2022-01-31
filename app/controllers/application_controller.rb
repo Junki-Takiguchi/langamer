@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   private
     def configure_permitted_parameters
       devise_parameter_sanitizer.permit(:sign_up, keys: [
-        user_detail_attributes: [
+        user_details_attributes: [
           :acount_name,
           :profile_picture,
           :self_introduction,
@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
         ]
       ])
       devise_parameter_sanitizer.permit(:account_update, keys: [
-        user_detail_attributes: [
+        user_details_attributes: [
           :acount_name,
           :profile_picture,
           :self_introduction,
@@ -32,7 +32,7 @@ class ApplicationController < ActionController::Base
           :date_of_birth,
           :gender
         ],
-        game_account_attributes: [
+        game_accounts_attributes: [
           :discord_id,
           :steam_id,
           :origin_id,

@@ -31,10 +31,49 @@
     <%= f.password_field :current_password, autocomplete: "current-password" %>
   </div>
 
+  <%= f.fields_for :user_details do |m| %>
+    <p><%= m.label :acount_name, 'アカウント名' %></p>
+    <p><%= m.text_field :acount_name %></p>
+    <p><%= m.label :profile_picture, 'プロフィール画像' %></p>
+    <p><%= m.text_field :profile_picture %></p>
+    <p><%= m.label :self_introduction, '自己紹介文' %></p>
+    <p><%= m.text_field :self_introduction %>分</p>
+    <p><%= m.label :learn_language, '学習中の言語' %></p>
+    <p><%= m.text_field :learn_language %></p>
+    <p><%= m.label :first_language, '第一言語（母国語）' %></p>
+    <p><%= m.text_field :first_language %></p>
+    <p><%= m.label :second_language, '第二言語' %></p>
+    <p><%= m.text_field :second_language %></p>
+    <p><%= m.label :living_country, '住んでる国' %></p>
+    <p><%= m.text_field :living_country %></p>
+    <p><%= m.label :native_country, '出身国' %></p>
+    <p><%= m.text_field :native_country %></p>
+    <p><%= m.label :date_of_birth, '生年月日' %></p>
+    <p><%= m.text_field :date_of_birth %></p>
+    <p><%= m.label :gender, '性別' %></p>
+    <p><%= m.text_field :gender %>分</p>
+  <% end %>
 
-
-
-
+  <%= f.fields_for :game_accounts do |m| %>
+    <p><%= m.label :discord_id, 'Discord ID' %></p>
+    <p><%= m.text_field :discord_id %></p>
+    <p><%= m.label :steam_id, 'Steam ID' %></p>
+    <p><%= m.text_field :steam_id %></p>
+    <p><%= m.label :origin_id, 'Origin ID' %></p>
+    <p><%= m.text_field :origin_id %>分</p>
+    <p><%= m.label :riot_id, 'Riot ID' %></p>
+    <p><%= m.text_field :riot_id %></p>
+    <p><%= m.label :psn_id, 'PSN ID' %></p>
+    <p><%= m.text_field :psn_id %></p>
+    <p><%= m.label :xbox_id, 'Xbox ID' %></p>
+    <p><%= m.text_field :xbox_id %></p>
+    <p><%= m.label :nintendo_id, '任天堂ID' %></p>
+    <p><%= m.text_field :nintendo_id %></p>
+    <p><%= m.label :other_id, 'その他ID' %></p>
+    <p><%= m.text_field :other_id %></p>
+    <p><%= m.label :twitter_id, 'Twitter ID' %></p>
+    <p><%= m.text_field :twitter_id %></p>
+  <% end %>
 
   <div class="actions">
     <%= f.submit "Update" %>

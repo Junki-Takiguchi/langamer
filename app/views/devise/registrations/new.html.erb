@@ -21,6 +21,30 @@
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
+
+  <%= f.fields_for :user_details do |m| %>
+    <p><%= m.label :acount_name, 'アカウント名' %></p>
+    <p><%= m.text_field :acount_name %></p>
+    <p><%= m.label :profile_picture, 'プロフィール画像' %></p>
+    <p><%= m.text_field :profile_picture %></p>
+    <p><%= m.label :self_introduction, '自己紹介文' %></p>
+    <p><%= m.text_field :self_introduction %>分</p>
+    <p><%= m.label :learn_language, '学習中の言語' %></p>
+    <p><%= m.text_field :learn_language %></p>
+    <p><%= m.label :first_language, '第一言語（母国語）' %></p>
+    <p><%= m.text_field :first_language %></p>
+    <p><%= m.label :second_language, '第二言語' %></p>
+    <p><%= m.text_field :second_language %></p>
+    <p><%= m.label :living_country, '住んでる国' %></p>
+    <p><%= m.text_field :living_country %></p>
+    <p><%= m.label :native_country, '出身国' %></p>
+    <p><%= m.text_field :native_country %></p>
+    <p><%= m.label :date_of_birth, '生年月日' %></p>
+    <p><%= m.text_field :date_of_birth %></p>
+    <p><%= m.label :gender, '性別' %></p>
+    <p><%= m.text_field :gender %>分</p>
+  <% end %>
+
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>
