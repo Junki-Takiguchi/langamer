@@ -15,4 +15,12 @@ class User < ApplicationRecord
   has_many :applicant, through: :friend_relations, source: :to_target
   has_many :reverse_of_target, through: :reverse_of_relations, source: :from_applicant
 
+  def send_friend_request!(other_user)
+    friend_relations.create!(to_target_id: other_user.id, status: 2)
+  end
+
+  def check_already_friend?(other_user)
+    friend_relations.find_by!(to_target_id: other_user.id)
+  end
+
 end
