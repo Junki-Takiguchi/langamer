@@ -7,7 +7,9 @@ class User < ApplicationRecord
   has_many :game_relations, dependent: :destroy
   has_many :recruitments, dependent: :destroy
   has_one :user_detail, dependent: :destroy
+  accepts_nested_attributes_for :user_detail, allow_destroy: true, reject_if: :all_blank
   has_one :game_account, dependent: :destroy
+  accepts_nested_attributes_for :game_account, allow_destroy: true, reject_if: :all_blank
 
   has_many :friend_relations, foreign_key: 'from_applicant_id', dependent: :destroy
   has_many :reverse_of_relations, foreign_key: 'to_target_id', class_name: 'FriendRelation', dependent: :destroy
