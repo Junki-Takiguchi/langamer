@@ -6,7 +6,7 @@ Rails.application.routes.draw do
         #sessions: 'users/sessions'
   }
   resources :recruitments
-  resources :users, only: [:show]
+  resources :users, only: [:index, :show]
 
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
