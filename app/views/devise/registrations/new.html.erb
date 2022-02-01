@@ -5,7 +5,7 @@
 
   <div class="field">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.email_field :email, autofocus: true %>
   </div>
 
   <div class="field">
@@ -13,38 +13,64 @@
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+    <%= f.password_field :password %>
   </div>
 
   <div class="field">
     <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    <%= f.password_field :password_confirmation %>
   </div>
 
 
-  <%= f.fields_for :user_details do |m| %>
-    <p><%= m.label :acount_name, 'アカウント名' %></p>
-    <p><%= m.text_field :acount_name %></p>
-    <p><%= m.label :profile_picture, 'プロフィール画像' %></p>
-    <p><%= m.text_field :profile_picture %></p>
-    <p><%= m.label :self_introduction, '自己紹介文' %></p>
-    <p><%= m.text_field :self_introduction %>分</p>
-    <p><%= m.label :learn_language, '学習中の言語' %></p>
-    <p><%= m.text_field :learn_language %></p>
-    <p><%= m.label :first_language, '第一言語（母国語）' %></p>
-    <p><%= m.text_field :first_language %></p>
-    <p><%= m.label :second_language, '第二言語' %></p>
-    <p><%= m.text_field :second_language %></p>
-    <p><%= m.label :living_country, '住んでる国' %></p>
-    <p><%= m.text_field :living_country %></p>
-    <p><%= m.label :native_country, '出身国' %></p>
-    <p><%= m.text_field :native_country %></p>
-    <p><%= m.label :date_of_birth, '生年月日' %></p>
-    <p><%= m.text_field :date_of_birth %></p>
-    <p><%= m.label :gender, '性別' %></p>
-    <p><%= m.text_field :gender %>分</p>
+  <%= f.fields_for :user_detail, @user.build_user_detail do |m| %>
+    <div class="field">
+      <%= m.label :account_name, 'アカウント名' %><br />
+      <%= m.text_field :account_name %>
+    </div>
+    <div class="field">
+      <%= m.label :self_introduction, '自己紹介文' %><br />
+      <%= m.text_field :self_introduction %>
+    </div>
+    <div class="field">
+      <%= m.label :learn_language, '学習中の言語' %><br />
+      <%= m.text_field :learn_language %>
+    </div>
+    <div class="field">
+      <%= m.label :first_language, '第一言語（母国語）' %><br />
+      <%= m.text_field :first_language %>
+    </div>
+    <div class="field">
+      <%= m.label :second_language, '第二言語' %><br />
+      <%= m.text_field :second_language %>
+    </div>
+    <div class="field">
+      <%= m.label :living_country, '住んでる国' %><br />
+      <%= m.text_field :living_country %>
+    </div>
+    <div class="field">
+      <%= m.label :native_country, '出身国' %><br />
+      <%= m.text_field :native_country %>
+    </div>
+    <div class="field">
+      <%= m.label :date_of_birth, '生年月日' %><br />
+      <%= m.text_field :date_of_birth %>
+    </div>
+    <div class="field">
+      <%= m.label :gender, '性別' %><br />
+      <%= m.text_field :gender %>
+    </div>
   <% end %>
-
+<h3>外部アカウントの登録</h3>
+  <%= f.fields_for :game_account, @user.build_game_account do |g| %>
+    <div class="field">
+      <%= g.label :discord_id, 'Discord ID' %><br />
+      <%= g.text_field :discord_id %>
+    </div>
+    <div class="field">
+      <%= g.label :twitter_id, 'Twitter ID' %><br />
+      <%= g.text_field :twitter_id %>
+    </div>
+  <% end %>
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>
