@@ -12,24 +12,87 @@
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
-  </div>
+  <%= f.fields_for :user_detail do |m| %>
+    <div class="field">
+      <%= m.label :account_name, 'アカウント名' %><br />
+      <%= m.text_field :account_name %>
+    </div>
+    <div class="field">
+      <%= m.label :profile_picture, 'プロフィール画像' %><br />
+      <%= m.text_field :profile_picture %>
+    </div>
+    <div class="field">
+      <%= m.label :self_introduction, '自己紹介文' %><br />
+      <%= m.text_field :self_introduction %>
+    </div>
+    <div class="field">
+      <%= m.label :learn_language, '学習中の言語' %><br />
+      <%= m.text_field :learn_language %>
+    </div>
+    <div class="field">
+      <%= m.label :first_language, '第一言語（母国語）' %><br />
+      <%= m.text_field :first_language %>
+    </div>
+    <div class="field">
+      <%= m.label :second_language, '第二言語' %><br />
+      <%= m.text_field :second_language %>
+    </div>
+    <div class="field">
+      <%= m.label :living_country, '住んでる国' %><br />
+      <%= m.text_field :living_country %>
+    </div>
+    <div class="field">
+      <%= m.label :native_country, '出身国' %><br />
+      <%= m.text_field :native_country %>
+    </div>
+    <div class="field">
+      <%= m.label :date_of_birth, '生年月日' %><br />
+      <%= m.text_field :date_of_birth %>
+    </div>
+    <div class="field">
+      <%= m.label :gender, '性別' %><br />
+      <%= m.text_field :gender %>
+    </div>
+  <% end %>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
-  </div>
+  <%= f.fields_for :game_account do |m| %>
+    <div class="field">
+      <%= m.label :discord_id, 'Discord ID' %><br />
+      <%= m.text_field :discord_id %>
+    </div>
+    <div class="field">
+      <%= m.label :steam_id, 'Steam ID' %><br />
+      <%= m.text_field :steam_id %>
+    </div>
+    <div class="field">
+      <%= m.label :origin_id, 'Origin ID' %><br />
+      <%= m.text_field :origin_id %><br />
+    </div>
+    <div class="field">
+      <%= m.label :riot_id, 'Riot ID' %><br />
+      <%= m.text_field :riot_id %>
+    </div>
+    <div class="field">
+      <%= m.label :psn_id, 'PSN ID' %><br />
+      <%= m.text_field :psn_id %>
+    </div>
+    <div class="field">
+      <%= m.label :xbox_id, 'Xbox ID' %><br />
+      <%= m.text_field :xbox_id %>
+    </div>
+    <div class="field">
+      <%= m.label :nintendo_id, '任天堂ID' %><br />
+      <%= m.text_field :nintendo_id %>
+    </div>
+    <div class="field">
+      <%= m.label :other_id, 'その他ID' %><br />
+      <%= m.text_field :other_id %>
+    </div>
+    <div class="field">
+      <%= m.label :twitter_id, 'Twitter ID' %><br />
+      <%= m.text_field :twitter_id %>
+    </div>
+  <% end %>
 
   <div class="actions">
     <%= f.submit "Update" %>

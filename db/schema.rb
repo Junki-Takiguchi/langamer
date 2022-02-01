@@ -77,7 +77,7 @@ ActiveRecord::Schema.define(version: 2022_01_31_024352) do
   end
 
   create_table "user_details", force: :cascade do |t|
-    t.string "acount_name"
+    t.string "account_name"
     t.text "profile_picture"
     t.text "self_introduction"
     t.string "learn_language"

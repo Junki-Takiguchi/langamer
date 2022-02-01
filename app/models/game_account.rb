@@ -5,11 +5,13 @@ class GameAccount < ApplicationRecord
   validates :twitter_id, length: { maximum: 15}
 
   with_options length: { maximum: 32} do
-    validates :title
-    validates :content
-    validates :due_date
-    validates :status
-    validates :priority
+    validates :steam_id
+    validates :origin_id
+    validates :riot_id
+    validates :psn_id
+    validates :xbox_id
+    validates :nintendo_id
+    validates :other_id
   end
 
 end
