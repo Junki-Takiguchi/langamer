@@ -57,7 +57,7 @@
     </div>
     <div class="field">
       <%= m.label :gender, '性別' %><br />
-      <%= m.text_field :gender %>
+      <%= m.select :gender, UserDetail.genders.keys, { include_blank: '--------'}, {id: 'user_gender'} %>
     </div>
   <% end %>
 
