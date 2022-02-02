@@ -7,6 +7,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def new
     super
     @user = User.new
+    #@games = @user.games.build
+    #@game_relations = @games.game_relations.build
   end
 
   # POST /resource
