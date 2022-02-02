@@ -10,4 +10,6 @@ class UserDetail < ApplicationRecord
   validates :living_country, length: { maximum: 64}
   validates :native_country, length: { maximum: 64}
 
+  enum gender: { "男性": 0, "女性": 1, "その他": 2 }
+
 end
