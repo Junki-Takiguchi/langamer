@@ -29,6 +29,9 @@ class RecruitmentsController < ApplicationController
   end
 
   def show
+    @user = User.find(params[:id])
+    @profile = @user.user_detail
+    @game_account = @user.game_account
   end
 
   def edit
