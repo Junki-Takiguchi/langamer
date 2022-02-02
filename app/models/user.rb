@@ -4,7 +4,8 @@ class User < ApplicationRecord
           :recoverable, :rememberable, :validatable,
           :confirmable, :lockable, :timeoutable, :trackable #, :omniauthable
 
-  has_many :game_relations, dependent: :destroy
+  has_many :games, dependent: :destroy
+  accepts_nested_attributes_for :games, allow_destroy: true
   has_many :recruitments, dependent: :destroy
   # 複数形にすると登録formに表示される。ただしunpermited <view fields_for user_detail>が発生する
   has_one :user_detail, dependent: :destroy
