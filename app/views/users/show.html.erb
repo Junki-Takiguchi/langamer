@@ -1,27 +1,27 @@
-<h1><%= @user.user_detail.account_name %>の詳細ページ</h1>
+<h1><%= @profile.account_name %>の詳細ページ</h1>
 <p>---------------------------------------------</p>
 <h2>基本情報</h2>
-<p class="field">アカウント名: <%= @user.user_detail.account_name %></p>
-<p class="field">プロフィール画像: <%= @user.user_detail.profile_picture %></p>
-<p class="field">登録メールアドレス: <%= @user.email %></p>
-<p class="field">学習中の言語: <%= @user.user_detail.learn_language %></p>
-<p class="field">第一言語（母国語）: <%= @user.user_detail.first_language %></p>
-<p class="field">第二言語: <%= @user.user_detail.second_language %></p>
-<p class="field">住んでる国: <%= @user.user_detail.living_country %></p>
-<p class="field">出身国: <%= @user.user_detail.native_country %></p>
-<p class="field">生年月日: <%= @user.user_detail.date_of_birth %></p>
-<p class="field">性別: <%= @user.user_detail.gender %></p>
+<p class="field">アカウント名: <%= @profile.account_name %></p>
+<p class="field">プロフィール画像: <%= @profile.profile_picture %></p>
+<p class="field">登録メールアドレス: <%= @profile.email %></p>
+<p class="field">学習中の言語: <%= @profile.learn_language %></p>
+<p class="field">第一言語（母国語）: <%= @profile.first_language %></p>
+<p class="field">第二言語: <%= @profile.second_language %></p>
+<p class="field">住んでる国: <%= @profile.living_country %></p>
+<p class="field">出身国: <%= @profile.native_country %></p>
+<p class="field">生年月日: <%= @profile.date_of_birth %></p>
+<p class="field">性別: <%= @profile.gender %></p>
 <p>------------------------------------------------------------------------</p>
 <h2>ゲームアカウント</h2>
-<p class="field">Discord ID: <%= @user.game_account.discord_id %></p>
-<p class="field">Steam ID: <%= @user.game_account.steam_id %></p>
-<p class="field">Origin ID: <%= @user.game_account.origin_id %></p>
-<p class="field">Riot ID: <%= @user.game_account.riot_id %></p>
-<p class="field">PSN ID: <%= @user.game_account.psn_id %></p>
-<p class="field">Xbox ID: <%= @user.game_account.xbox_id %></p>
-<p class="field">任天堂ID: <%= @user.game_account.nintendo_id %></p>
-<p class="field">その他ID: <%= @user.game_account.other_id %></p>
-<p class="field">Twitter ID: <%= @user.game_account.twitter_id %></p>
+<p class="field">Discord ID: <%= @game_account.discord_id %></p>
+<p class="field">Steam ID: <%= @game_account.steam_id %></p>
+<p class="field">Origin ID: <%= @game_account.origin_id %></p>
+<p class="field">Riot ID: <%= @game_account.riot_id %></p>
+<p class="field">PSN ID: <%= @game_account.psn_id %></p>
+<p class="field">Xbox ID: <%= @game_account.xbox_id %></p>
+<p class="field">任天堂ID: <%= @game_account.nintendo_id %></p>
+<p class="field">その他ID: <%= @game_account.other_id %></p>
+<p class="field">Twitter ID: <%= @game_account.twitter_id %></p>
 
 <%= link_to "プロフィールの編集", edit_user_registration_path %>
 <p class="field"><%= link_to "TOPに戻る", recruitments_path %></p>
