@@ -12,6 +12,9 @@
 <p class="field">生年月日: <%= @profile.date_of_birth %></p>
 <p class="field">性別: <%= @profile.gender %></p>
 <p>------------------------------------------------------------------------</p>
+<h2>プレイ可能なゲーム</h2>
+<p class="field"><%= @games[0].name %> (<%= @game_platforms[0].name %>)</p>
+<p>------------------------------------------------------------------------</p>
 <h2>ゲームアカウント</h2>
 <p class="field">Discord ID: <%= @game_account.discord_id %></p>
 <p class="field">Steam ID: <%= @game_account.steam_id %></p>

@@ -66,15 +66,28 @@
       <%= m.select :gender, UserDetail.genders.keys, { include_blank: '--------'}, {id: 'user_gender'} %>
     </div>
   <% end %>
-<h3>外部アカウントの登録</h3>
-  <%= f.fields_for :game_account, @user.build_game_account do |g| %>
+<h3>プレイ可能なゲーム</h3>
+  <%= f.fields_for :games, @user.games.build do |g| %>
     <div class="field">
-      <%= g.label :discord_id, 'Discord ID' %><br />
-      <%= g.text_field :discord_id %>
+      <%= g.label :name, 'ゲーム名' %><br />
+      <%= g.text_field :name %>
+    </div>
+    <%= g.fields_for :game_relations, @user.games.build.game_relations.build do |r| %>
+      <div class="field">
+        <%= r.label :game_platform_id, 'ゲームプラットフォーム' %><br />
+        <%= r.select :game_platform_id, GamePlatform.all.map { |p| [p.name, p.id] }, { include_blank: '-----------------------'}, {id: 'game_platform_name'} %>
+      </div>
+    <% end %>
+  <% end %>
+<h3>外部アカウントの登録</h3>
+  <%= f.fields_for :game_account, @user.build_game_account do |a| %>
+    <div class="field">
+      <%= a.label :discord_id, 'Discord ID' %><br />
+      <%= a.text_field :discord_id %>
     </div>
     <div class="field">
-      <%= g.label :twitter_id, 'Twitter ID' %><br />
-      <%= g.text_field :twitter_id %>
+      <%= a.label :twitter_id, 'Twitter ID' %><br />
+      <%= a.text_field :twitter_id %>
     </div>
   <% end %>
   <div class="actions">

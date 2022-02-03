@@ -61,6 +61,21 @@
     </div>
   <% end %>
 
+<h3>プレイ可能なゲーム</h3>
+  <%= f.fields_for :games do |g| %>
+    <div class="field">
+      <%= g.label :name, 'ゲーム名' %><br />
+      <%= g.text_field :name %>
+    </div>
+    <%= g.fields_for :game_relations do |r| %>
+      <div class="field">
+        <%= r.label :game_platform_id, 'ゲームプラットフォーム' %><br />
+        <%= r.select :game_platform_id, GamePlatform.all.map { |p| [p.name, p.id] }, { include_blank: '-----------------------'}, {id: 'game_platform_name'} %>
+      </div>
+    <% end %>
+  <% end %>
+
+<h3>外部アカウントの登録</h3>
   <%= f.fields_for :game_account do |m| %>
     <div class="field">
       <%= m.label :discord_id, 'Discord ID' %><br />

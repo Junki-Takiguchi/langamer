@@ -3,6 +3,7 @@ class CreateGames < ActiveRecord::Migration[6.0]
     create_table :games do |t|
       t.string :name
       t.text :game_picture
+      t.references :user, foreign_key: true
       t.timestamps
     end
   end

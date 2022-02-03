@@ -21,6 +21,14 @@ class ApplicationController < ActionController::Base
         :date_of_birth,
         :gender
       ],
+      games_attributes: [
+        :id,
+        :name,
+        game_relations_attributes: [
+          :id,
+          :game_platform_id
+        ],
+      ],
       game_account_attributes: [
         :id,
         :discord_id,
@@ -43,6 +51,14 @@ class ApplicationController < ActionController::Base
         :native_country,
         :date_of_birth,
         :gender
+      ],
+      games_attributes: [
+        :id,
+        :name,
+        game_relations_attributes: [
+          :id,
+          :game_platform_id
+        ],
       ],
       game_account_attributes: [
         :id,
