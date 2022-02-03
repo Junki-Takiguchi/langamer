@@ -29,7 +29,7 @@
     </div>
     <div class="field">
       <%= m.label :self_introduction, '自己紹介文' %><br />
-      <%= m.text_field :self_introduction %>
+      <%= m.text_area :self_introduction %>
     </div>
     <div class="field">
       <%= m.label :learn_language, '学習中の言語' %><br />
@@ -45,11 +45,11 @@
     </div>
     <div class="field">
       <%= m.label :living_country, '住んでる国' %><br />
-      <%= m.text_field :living_country %>
+      <%= m.country_select :living_country %>
     </div>
     <div class="field">
       <%= m.label :native_country, '出身国' %><br />
-      <%= m.text_field :native_country %>
+      <%= m.country_select :native_country %>
     </div>
     <div class="field">
       <%= m.label :date_of_birth, '生年月日' %><br />
