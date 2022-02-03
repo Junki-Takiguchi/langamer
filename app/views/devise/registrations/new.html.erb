@@ -33,15 +33,15 @@
     </div>
     <div class="field">
       <%= m.label :learn_language, '学習中の言語' %><br />
-      <%= m.text_field :learn_language %>
+      <%= m.select :learn_language, LanguageList::COMMON_LANGUAGES.map { |lang| lang.name }, { include_blank: '-----------------'}, {id: 'learn_language'} %>
     </div>
     <div class="field">
       <%= m.label :first_language, '第一言語（母国語）' %><br />
-      <%= m.text_field :first_language %>
+      <%= m.select :first_language, LanguageList::COMMON_LANGUAGES.map { |lang| lang.name }, { include_blank: '-----------------'}, {id: 'first_language'} %>
     </div>
     <div class="field">
       <%= m.label :second_language, '第二言語' %><br />
-      <%= m.text_field :second_language %>
+      <%= m.select :second_language, LanguageList::COMMON_LANGUAGES.map { |lang| lang.name }, { include_blank: '-----------------'}, {id: 'second_language'} %>
     </div>
     <div class="field">
       <%= m.label :living_country, '住んでる国' %><br />
@@ -93,6 +93,7 @@
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>
+  <% binding.pry %>
 <% end %>
 
 <%= render "devise/shared/links" %>

@@ -14,6 +14,7 @@ gem 'devise'
 gem 'rexml'
 #gem 'unicorn'
 #gem 'unicorn-rails'
+gem 'language_list'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
