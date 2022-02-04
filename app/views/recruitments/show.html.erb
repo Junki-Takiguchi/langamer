@@ -3,23 +3,23 @@
 
 <p>---------------------------------------------</p>
 <h2><%= @profile.account_name %>の詳細ページ</h2>
-<h3>基本情報</h3>
+<h2>基本情報</h2>
 <p class="field">アカウント名: <%= @profile.account_name %></p>
 <p class="field">プロフィール画像: <%= @profile.profile_picture %></p>
 <p class="field">登録メールアドレス: <%= @user.email %></p>
 <p class="field">学習中の言語: <%= @profile.learn_language %></p>
 <p class="field">第一言語（母国語）: <%= @profile.first_language %></p>
 <p class="field">第二言語: <%= @profile.second_language %></p>
-<p class="field">住んでる国: <%= @profile.living_country %></p>
-<p class="field">出身国: <%= @profile.native_country %></p>
+<p class="field">住んでる国: <%= @profile.country_name(@profile.living_country) %></p>
+<p class="field">出身国: <%= @profile.country_name(@profile.native_country) %></p>
 <p class="field">生年月日: <%= @profile.date_of_birth %></p>
 <p class="field">性別: <%= @profile.gender %></p>
 <p>------------------------------------------------------------------------</p>
-<h3>プレイ可能なゲーム</h3>
-
-
+<h2>プレイ可能なゲーム</h2>
+<p class="field"><%= @games[0].name %> (<%= @game_platforms[0].name %>)</p>
 <p>------------------------------------------------------------------------</p>
-<h3>ゲームアカウント</h3>
+<h2>ゲームアカウント</h2>
+<p class="field">Twitter ID: <%= @game_account.twitter_id %></p>
 <p class="field">Discord ID: <%= @game_account.discord_id %></p>
 <p class="field">Steam ID: <%= @game_account.steam_id %></p>
 <p class="field">Origin ID: <%= @game_account.origin_id %></p>
@@ -28,6 +28,6 @@
 <p class="field">Xbox ID: <%= @game_account.xbox_id %></p>
 <p class="field">任天堂ID: <%= @game_account.nintendo_id %></p>
 <p class="field">その他ID: <%= @game_account.other_id %></p>
-<p class="field">Twitter ID: <%= @game_account.twitter_id %></p>
+
 
 <p class="field"><%= link_to "TOPに戻る", recruitments_path %></p>
