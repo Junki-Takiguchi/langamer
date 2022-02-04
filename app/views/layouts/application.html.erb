@@ -11,6 +11,10 @@
 
   <body>
     <% if user_signed_in? %>
+      <!--ログインしてるユーザーが管理者の場合のみ-->
+      <% if current_user.try(:admin?) %>
+        <%= link_to '管理者ログイン', rails_admin_path %>
+      <% end %>
       <%= link_to "マイページ", user_path(current_user.id) %>
       <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
     <% end %>

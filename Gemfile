@@ -16,6 +16,8 @@ gem 'rexml'
 #gem 'unicorn-rails'
 gem 'language_list'
 gem 'country_select'
+gem 'cancancan'
+gem 'rails_admin'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
