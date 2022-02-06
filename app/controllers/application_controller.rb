@@ -16,10 +16,15 @@ class ApplicationController < ActionController::Base
         :learn_language,
         :first_language,
         :second_language,
+        :second_language_status,
         :living_country,
+        :living_country_status,
         :native_country,
+        :native_country_status,
         :date_of_birth,
-        :gender
+        :date_of_birth_status,
+        :gender,
+        :gender_status
       ],
       games_attributes: [
         :id,
@@ -32,7 +37,9 @@ class ApplicationController < ActionController::Base
       game_account_attributes: [
         :id,
         :discord_id,
-        :twitter_id
+        :discord_id_status,
+        :twitter_id,
+        :twitter_id_status
       ]
     ])
   end
@@ -47,10 +54,15 @@ class ApplicationController < ActionController::Base
         :learn_language,
         :first_language,
         :second_language,
+        :second_language_status,
         :living_country,
+        :living_country_status,
         :native_country,
+        :native_country_status,
         :date_of_birth,
-        :gender
+        :date_of_birth_status,
+        :gender,
+        :gender_status
       ],
       games_attributes: [
         :id,
@@ -63,14 +75,23 @@ class ApplicationController < ActionController::Base
       game_account_attributes: [
         :id,
         :discord_id,
+        :discord_id_status,
+        :twitter_id,
+        :twitter_id_status,
         :steam_id,
+        :steam_id_status,
         :origin_id,
+        :origin_id_status,
         :riot_id,
+        :riot_id_status,
         :psn_id,
+        :psn_id_status,
         :xbox_id,
+        :xbox_id_status,
         :nintendo_id,
+        :nintendo_id_status,
         :other_id,
-        :twitter_id
+        :other_id_status
       ]
     ])
   end
