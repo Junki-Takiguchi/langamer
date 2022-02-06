@@ -36,14 +36,23 @@
     <div class="field">
       <%= m.label :second_language, '第二言語' %><br />
       <%= m.select :second_language, LanguageList::COMMON_LANGUAGES.map { |lang| lang.name }, { include_blank: '-----------------'}, {id: 'second_language'} %>
+      <%= m.radio_button :second_language_status, :公開, checked: resource.user_detail.second_language_status == "公開" %>公開
+      <%= m.radio_button :second_language_status, :非公開, checked: resource.user_detail.second_language_status == "非公開" %>非公開
+      <%= m.radio_button :second_language_status, :フレンドのみ公開, checked: resource.user_detail.second_language_status == "フレンドのみ公開" %>フレンドのみ公開
     </div>
     <div class="field">
       <%= m.label :living_country, '住んでる国' %><br />
       <%= m.text_field :living_country %>
+      <%= m.radio_button :living_country_status, :公開, checked: resource.user_detail.living_country_status == "公開" %>公開
+      <%= m.radio_button :living_country_status, :非公開, checked: resource.user_detail.living_country_status == "非公開" %>非公開
+      <%= m.radio_button :living_country_status, :フレンドのみ公開, checked: resource.user_detail.living_country_status == "フレンドのみ公開" %>フレンドのみ公開
     </div>
     <div class="field">
       <%= m.label :native_country, '出身国' %><br />
       <%= m.text_field :native_country %>
+      <%= m.radio_button :native_country_status, :公開, checked: resource.user_detail.native_country_status == "公開" %>公開
+      <%= m.radio_button :native_country_status, :非公開, checked: resource.user_detail.native_country_status == "非公開" %>非公開
+      <%= m.radio_button :native_country_status, :フレンドのみ公開, checked: resource.user_detail.native_country_status == "フレンドのみ公開" %>フレンドのみ公開
     </div>
     <div class="field">
       <%= m.label :date_of_birth, '生年月日' %><br />
@@ -53,11 +62,17 @@
                         end_year: (Time.now.year),
                         default: Date.new(1990, 1, 1),
                         date_separator: '/'
-                        ) %>
+      ) %>
+      <%= m.radio_button :date_of_birth_status, :公開, checked: resource.user_detail.date_of_birth_status == "公開" %>公開
+      <%= m.radio_button :date_of_birth_status, :非公開, checked: resource.user_detail.date_of_birth_status == "非公開" %>非公開
+      <%= m.radio_button :date_of_birth_status, :フレンドのみ公開, checked: resource.user_detail.date_of_birth_status == "フレンドのみ公開" %>フレンドのみ公開
     </div>
     <div class="field">
       <%= m.label :gender, '性別' %><br />
       <%= m.select :gender, UserDetail.genders.keys, { include_blank: '--------'}, {id: 'user_gender'} %>
+      <%= m.radio_button :gender_status, :公開, checked: resource.user_detail.gender_status == "公開" %>公開
+      <%= m.radio_button :gender_status, :非公開, checked: resource.user_detail.gender_status == "非公開" %>非公開
+      <%= m.radio_button :gender_status, :フレンドのみ公開, checked: resource.user_detail.gender_status == "フレンドのみ公開" %>フレンドのみ公開
     </div>
   <% end %>
 
@@ -76,42 +91,69 @@
   <% end %>
 
 <h3>外部アカウントの登録</h3>
-  <%= f.fields_for :game_account do |m| %>
+  <%= f.fields_for :game_account do |a| %>
     <div class="field">
-      <%= m.label :discord_id, 'Discord ID' %><br />
-      <%= m.text_field :discord_id %>
+      <%= a.label :discord_id, 'Discord ID' %><br />
+      <%= a.text_field :discord_id %>
+      <%= a.radio_button :discord_id_status, :公開, checked: resource.game_account.discord_id_status == "公開" %>公開
+      <%= a.radio_button :discord_id_status, :非公開, checked: resource.game_account.discord_id_status == "非公開" %>非公開
+      <%= a.radio_button :discord_id_status, :フレンドのみ公開, checked: resource.game_account.discord_id_status == "フレンドのみ公開" %>フレンドのみ公開
     </div>
     <div class="field">
-      <%= m.label :steam_id, 'Steam ID' %><br />
-      <%= m.text_field :steam_id %>
+      <%= a.label :twitter_id, 'Twitter ID' %><br />
+      <%= a.text_field :twitter_id %>
+      <%= a.radio_button :twitter_id_status, :公開, checked: resource.game_account.twitter_id_status == "公開" %>公開
+      <%= a.radio_button :twitter_id_status, :非公開, checked: resource.game_account.twitter_id_status == "非公開" %>非公開
+      <%= a.radio_button :twitter_id_status, :フレンドのみ公開, checked: resource.game_account.twitter_id_status == "フレンドのみ公開" %>フレンドのみ公開
     </div>
     <div class="field">
-      <%= m.label :origin_id, 'Origin ID' %><br />
-      <%= m.text_field :origin_id %><br />
+      <%= a.label :steam_id, 'Steam ID' %><br />
+      <%= a.text_field :steam_id %>
+      <%= a.radio_button :steam_id_status, :公開, checked: resource.game_account.steam_id_status == "公開" %>公開
+      <%= a.radio_button :steam_id_status, :非公開, checked: resource.game_account.steam_id_status == "非公開" %>非公開
+      <%= a.radio_button :steam_id_status, :フレンドのみ公開, checked: resource.game_account.steam_id_status == "フレンドのみ公開" %>フレンドのみ公開
     </div>
     <div class="field">
-      <%= m.label :riot_id, 'Riot ID' %><br />
-      <%= m.text_field :riot_id %>
+      <%= a.label :origin_id, 'Origin ID' %><br />
+      <%= a.text_field :origin_id %>
+      <%= a.radio_button :origin_id_status, :公開, checked: resource.game_account.origin_id_status == "公開" %>公開
+      <%= a.radio_button :origin_id_status, :非公開, checked: resource.game_account.origin_id_status == "非公開" %>非公開
+      <%= a.radio_button :origin_id_status, :フレンドのみ公開, checked: resource.game_account.origin_id_status == "フレンドのみ公開" %>フレンドのみ公開
     </div>
     <div class="field">
-      <%= m.label :psn_id, 'PSN ID' %><br />
-      <%= m.text_field :psn_id %>
+      <%= a.label :riot_id, 'Riot ID' %><br />
+      <%= a.text_field :riot_id %>
+      <%= a.radio_button :riot_id_status, :公開, checked: resource.game_account.riot_id_status == "公開" %>公開
+      <%= a.radio_button :riot_id_status, :非公開, checked: resource.game_account.riot_id_status == "非公開" %>非公開
+      <%= a.radio_button :riot_id_status, :フレンドのみ公開, checked: resource.game_account.riot_id_status == "フレンドのみ公開" %>フレンドのみ公開
     </div>
     <div class="field">
-      <%= m.label :xbox_id, 'Xbox ID' %><br />
-      <%= m.text_field :xbox_id %>
+      <%= a.label :psn_id, 'PSN ID' %><br />
+      <%= a.text_field :psn_id %>
+      <%= a.radio_button :psn_id_status, :公開, checked: resource.game_account.psn_id_status == "公開" %>公開
+      <%= a.radio_button :psn_id_status, :非公開, checked: resource.game_account.psn_id_status == "非公開" %>非公開
+      <%= a.radio_button :psn_id_status, :フレンドのみ公開, checked: resource.game_account.psn_id_status == "フレンドのみ公開" %>フレンドのみ公開
     </div>
     <div class="field">
-      <%= m.label :nintendo_id, '任天堂ID' %><br />
-      <%= m.text_field :nintendo_id %>
+      <%= a.label :xbox_id, 'Xbox ID' %><br />
+      <%= a.text_field :xbox_id %>
+      <%= a.radio_button :xbox_id_status, :公開, checked: resource.game_account.xbox_id_status == "公開" %>公開
+      <%= a.radio_button :xbox_id_status, :非公開, checked: resource.game_account.xbox_id_status == "非公開" %>非公開
+      <%= a.radio_button :xbox_id_status, :フレンドのみ公開, checked: resource.game_account.xbox_id_status == "フレンドのみ公開" %>フレンドのみ公開
     </div>
     <div class="field">
-      <%= m.label :other_id, 'その他ID' %><br />
-      <%= m.text_field :other_id %>
+      <%= a.label :nintendo_id, '任天堂ID' %><br />
+      <%= a.text_field :nintendo_id %>
+      <%= a.radio_button :nintendo_id_status, :公開, checked: resource.game_account.nintendo_id_status == "公開" %>公開
+      <%= a.radio_button :nintendo_id_status, :非公開, checked: resource.game_account.nintendo_id_status == "非公開" %>非公開
+      <%= a.radio_button :nintendo_id_status, :フレンドのみ公開, checked: resource.game_account.nintendo_id_status == "フレンドのみ公開" %>フレンドのみ公開
     </div>
     <div class="field">
-      <%= m.label :twitter_id, 'Twitter ID' %><br />
-      <%= m.text_field :twitter_id %>
+      <%= a.label :other_id, 'その他ID' %><br />
+      <%= a.text_field :other_id %>
+      <%= a.radio_button :other_id_status, :公開, checked: resource.game_account.other_id_status == "公開" %>公開
+      <%= a.radio_button :other_id_status, :非公開, checked: resource.game_account.other_id_status == "非公開" %>非公開
+      <%= a.radio_button :other_id_status, :フレンドのみ公開, checked: resource.game_account.other_id_status == "フレンドのみ公開" %>フレンドのみ公開
     </div>
   <% end %>
 

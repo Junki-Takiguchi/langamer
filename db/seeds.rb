@@ -34,7 +34,7 @@ GameRelation.create!(
 )
 Recruitment.create!(
   title: "タイトル01",
-  content: "投稿本文01"
+  content: "投稿本文01",
   user_id: 1
 )
 
@@ -69,6 +69,6 @@ GameRelation.create!(
 )
 Recruitment.create!(
   title: "タイトル02",
-  content: "投稿本文02"
+  content: "投稿本文02",
   user_id: 2
 )

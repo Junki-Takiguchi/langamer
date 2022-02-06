@@ -10,7 +10,7 @@ class CreateUserDetails < ActiveRecord::Migration[6.0]
       t.string :living_country
       t.string :native_country
       t.date :date_of_birth
-      t.string :gender
+      t.string :gender, limit: 2
       t.timestamps
     end
   end
