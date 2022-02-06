@@ -3,7 +3,7 @@ class CreateFriendRelations < ActiveRecord::Migration[6.0]
     create_table :friend_relations do |t|
       t.integer :from_applicant
       t.integer :to_target
-      t.integer :status
+      t.integer :status, limit: 2
       t.timestamps
     end
     add_index :friend_relations, :from_applicant

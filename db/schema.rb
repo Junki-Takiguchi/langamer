@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_04_093208) do
+ActiveRecord::Schema.define(version: 2022_02_06_084013) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 2022_02_04_093208) do
   create_table "friend_relations", force: :cascade do |t|
     t.integer "from_applicant_id"
     t.integer "to_target_id"
-    t.integer "status"
+    t.integer "status", limit: 2
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["from_applicant_id", "to_target_id"], name: "index_friend_relations_on_from_applicant_id_and_to_target_id", unique: true
@@ -39,6 +39,15 @@ ActiveRecord::Schema.define(version: 2022_02_04_093208) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id", null: false
+    t.integer "discord_id_status", limit: 2, default: 2, null: false
+    t.integer "steam_id_status", limit: 2, default: 2, null: false
+    t.integer "origin_id_status", limit: 2, default: 2, null: false
+    t.integer "riot_id_status", limit: 2, default: 2, null: false
+    t.integer "psn_id_status", limit: 2, default: 2, null: false
+    t.integer "xbox_id_status", limit: 2, default: 2, null: false
+    t.integer "nintendo_id_status", limit: 2, default: 2, null: false
+    t.integer "other_id_status", limit: 2, default: 2, null: false
+    t.integer "twitter_id_status", limit: 2, default: 2, null: false
     t.index ["user_id"], name: "index_game_accounts_on_user_id"
   end
 
@@ -90,6 +99,11 @@ ActiveRecord::Schema.define(version: 2022_02_04_093208) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id", null: false
+    t.integer "second_language_status", limit: 2, default: 0, null: false
+    t.integer "living_country_status", limit: 2, default: 0, null: false
+    t.integer "native_country_status", limit: 2, default: 0, null: false
+    t.integer "date_of_birth_status", limit: 2, default: 0, null: false
+    t.integer "gender_status", limit: 2, default: 0, null: false
     t.index ["user_id"], name: "index_user_details_on_user_id"
   end
 
