@@ -64,6 +64,7 @@
     <div class="field">
       <%= m.label :gender, '性別' %><br />
       <%= m.select :gender, UserDetail.genders.keys, { include_blank: '--------'}, {id: 'user_gender'} %>
+      <%= m.radio_button :gender_status, :公開, checked: true %><%= m.radio_button :gender_status, :非公開 %><%= m.radio_button :gender_status, :フレンドのみ公開 %>
     </div>
   <% end %>
 <h3>プレイ可能なゲーム</h3>
@@ -93,7 +94,6 @@
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>
-  <% binding.pry %>
 <% end %>
 
 <%= render "devise/shared/links" %>
