@@ -35,4 +35,10 @@ class User < ApplicationRecord
     friend_relations.find_by(to_target_id: other_user.id).destroy
   end
 
+  def release_info(current_user, user, column, status)
+    if current_user.id == user.id || (column.present? && (status == "公開" || (FriendRelation.get_friend_status(current_user, user) == "フレンド" && status == "フレンドのみ公開")))
+      return true
+    end
+  end
+
 end

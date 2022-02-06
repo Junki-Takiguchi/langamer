@@ -12,5 +12,4 @@ class UsersController < ApplicationController
     }.flatten!
     @game_account = @user.game_account
   end
-
 end

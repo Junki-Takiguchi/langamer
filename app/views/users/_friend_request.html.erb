@@ -19,3 +19,45 @@
     <% end %>
   <% end %>
 </div>
+
+
+<%
+=begin
+%>
+
+<div id="friend_request_<%= user.id %>">
+<%= form_with(model: current_user.friend_relations.find_by(to_target_id: user.id), method: :patch ) do |f| %>
+  <%# binding.pry %>
+  <% if current_user.id == user.id %>
+    <p>自分のアカウントです</p>
+  <!-- フレンドではない場合 -->
+  <% elsif FriendRelation.check_already_friend?(current_user, user) == false %>
+    <%= form_with(model: current_user.friend_relations.build(to_target_id: user.id, status: "申請中" ))  do |f| %>
+      <%= f.hidden_field :to_target_id %>
+      <%= f.submit "フレンド申請" %>
+    <% end %>
+  <!-- フレンドの場合 -->
+  <% else %>
+    <!-- ステータスが申請中の場合 -->
+    <% if FriendRelation.pending_application?(current_user, other_user) %>
+      <!-- 自分が申請者の場合 -->
+      <% if FriendRelation.are_you_applicant?(current_user, other_user) %>
+        <%= f.submit "申請をキャンセル", data: { confirm: "申請をキャンセルすると一覧から表示されなくなります。申請をキャンセルしますか？"}  %>
+      <% else %>
+        <%= f.submit "申請を許可" %>
+        <%= f.submit "申請を却下", data: { confirm: "申請を却下します。よろしいですか？"}  %> %>
+      <% end %>
+    <!-- ステータスがフレンドの場合 -->
+    <% elsif FriendRelation.get_friend_status(current_user, other_user) == "フレンド" %>
+      <%= f.submit "フレンドを解除", data: { confirm: "フレンドを削除すると一覧から表示されなくなります。フレンドを削除しますか？"} %>
+    <!-- フレンド解除/申請キャンセル後の挙動確認 -->
+    <% else %>
+      <p>フレンド解除済み、もしくは申請がキャンセルされました。</p>
+    <% end %>
+  <% end %>
+<% end %>
+</div>
+
+<%
+=end
+%>
