@@ -1,0 +1,2 @@
+class LearnLanguage < ApplicationRecord
+end
