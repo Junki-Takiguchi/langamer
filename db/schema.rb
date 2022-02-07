@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_07_091113) do
+ActiveRecord::Schema.define(version: 2022_02_07_110040) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -109,9 +109,6 @@ ActiveRecord::Schema.define(version: 2022_02_07_091113) do
     t.string "account_name"
     t.text "profile_picture"
     t.text "self_introduction"
-    t.string "learn_language"
-    t.string "first_language"
-    t.string "second_language"
     t.string "living_country"
     t.string "native_country"
     t.date "date_of_birth"
@@ -119,7 +116,6 @@ ActiveRecord::Schema.define(version: 2022_02_07_091113) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id", null: false
-    t.integer "second_language_status", limit: 2, default: 0, null: false
     t.integer "living_country_status", limit: 2, default: 0, null: false
     t.integer "native_country_status", limit: 2, default: 0, null: false
     t.integer "date_of_birth_status", limit: 2, default: 0, null: false
