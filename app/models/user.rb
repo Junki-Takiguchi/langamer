@@ -4,14 +4,19 @@ class User < ApplicationRecord
           :recoverable, :rememberable, :validatable,
           :confirmable, :lockable, :timeoutable, :trackable #, :omniauthable
 
-  has_many :games, dependent: :destroy
-  accepts_nested_attributes_for :games, allow_destroy: true
-  has_many :recruitments, dependent: :destroy
-  # 複数形にすると登録formに表示される。ただしunpermited <view fields_for user_detail>が発生する
   has_one :user_detail, dependent: :destroy
   accepts_nested_attributes_for :user_detail, allow_destroy: true
   has_one :game_account, dependent: :destroy
   accepts_nested_attributes_for :game_account, allow_destroy: true
+
+  has_many :games, dependent: :destroy
+  accepts_nested_attributes_for :games, allow_destroy: true
+  has_many :learn_languages, dependent: :destroy
+  accepts_nested_attributes_for :learn_languages, allow_destroy: true
+  has_many :speak_languages, dependent: :destroy
+  accepts_nested_attributes_for :speak_languages, allow_destroy: true
+
+  has_many :recruitments, dependent: :destroy
 
   has_many :friend_relations, foreign_key: 'from_applicant_id', dependent: :destroy
   has_many :reverse_of_relations, foreign_key: 'to_target_id', class_name: 'FriendRelation', dependent: :destroy
