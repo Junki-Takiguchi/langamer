@@ -78,7 +78,8 @@ ActiveRecord::Schema.define(version: 2022_02_07_091113) do
 
   create_table "learn_languages", force: :cascade do |t|
     t.string "learn_language"
-    t.integer "learn_language_status"
+    t.integer "rank", limit: 2, null: false
+    t.integer "learn_language_status", limit: 2, default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id"
@@ -96,8 +97,8 @@ ActiveRecord::Schema.define(version: 2022_02_07_091113) do
 
   create_table "speak_languages", force: :cascade do |t|
     t.string "speak_language"
-    t.boolean "native_language", default: false, null: false
-    t.integer "speak_language_status"
+    t.integer "rank", limit: 2, null: false
+    t.integer "speak_language_status", limit: 2, default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id"

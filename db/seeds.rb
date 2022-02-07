@@ -11,12 +11,28 @@ User.create!(
 UserDetail.create!(
   account_name: "テストアカウント01",
   self_introduction: "テストアカウント01の自己紹介文",
-  learn_language: "English",
-  first_language: "Japanese",
+  #learn_language: "English",
+  #first_language: "Japanese",
   living_country: "US",
   native_country: "JP",
   date_of_birth: "20111114",
   gender: "男性",
+  user_id: 1
+)
+LearnLanguage.create!(
+  learn_language: "English",
+  rank: "上級者",
+  user_id: 1
+)
+LearnLanguage.create!(
+  learn_language: "Chinese",
+  rank: "初級者",
+  learn_language_status: "フレンドのみ公開",
+  user_id: 1
+)
+SpeakLanguage.create!(
+  speak_language: "Japanese"
+  rank: "ネイティブ",
   user_id: 1
 )
 GameAccount.create!(
@@ -46,12 +62,28 @@ User.create!(
 UserDetail.create!(
   account_name: "テストアカウント02",
   self_introduction: "テストアカウント02の自己紹介文",
-  learn_language: "English",
-  first_language: "Japanese",
+  #learn_language: "English",
+  #first_language: "Japanese",
   living_country: "US",
   native_country: "JP",
   date_of_birth: "19951114",
   gender: "女性",
+  user_id: 2
+)
+LearnLanguage.create!(
+  learn_language: "Japanese",
+  rank: "上級者",
+  user_id: 2
+)
+LearnLanguage.create!(
+  learn_language: "Chinese",
+  rank: "中級者",
+  learn_language_status: "非公開",
+  user_id: 2
+)
+SpeakLanguage.create!(
+  speak_language: "English"
+  rank: "ネイティブ",
   user_id: 2
 )
 GameAccount.create!(

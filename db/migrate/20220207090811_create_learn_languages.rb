@@ -2,7 +2,8 @@ class CreateLearnLanguages < ActiveRecord::Migration[6.0]
   def change
     create_table :learn_languages do |t|
       t.string :learn_language
-      t.integer :learn_language_status
+      t.integer :rank, limit: 2, null: false
+      t.integer :learn_language_status, limit: 2, default: 0, null: false
       t.timestamps
       t.references :user, foreign_key: true
     end
