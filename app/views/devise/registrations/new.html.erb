@@ -94,12 +94,12 @@
     <div class="field">
       <%= a.label :discord_id, 'Discord ID' %><br />
       <%= a.text_field :discord_id %>
-      <%= a.radio_button :discord_id, :公開 %>公開 <%= a.radio_button :discord_id, :非公開 %>非公開 <%= a.radio_button :discord_id, :フレンドのみ公開, checked: true %>フレンドのみ公開
+      <%= a.radio_button :discord_id_status, :公開 %>公開 <%= a.radio_button :discord_id_status, :非公開 %>非公開 <%= a.radio_button :discord_id_status, :フレンドのみ公開, checked: true %>フレンドのみ公開
     </div>
     <div class="field">
       <%= a.label :twitter_id, 'Twitter ID' %><br />
       <%= a.text_field :twitter_id %>
-      <%= a.radio_button :twitter_id, :公開 %>公開 <%= a.radio_button :twitter_id, :非公開 %>非公開 <%= a.radio_button :twitter_id, :フレンドのみ公開, checked: true %>フレンドのみ公開
+      <%= a.radio_button :twitter_id_status, :公開 %>公開 <%= a.radio_button :twitter_id_status, :非公開 %>非公開 <%= a.radio_button :twitter_id_status, :フレンドのみ公開, checked: true %>フレンドのみ公開
     </div>
   <% end %>
   <div class="actions">
