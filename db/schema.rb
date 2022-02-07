@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_06_084013) do
+ActiveRecord::Schema.define(version: 2022_02_07_110040) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -76,6 +76,16 @@ ActiveRecord::Schema.define(version: 2022_02_06_084013) do
     t.index ["user_id"], name: "index_games_on_user_id"
   end
 
+  create_table "learn_languages", force: :cascade do |t|
+    t.string "learn_language"
+    t.integer "rank", limit: 2, null: false
+    t.integer "learn_language_status", limit: 2, default: 0, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_learn_languages_on_user_id"
+  end
+
   create_table "recruitments", force: :cascade do |t|
     t.string "title"
     t.text "content"
@@ -85,13 +95,20 @@ ActiveRecord::Schema.define(version: 2022_02_06_084013) do
     t.index ["user_id"], name: "index_recruitments_on_user_id"
   end
 
+  create_table "speak_languages", force: :cascade do |t|
+    t.string "speak_language"
+    t.integer "rank", limit: 2, null: false
+    t.integer "speak_language_status", limit: 2, default: 0, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_speak_languages_on_user_id"
+  end
+
   create_table "user_details", force: :cascade do |t|
     t.string "account_name"
     t.text "profile_picture"
     t.text "self_introduction"
-    t.string "learn_language"
-    t.string "first_language"
-    t.string "second_language"
     t.string "living_country"
     t.string "native_country"
     t.date "date_of_birth"
@@ -99,7 +116,6 @@ ActiveRecord::Schema.define(version: 2022_02_06_084013) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id", null: false
-    t.integer "second_language_status", limit: 2, default: 0, null: false
     t.integer "living_country_status", limit: 2, default: 0, null: false
     t.integer "native_country_status", limit: 2, default: 0, null: false
     t.integer "date_of_birth_status", limit: 2, default: 0, null: false
@@ -138,6 +154,8 @@ ActiveRecord::Schema.define(version: 2022_02_06_084013) do
   add_foreign_key "game_relations", "game_platforms"
   add_foreign_key "game_relations", "games"
   add_foreign_key "games", "users"
+  add_foreign_key "learn_languages", "users"
   add_foreign_key "recruitments", "users"
+  add_foreign_key "speak_languages", "users"
   add_foreign_key "user_details", "users"
 end

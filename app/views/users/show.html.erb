@@ -10,11 +10,6 @@
 <% if current_user.id == @user.id %>
   <div class="field">登録メールアドレス: <%= @user.email %><br/></div>
 <% end %>
-<div class="field">学習中の言語: <%= @profile.learn_language %><br/></div>
-<div class="field">第一言語（母国語）: <%= @profile.first_language %><br/></div>
-<% if @user.release_info(current_user, @user, @profile.second_language, @profile.second_language_status ) == true %>
-  <div class="field">第二言語: <%= @profile.second_language %> <%= @profile.second_language_status if current_user.id == @user.id %><br/></div>
-<% end %>
 <% if @user.release_info(current_user, @user, @profile.living_country, @profile.living_country_status ) == true %>
   <div class="field">住んでる国: <%= @profile.country_name(@profile.living_country) %> <%= @profile.living_country_status if current_user.id == @user.id %><br/></div>
 <% end %>
@@ -26,6 +21,19 @@
 <% end %>
 <% if @user.release_info(current_user, @user, @profile.gender, @profile.gender_status ) == true %>
   <div class="field">性別: <%= @profile.gender %> <%= @profile.gender_status if current_user.id == @user.id %><br/></div>
+<% end %>
+<div>------------------------------------------------------------------------<br/></div>
+<h3>学習中の言語</h3>
+<% @learn_languages.each do |learn_language| %>
+  <% if @user.release_info(current_user, @user, learn_language.learn_language, learn_language.learn_language_status ) == true %>
+    <div class="field"><%= learn_language.learn_language %> 習得レベル：<%= learn_language.rank %> <%= learn_language.learn_language_status if current_user.id == @user.id %><br/></div>
+  <% end %>
+<% end %>
+<h3>話せる言語</h3>
+<% @speak_languages.each do |speak_language| %>
+  <% if @user.release_info(current_user, @user, speak_language.speak_language, speak_language.speak_language_status ) == true %>
+    <div class="field"><%= speak_language.speak_language %> 習得レベル：<%= speak_language.rank %> <%= speak_language.speak_language_status if current_user.id == @user.id %><br/></div>
+  <% end %>
 <% end %>
 <div>------------------------------------------------------------------------<br/></div>
 <h2>プレイ可能なゲーム</h2>

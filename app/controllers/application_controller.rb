@@ -13,10 +13,10 @@ class ApplicationController < ActionController::Base
         :id,
         :account_name,
         :self_introduction,
-        :learn_language,
-        :first_language,
-        :second_language,
-        :second_language_status,
+        #:learn_language,
+        #:first_language,
+        #:second_language,
+        #:second_language_status,
         :living_country,
         :living_country_status,
         :native_country,
@@ -25,6 +25,18 @@ class ApplicationController < ActionController::Base
         :date_of_birth_status,
         :gender,
         :gender_status
+      ],
+      learn_languages_attributes: [
+        :id,
+        :learn_language,
+        :rank,
+        :learn_language_status
+      ],
+      speak_languages_attributes: [
+        :id,
+        :speak_language,
+        :rank,
+        :speak_language_status
       ],
       games_attributes: [
         :id,
@@ -51,10 +63,10 @@ class ApplicationController < ActionController::Base
         :account_name,
         :profile_picture,
         :self_introduction,
-        :learn_language,
-        :first_language,
-        :second_language,
-        :second_language_status,
+        #:learn_language,
+        #:first_language,
+        #:second_language,
+        #:second_language_status,
         :living_country,
         :living_country_status,
         :native_country,
@@ -63,6 +75,18 @@ class ApplicationController < ActionController::Base
         :date_of_birth_status,
         :gender,
         :gender_status
+      ],
+      learn_languages_attributes: [
+        :id,
+        :learn_language,
+        :rank,
+        :learn_language_status
+      ],
+      speak_languages_attributes: [
+        :id,
+        :speak_language,
+        :rank,
+        :speak_language_status
       ],
       games_attributes: [
         :id,
