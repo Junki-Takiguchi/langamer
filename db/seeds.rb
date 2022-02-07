@@ -31,7 +31,7 @@ LearnLanguage.create!(
   user_id: 1
 )
 SpeakLanguage.create!(
-  speak_language: "Japanese"
+  speak_language: "Japanese",
   rank: "ネイティブ",
   user_id: 1
 )
@@ -82,7 +82,7 @@ LearnLanguage.create!(
   user_id: 2
 )
 SpeakLanguage.create!(
-  speak_language: "English"
+  speak_language: "English",
   rank: "ネイティブ",
   user_id: 2
 )
