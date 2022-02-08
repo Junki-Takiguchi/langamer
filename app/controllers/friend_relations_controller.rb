@@ -8,13 +8,10 @@ class FriendRelationsController < ApplicationController
   end
 
   def update
-    @user = FriendRelation.find(params[:id]).to_target
-    current_user.update_friend_status!(@user)
+    FriendRelation.find(params[:id]).update(status: params[:friend_relation][:status])
   end
 
-  # destroyは使用しない予定
   def destroy
-    @user = FriendRelation.find(params[:id]).to_target
-    current_user.delete_friend!(@user)
+    FriendRelation.find(params[:id]).delete
   end
 end
