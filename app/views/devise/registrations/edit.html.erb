@@ -26,14 +26,14 @@
     </div>
     <div class="field">
       <%= m.label :living_country, '住んでる国' %><br />
-      <%= m.text_field :living_country %>
+      <%= m.country_select :living_country %>
       <%= m.radio_button :living_country_status, :公開, checked: resource.user_detail.living_country_status == "公開" %>公開
       <%= m.radio_button :living_country_status, :非公開, checked: resource.user_detail.living_country_status == "非公開" %>非公開
       <%= m.radio_button :living_country_status, :フレンドのみ公開, checked: resource.user_detail.living_country_status == "フレンドのみ公開" %>フレンドのみ公開
     </div>
     <div class="field">
       <%= m.label :native_country, '出身国' %><br />
-      <%= m.text_field :native_country %>
+      <%= m.country_select :native_country %>
       <%= m.radio_button :native_country_status, :公開, checked: resource.user_detail.native_country_status == "公開" %>公開
       <%= m.radio_button :native_country_status, :非公開, checked: resource.user_detail.native_country_status == "非公開" %>非公開
       <%= m.radio_button :native_country_status, :フレンドのみ公開, checked: resource.user_detail.native_country_status == "フレンドのみ公開" %>フレンドのみ公開
@@ -62,7 +62,6 @@
   <div>------------------------------------------------------------------------<br/></div>
   <h3>学習中の言語</h3>
   <%= f.fields_for :learn_languages do |l| %>
-    <% binding.pry %>
     <div class="field">
       <%= l.select :learn_language, LanguageList::COMMON_LANGUAGES.map { |lang| lang.name }, { include_blank: '-----------------'}, {id: 'learn_language'} %>
       <%= l.label :rank, '習得レベル' %>

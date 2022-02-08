@@ -1,75 +1,9 @@
-<h1>
+<h2>
   <% if current_user.id == @user.id %>マイページ
   <% else %><%= @profile.account_name %>の詳細ページ
   <% end %>
-</h1>
-<div>---------------------------------------------<br/></div>
-<h2>基本情報</h2>
-<div class="field">アカウント名: <%= @profile.account_name %><br/></div>
-<div class="field">プロフィール画像:
-  <%= image_tag @profile.profile_picture.small.url %>
-  <br/>
-</div>
-<% if current_user.id == @user.id %>
-  <div class="field">登録メールアドレス: <%= @user.email %><br/></div>
-<% end %>
-<% if @user.release_info(current_user, @user, @profile.living_country, @profile.living_country_status ) == true %>
-  <div class="field">住んでる国: <%= @profile.country_name(@profile.living_country) %> <%= @profile.living_country_status if current_user.id == @user.id %><br/></div>
-<% end %>
-<% if @user.release_info(current_user, @user, @profile.native_country, @profile.native_country_status ) == true %>
-  <div class="field">出身国: <%= @profile.country_name(@profile.native_country) %> <%= @profile.native_country_status if current_user.id == @user.id %><br/></div>
-<% end %>
-<% if @user.release_info(current_user, @user, @profile.date_of_birth, @profile.date_of_birth_status ) == true %>
-  <div class="field">生年月日: <%= @profile.date_of_birth %> <%= @profile.date_of_birth_status if current_user.id == @user.id %><br/></div>
-<% end %>
-<% if @user.release_info(current_user, @user, @profile.gender, @profile.gender_status ) == true %>
-  <div class="field">性別: <%= @profile.gender %> <%= @profile.gender_status if current_user.id == @user.id %><br/></div>
-<% end %>
-<div>------------------------------------------------------------------------<br/></div>
-<h3>学習中の言語</h3>
-<% @learn_languages.each do |learn_language| %>
-  <% if @user.release_info(current_user, @user, learn_language.learn_language, learn_language.learn_language_status ) == true %>
-    <div class="field"><%= learn_language.learn_language %> 習得レベル：<%= learn_language.rank %> <%= learn_language.learn_language_status if current_user.id == @user.id %><br/></div>
-  <% end %>
-<% end %>
-<h3>話せる言語</h3>
-<% @speak_languages.each do |speak_language| %>
-  <% if @user.release_info(current_user, @user, speak_language.speak_language, speak_language.speak_language_status ) == true %>
-    <div class="field"><%= speak_language.speak_language %> 習得レベル：<%= speak_language.rank %> <%= speak_language.speak_language_status if current_user.id == @user.id %><br/></div>
-  <% end %>
-<% end %>
-<div>------------------------------------------------------------------------<br/></div>
-<h2>プレイ可能なゲーム</h2>
-<div class="field"><%= @games[0].name %> (<%= @game_platforms[0].name %>)<br/></div>
-<div>------------------------------------------------------------------------<br/></div>
-<h2>外部アカウント</h2>
-<% if @user.release_info(current_user, @user, @game_account.twitter_id, @game_account.twitter_id_status ) == true %>
-  <div class="field">Twitter ID: <%= @game_account.twitter_id %> <%= @game_account.twitter_id_status if current_user.id == @user.id %><br/></div>
-<% end %>
-<% if @user.release_info(current_user, @user, @game_account.discord_id, @game_account.discord_id_status ) == true %>
-  <div class="field">Discord ID: <%= @game_account.discord_id %> <%= @game_account.discord_id_status if current_user.id == @user.id %><br/></div>
-<% end %>
-<% if @user.release_info(current_user, @user, @game_account.steam_id, @game_account.steam_id_status ) == true %>
-  <div class="field">Steam ID: <%= @game_account.steam_id %> <%= @game_account.steam_id_status if current_user.id == @user.id %><br/></div>
-<% end %>
-<% if @user.release_info(current_user, @user, @game_account.origin_id, @game_account.origin_id_status ) == true %>
-  <div class="field">Origin ID: <%= @game_account.origin_id %> <%= @game_account.origin_id_status if current_user.id == @user.id %><br/></div>
-<% end %>
-<% if @user.release_info(current_user, @user, @game_account.riot_id, @game_account.riot_id_status ) == true %>
-  <div class="field">Riot ID: <%= @game_account.riot_id %> <%= @game_account.riot_id_status if current_user.id == @user.id %><br/></div>
-<% end %>
-<% if @user.release_info(current_user, @user, @game_account.psn_id, @game_account.psn_id_status ) == true %>
-  <div class="field">PSN ID: <%= @game_account.psn_id %> <%= @game_account.psn_id_status if current_user.id == @user.id %><br/></div>
-<% end %>
-<% if @user.release_info(current_user, @user, @game_account.xbox_id, @game_account.xbox_id_status ) == true %>
-  <div class="field">Xbox ID: <%= @game_account.xbox_id %> <%= @game_account.xbox_id_status if current_user.id == @user.id %><br/></div>
-<% end %>
-<% if @user.release_info(current_user, @user, @game_account.nintendo_id, @game_account.nintendo_id_status ) == true %>
-  <div class="field">任天堂ID: <%= @game_account.nintendo_id %> <%= @game_account.nintendo_id_status if current_user.id == @user.id %><br/></div>
-<% end %>
-<% if @user.release_info(current_user, @user, @game_account.other_id, @game_account.other_id_status ) == true %>
-  <div class="field">その他ID: <%= @game_account.other_id %> <%= @game_account.other_id_status if current_user.id == @user.id %><br/></div>
-<% end %>
+</h2>
+<%= render 'user_show' %>
 
 <%= link_to "プロフィールの編集", edit_user_registration_path %>
 <div class="field"><%= link_to "TOPに戻る", recruitments_path %><br/></div>
