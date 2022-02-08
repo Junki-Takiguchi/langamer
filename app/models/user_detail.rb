@@ -2,7 +2,6 @@ class UserDetail < ApplicationRecord
   belongs_to :user
 
   validates :account_name, presence: true, length: { maximum: 16}
-  validates :profile_picture, length: { maximum: 255}
   validates :self_introduction, length: { maximum: 1000}
   validates :living_country, length: { maximum: 64}
   validates :native_country, length: { maximum: 64}
