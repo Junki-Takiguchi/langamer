@@ -6,7 +6,10 @@
 <div>---------------------------------------------<br/></div>
 <h2>基本情報</h2>
 <div class="field">アカウント名: <%= @profile.account_name %><br/></div>
-<div class="field">プロフィール画像: <%= @profile.profile_picture %><br/></div>
+<div class="field">プロフィール画像:
+  <%= image_tag @profile.profile_picture.small.url %>
+  <br/>
+</div>
 <% if current_user.id == @user.id %>
   <div class="field">登録メールアドレス: <%= @user.email %><br/></div>
 <% end %>
@@ -39,7 +42,7 @@
 <h2>プレイ可能なゲーム</h2>
 <div class="field"><%= @games[0].name %> (<%= @game_platforms[0].name %>)<br/></div>
 <div>------------------------------------------------------------------------<br/></div>
-<h2>ゲームアカウント</h2>
+<h2>外部アカウント</h2>
 <% if @user.release_info(current_user, @user, @game_account.twitter_id, @game_account.twitter_id_status ) == true %>
   <div class="field">Twitter ID: <%= @game_account.twitter_id %> <%= @game_account.twitter_id_status if current_user.id == @user.id %><br/></div>
 <% end %>
