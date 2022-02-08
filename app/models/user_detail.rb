@@ -13,6 +13,7 @@ class UserDetail < ApplicationRecord
   enum date_of_birth_status: { "公開": 0, "非公開": 1, "フレンドのみ公開": 2 }, _prefix: true
   enum gender_status: { "公開": 0, "非公開": 1, "フレンドのみ公開": 2 }, _prefix: true
 
+  mount_uploader :profile_picture, ImageUploader
 
   def country_name(country_code)
     country = ISO3166::Country[country_code]
