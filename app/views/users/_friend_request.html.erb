@@ -1,5 +1,4 @@
 <div id="friend_request_<%= user.id %>">
-
   <% if current_user.id == user.id %>
     <p>自分のアカウントです</p>
   <!-- フレンドではない場合 -->
@@ -11,6 +10,7 @@
   <!-- 申請中かつ自分が申請者の場合 -->
   <% elsif FriendRelation.are_you_applicant?(current_user, user) %>
     <%= form_with(model: current_user.friend_relations.find_by(to_target_id: user.id), method: :delete ) do |f| %>
+      <%= f.hidden_field :to_target_id %>
       <%= f.submit "申請をキャンセル", data: { confirm: "申請をキャンセルしますか？"}  %>
     <% end %>
   <!-- 申請中かつ自分が申請を受け取ったの場合 -->

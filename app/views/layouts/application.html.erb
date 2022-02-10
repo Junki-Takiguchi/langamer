@@ -22,6 +22,6 @@
     <p class="alert"><%= alert %></p>
     <%= yield %>
     <!-- リンク仮置き -->
-    <li><%= link_to 'ユーザー一覧', users_path if user_signed_in? %></li>
+    <li><%= link_to 'ユーザー一覧', users_path, data: {"turbolinks"=>false} %></li>
   </body>
 </html>

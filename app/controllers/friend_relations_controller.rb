@@ -13,5 +13,6 @@ class FriendRelationsController < ApplicationController
 
   def destroy
     FriendRelation.find(params[:id]).delete
+    @user = User.find(params[:friend_relation][:to_target_id])
   end
 end

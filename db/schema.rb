@@ -10,10 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_07_110040) do
+ActiveRecord::Schema.define(version: 2022_02_09_030320) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "chat_rooms", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "friend_relations", force: :cascade do |t|
     t.integer "from_applicant_id"
@@ -86,6 +91,25 @@ ActiveRecord::Schema.define(version: 2022_02_07_110040) do
     t.index ["user_id"], name: "index_learn_languages_on_user_id"
   end
 
+  create_table "messages", force: :cascade do |t|
+    t.text "message", null: false
+    t.bigint "user_id", null: false
+    t.bigint "chat_room_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["chat_room_id"], name: "index_messages_on_chat_room_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
+  create_table "participants", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id", null: false
+    t.bigint "chat_room_id", null: false
+    t.index ["chat_room_id"], name: "index_participants_on_chat_room_id"
+    t.index ["user_id"], name: "index_participants_on_user_id"
+  end
+
   create_table "recruitments", force: :cascade do |t|
     t.string "title"
     t.text "content"
@@ -155,6 +179,10 @@ ActiveRecord::Schema.define(version: 2022_02_07_110040) do
   add_foreign_key "game_relations", "games"
   add_foreign_key "games", "users"
   add_foreign_key "learn_languages", "users"
+  add_foreign_key "messages", "chat_rooms"
+  add_foreign_key "messages", "users"
+  add_foreign_key "participants", "chat_rooms"
+  add_foreign_key "participants", "users"
   add_foreign_key "recruitments", "users"
   add_foreign_key "speak_languages", "users"
   add_foreign_key "user_details", "users"

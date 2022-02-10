@@ -10,7 +10,7 @@
         <td><%= recruitment.title %></td>
         <td><%= recruitment.content %></td>
         <td><%= recruitment.user.email %>
-        <td><%= link_to '詳細を確認する', recruitment_path(recruitment.id)%></td>
+        <td><%= link_to '詳細を確認する', recruitment_path(recruitment.id), data: {"turbolinks"=>false} %></td>
         <td><%= link_to '投稿を編集する', edit_recruitment_path(recruitment.id), data: { confirm: '本当に編集していいですか？' }%></td>
         <td><%= link_to '投稿を削除する', recruitment_path(recruitment.id), method: :delete ,data: { confirm: '本当に削除していいですか？' }%></td>
     </tr>

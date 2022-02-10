@@ -17,11 +17,14 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :speak_languages, allow_destroy: true
 
   has_many :recruitments, dependent: :destroy
+  has_many :participants, dependent: :destroy
+  has_many :messages, dependent: :destroy
 
   has_many :friend_relations, foreign_key: 'from_applicant_id', dependent: :destroy
   has_many :reverse_of_relations, foreign_key: 'to_target_id', class_name: 'FriendRelation', dependent: :destroy
   has_many :applicant, through: :friend_relations, source: :to_target
   has_many :reverse_of_target, through: :reverse_of_relations, source: :from_applicant
+
 
 
   def send_friend_request!(other_user)

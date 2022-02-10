@@ -69,3 +69,7 @@
 <% if @user.release_info(current_user, @user, @game_account.other_id, @game_account.other_id_status ) == true %>
   <div class="field">その他ID: <%= @game_account.other_id %> <%= @game_account.other_id_status if current_user.id == @user.id %><br/></div>
 <% end %>
+
+<% if current_user != @user %>
+  <%= link_to 'チャット', chat_message_path(@user.id) %>
+<% end %>

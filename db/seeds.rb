@@ -11,8 +11,6 @@ User.create!(
 UserDetail.create!(
   account_name: "テストアカウント01",
   self_introduction: "テストアカウント01の自己紹介文",
-  #learn_language: "English",
-  #first_language: "Japanese",
   living_country: "US",
   native_country: "JP",
   date_of_birth: "20111114",
@@ -62,8 +60,6 @@ User.create!(
 UserDetail.create!(
   account_name: "テストアカウント02",
   self_introduction: "テストアカウント02の自己紹介文",
-  #learn_language: "English",
-  #first_language: "Japanese",
   living_country: "US",
   native_country: "JP",
   date_of_birth: "19951114",
