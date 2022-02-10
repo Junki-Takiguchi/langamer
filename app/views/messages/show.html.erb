@@ -19,6 +19,7 @@
                         <%= image_tag @profile.profile_picture.middle.url %>
                         <%= @profile.account_name %>
                         <p style="text-align: left;"><%= message.message %></p>
+                        <% message.update_status if message.read == 0 %>
                       </div>
                     </th>
                     <th></th>

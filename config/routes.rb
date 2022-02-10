@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   resources :friend_relations, only: [:create, :update, :destroy]
 
   get 'message/:id', to: 'messages#show', as: 'chat_message'
-  resources :messages, only: [:create]
+  resources :messages, only: [:get, :create]
 
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
