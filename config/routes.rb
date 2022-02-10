@@ -9,9 +9,9 @@ Rails.application.routes.draw do
   resources :recruitments
   resources :users, only: [:index, :update, :show]
   resources :friend_relations, only: [:create, :update, :destroy]
-  resources :chat_rooms do
-    resources :messages
-  end
+
+  get 'message/:id', to: 'messages#show', as: 'chat_message'
+  resources :messages, only: [:create]
 
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
