@@ -4,9 +4,9 @@ class Message < ApplicationRecord
 
   validates :message, length: { maximum: 1000}
 
-  enum gender: { "未読": 0, "既読": 1 }
+  enum read: { "未読": 0, "既読": 1 }
 
   def update_status(comment)
-    comment.update(read: 1)
+    comment.update(read: "既読")
   end
 end

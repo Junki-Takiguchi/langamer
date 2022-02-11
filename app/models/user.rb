@@ -18,6 +18,7 @@ class User < ApplicationRecord
 
   has_many :recruitments, dependent: :destroy
   has_many :participants, dependent: :destroy
+  has_many :chat_rooms, through: :participants
   has_many :messages, dependent: :destroy
 
   has_many :friend_relations, foreign_key: 'from_applicant_id', dependent: :destroy
@@ -46,6 +47,20 @@ class User < ApplicationRecord
   def release_info(current_user, user, column, status)
     if current_user.id == user.id || (column.present? && (status == "公開" || (FriendRelation.get_friend_status(current_user, user) == "フレンド" && status == "フレンドのみ公開")))
       return true
+    end
+  end
+
+  def count_application(current_user)
+    current_user.reverse_of_relations.select{ | application |
+      application.status == "申請中"
+    }.size
+  end
+
+  def check_newly_arrived_messages(current_user)
+    current_user.chat_rooms.each do |chat_room|
+      chat_room.messages.each do | message |
+        return true if message.user_id != current_user.id && message.read == "未読"
+      end
     end
   end
 

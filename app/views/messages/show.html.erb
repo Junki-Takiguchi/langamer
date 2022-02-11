@@ -20,7 +20,7 @@
                         <%= @profile.account_name %>
                         <p style="text-align: left;"><%= comment.message %></p>
                         <% binding.pry %>
-                        <% comment.update_status(comment) if comment.read == 0 %>
+                        <% comment.update_status(comment) if comment.read == "未読" %>
                       </div>
                     </th>
                     <th></th>

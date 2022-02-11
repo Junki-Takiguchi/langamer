@@ -1,12 +1,14 @@
-<h1>Recruitments#index</h1>
-<p>投稿一覧画面</p>
+<h1>投稿一覧画面</h1>
+<div class="information">
+  <% if current_user.count_application(current_user) > 0 %>
+    <p>フレンド申請が<%= current_user.count_application(current_user) %>件届いています。</p>
+  <% end %>
+  <% if current_user.check_newly_arrived_messages(current_user) == true %>
+    <p>新着のメッセージが届いています。</p>
+  <% end %>
+</div>
+
 <%= link_to "新しく募集を作成する", new_recruitment_path %>
-<table>
-  <tr>
-    <th>タイトル</th>
-    <th>内容</th>
-  </tr>
-</table>
 <% @recruitments.each do |recruitment| %>
   <%= link_to recruitment_path(recruitment.id), class: 'list-recruitments' do %>
     <div class="field">
