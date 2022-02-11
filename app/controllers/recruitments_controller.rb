@@ -5,6 +5,8 @@ class RecruitmentsController < ApplicationController
 
   def index
     @recruitments = Recruitment.all
+    #@user_info = recruitment.user.user_detail
+    #@post_time = recruitment.relative_post_date(recruitment.updated_at)
   end
 
   def new
@@ -69,4 +71,5 @@ class RecruitmentsController < ApplicationController
   def set_recruitment
     @recruitment = Recruitment.find(params[:id])
   end
+
 end
