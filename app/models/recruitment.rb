@@ -13,4 +13,5 @@ class Recruitment < ApplicationRecord
       return "#{min}分前" unless min.zero?
     "#{sec}秒前"
   end
+
 end
