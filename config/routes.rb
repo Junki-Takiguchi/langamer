@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   }
   resources :recruitments
   resources :users, only: [:index, :update, :show]
-  resources :friend_relations, only: [:create, :update, :destroy]
+  resources :friend_relations, only: [:index, :create, :update, :destroy]
 
   get 'message/:id', to: 'messages#show', as: 'chat_message'
   resources :messages, only: [:get, :create]
