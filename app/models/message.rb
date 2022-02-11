@@ -6,9 +6,7 @@ class Message < ApplicationRecord
 
   enum gender: { "未読": 0, "既読": 1 }
 
-  private
-
-  def update_status
-    message.update(read: 1)
+  def update_status(comment)
+    comment.update(read: 1)
   end
 end

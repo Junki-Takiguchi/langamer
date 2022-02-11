@@ -10,16 +10,17 @@
                   <th style="text-align: right; font-size: 20px;"><%= @profile.account_name %></th>
                 </tr>
               </thead>
-              <% @messages.each do |message| %>
-                <% unless message.user_id == current_user.id %>
+              <% @messages.each do |comment| %>
+                <% unless comment.user_id == current_user.id %>
                 <tbody>
                   <tr>
                     <th>
                       <div class="post_message">
                         <%= image_tag @profile.profile_picture.middle.url %>
                         <%= @profile.account_name %>
-                        <p style="text-align: left;"><%= message.message %></p>
-                        <% message.update_status if message.read == 0 %>
+                        <p style="text-align: left;"><%= comment.message %></p>
+                        <% binding.pry %>
+                        <% comment.update_status(comment) if comment.read == 0 %>
                       </div>
                     </th>
                     <th></th>
@@ -31,7 +32,7 @@
                       <div class="post_message">
                         <%= image_tag current_user.user_detail.profile_picture.middle.url %>
                         <%= current_user.user_detail.account_name %>
-                        <p style="text-align: right;"><%= message.message %></p>
+                        <p style="text-align: right;"><%= comment.message %></p>
                       </div>
                     </th>
                   </tr>
