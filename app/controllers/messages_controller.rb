@@ -7,6 +7,8 @@ class MessagesController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    redirect_to recruitments_path, notice: "不正なアクセスです。" unless FriendRelation.check_friend_status(current_user, @user) == true
+
     @profile = @user.user_detail
     #current_userが参加しているchat_room_idを配列で取得
     chat_rooms = current_user.participants.pluck(:chat_room_id)
