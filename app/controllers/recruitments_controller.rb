@@ -5,8 +5,6 @@ class RecruitmentsController < ApplicationController
 
   def index
     @recruitments = Recruitment.where.not(user_id: current_user.id)
-    #@user_info = recruitment.user.user_detail
-    #@post_time = recruitment.relative_post_date(recruitment.updated_at)
   end
 
   def new

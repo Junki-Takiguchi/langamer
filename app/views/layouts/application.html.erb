@@ -15,12 +15,14 @@
       <% if current_user.try(:admin?) %>
         <%= link_to '管理者ログイン', rails_admin_path %>
       <% end %>
+      <%= link_to "メッセージ", chat_rooms_path %>
       <%= link_to "マイページ", user_path(current_user.id) %>
       <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
     <% end %>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>
+    <div class="field"><%= link_to "TOPに戻る", recruitments_path %><br/></div>
     <!-- リンク仮置き -->
     <li><%= link_to 'ユーザー一覧', users_path, data: {"turbolinks"=>false} %></li>
   </body>

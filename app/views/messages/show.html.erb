@@ -6,37 +6,38 @@
             <table class="message">
               <thead>
                 <tr>
-                  <th style="text-align: left; font-size: 20px;"><%= current_user.user_detail.account_name %></th>
-                  <th style="text-align: right; font-size: 20px;"><%= @profile.account_name %></th>
+                  <th style="text-align: left; font-size: 20px;"><%= @profile.account_name %></th>
+                  <th style="text-align: right; font-size: 20px;"><%= current_user.user_detail.account_name %></th>
                 </tr>
               </thead>
               <% @messages.each do |comment| %>
                 <% unless comment.user_id == current_user.id %>
-                <tbody>
-                  <tr>
-                    <th>
-                      <div class="post_message">
-                        <%= image_tag @profile.profile_picture.middle.url %>
-                        <%= @profile.account_name %>
-                        <p style="text-align: left;"><%= comment.message %></p>
-                        <% binding.pry %>
-                        <% comment.update_status(comment) if comment.read == "未読" %>
-                      </div>
-                    </th>
-                    <th></th>
-                  </tr>
+                  <% comment.update_status(comment) if comment.read == "未読" %>
+                  <tbody>
+                    <tr>
+                      <th>
+                        <div class="post_message">
+                          <%= image_tag @profile.profile_picture.middle.url %>
+                          <%= @profile.account_name %>
+                          <p style="text-align: left;"><%= comment.message %></p>
+                        </div>
+                      </th>
+                      <th></th>
+                    </tr>
+                  </tbody>
                 <% else %>
-                  <tr>
-                    <th></th>
-                    <th>
-                      <div class="post_message">
-                        <%= image_tag current_user.user_detail.profile_picture.middle.url %>
-                        <%= current_user.user_detail.account_name %>
-                        <p style="text-align: right;"><%= comment.message %></p>
-                      </div>
-                    </th>
-                  </tr>
-                </tbody>
+                  <tbody>
+                    <tr>
+                      <th></th>
+                      <th>
+                        <div class="post_message">
+                          <%= image_tag current_user.user_detail.profile_picture.middle.url %>
+                          <%= current_user.user_detail.account_name %>
+                          <p style="text-align: right;"><%= comment.message %></p>
+                        </div>
+                      </th>
+                    </tr>
+                  </tbody>
                 <% end %>
               <% end %>
             </table>
