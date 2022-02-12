@@ -39,7 +39,9 @@
 <% end %>
 <div>------------------------------------------------------------------------<br/></div>
 <h2>プレイ可能なゲーム</h2>
-<div class="field"><%= @games[0].name %> (<%= @game_platforms[0].name %>)<br/></div>
+<% @games.each do |game| %>
+  <div class="field"><%= game.name %> (<%= game.game_relation_game_platforms.name %>)<br/></div>
+<% end %>
 <div>------------------------------------------------------------------------<br/></div>
 <h2>外部アカウント</h2>
 <% if @user.release_info(current_user, @user, @game_account.twitter_id, @game_account.twitter_id_status ) == true %>

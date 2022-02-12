@@ -4,7 +4,7 @@ class RecruitmentsController < ApplicationController
 
 
   def index
-    @recruitments = Recruitment.all
+    @recruitments = Recruitment.where.not(user_id: current_user.id)
   end
 
   def new
@@ -69,4 +69,5 @@ class RecruitmentsController < ApplicationController
   def set_recruitment
     @recruitment = Recruitment.find(params[:id])
   end
+
 end

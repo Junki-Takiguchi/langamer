@@ -1,0 +1,19 @@
+<h1>フレンド申請一覧</h1>
+<div class="friend-request-list">
+  <% @friend_requests.each do |request| %>
+    <div class="request">
+      <%= link_to user_path(request.from_applicant_id) do %>
+        <%= image_tag request.from_applicant.user_detail.profile_picture.small.url %>
+        <%= request.from_applicant.user_detail.account_name %>
+      <% end %>
+      <%= form_with(model: request, method: :patch ) do |f| %>
+        <%= f.hidden_field :status, value: "フレンド" %>
+        <%= f.submit "申請を許可" %>
+      <% end %>
+      <%= form_with(model: request, method: :patch ) do |f| %>
+        <%= f.hidden_field :status, value: "ブロック" %>
+        <%= f.submit "申請を却下", data: { confirm: "申請を却下します。よろしいですか？"}  %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
