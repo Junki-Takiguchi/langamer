@@ -1,10 +1,12 @@
 <h1>チャット一覧画面</h1>
 <div class="information">
   <% @chat_users.each do |chat_user| %>
-    <div class="chat-room">
-      <%= link_to chat_message_path(chat_user.user.id) do %>
-        <%= image_tag chat_user.profile_picture.small.url %> <%= chat_user.account_name %>
-      <% end %>
-    </div>
+    <% if FriendRelation.check_friend_status(current_user, chat_user) == true %>
+      <div class="chat-room">
+        <%= link_to chat_message_path(chat_user.user.id) do %>
+          <%= image_tag chat_user.profile_picture.small.url %> <%= chat_user.account_name %>
+        <% end %>
+      </div>
+    <% end %>
   <% end %>
 </div>

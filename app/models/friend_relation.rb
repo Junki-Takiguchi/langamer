@@ -34,4 +34,10 @@ class FriendRelation < ApplicationRecord
     end
   end
 
+  def self.check_friend_status(current_user, other_user)
+    if FriendRelation.find_by(from_applicant_id: current_user.id, to_target_id: other_user.id, status: 1) || FriendRelation.find_by(from_applicant_id: other_user.id, to_target_id: current_user.id, status: 1)
+      return true
+    end
+  end
+
 end
