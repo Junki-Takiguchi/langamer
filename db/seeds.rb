@@ -100,3 +100,110 @@ Recruitment.create!(
   content: "投稿本文02",
   user_id: 2
 )
+
+User.create!(
+  email: "test03@gmail.com",
+  password: "test03",
+  admin: false
+)
+UserDetail.create!(
+  account_name: "テストアカウント03",
+  self_introduction: "テストアカウント03の自己紹介文",
+  living_country: "US",
+  native_country: "JP",
+  date_of_birth: "19970122",
+  gender: "女性",
+  user_id: 3
+)
+LearnLanguage.create!(
+  learn_language: "Japanese",
+  rank: "初級者",
+  user_id: 3
+)
+LearnLanguage.create!(
+  learn_language: "Chinese",
+  rank: "上級者",
+  learn_language_status: "非公開",
+  user_id: 3
+)
+SpeakLanguage.create!(
+  speak_language: "English",
+  rank: "ネイティブ",
+  user_id: 3
+)
+GameAccount.create!(
+  discord_id: "test03#0003",
+  twitter_id: "@test03",
+  user_id: 3
+)
+Game.create!(
+  name: "FINAL FANTASY 14",
+  user_id: 3
+)
+GameRelation.create!(
+  game_id: 3,
+  game_platform_id: 1
+)
+Recruitment.create!(
+  title: "タイトル03",
+  content: "投稿本文03",
+  user_id: 3
+)
+
+i = 4
+10.times do
+User.create!(
+  email: Faker::Internet.email,
+  password: "test00",
+  admin: false
+)
+UserDetail.create!(
+  account_name: Faker::Name.name,
+  self_introduction: Faker::Quote.famous_last_words,
+  living_country: "US",
+  native_country: "JP",
+  date_of_birth: Faker::Date.birthday(min_age: 20, max_age: 60),
+  gender: rand(3),
+  living_country_status: rand(3),
+  native_country_status: rand(3),
+  gender_status: rand(3),
+  user_id: i
+)
+LearnLanguage.create!(
+  learn_language: "Japanese",
+  rank: rand(3),
+  learn_language_status: rand(3),
+  user_id: i
+)
+LearnLanguage.create!(
+  learn_language: "Chinese",
+  rank: rand(4),
+  learn_language_status: rand(3),
+  user_id: i
+)
+SpeakLanguage.create!(
+  speak_language: "English",
+  rank: "ネイティブ",
+  user_id: i
+)
+GameAccount.create!(
+  discord_id: Faker::Number.number(digits: 12),
+  twitter_id: Faker::Number.number(digits: 12),
+  user_id: i
+)
+Game.create!(
+  name: Faker::Game.title,
+  user_id: i
+)
+GameRelation.create!(
+  game_id: i,
+  game_platform_id: rand(4)+1
+)
+Recruitment.create!(
+  title: Faker::Superhero.name,
+  content: Faker::Book.title,
+  user_id: i
+)
+
+i += 1
+end
