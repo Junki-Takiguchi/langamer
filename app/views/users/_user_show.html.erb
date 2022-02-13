@@ -3,7 +3,7 @@
 <h2>基本情報</h2>
 <div class="field">
   <%= @profile.account_name %>
-  <%= render './users/friend_request', user: user = @user %><br/>
+  <%= render './friend_relations/friend_request', user: user = @user %><br/>
 </div>
 <div class="field">プロフィール画像:
   <%= image_tag @profile.profile_picture.large.url %>

@@ -3,6 +3,10 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
+  def update
+    binding.pry
+  end
+
   def show
     @user = User.find(params[:id])
     @profile = @user.user_detail

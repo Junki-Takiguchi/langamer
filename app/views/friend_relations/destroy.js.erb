@@ -1,2 +1,2 @@
 <%# binding.pry %>
-$("#friend_request_"+"<%= @user.id %>").html("<%= escape_javascript(render partial: 'users/friend_request', locals: { user: @user } ) %>")
+$("#friend_request").html("<%= escape_javascript(render partial: 'friend_relations/friend_request', locals: { user: @user } ) %>")

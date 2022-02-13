@@ -66,6 +66,19 @@ class RecruitmentsController < ApplicationController
     params.require(:recruitment).permit(:title, :content)
   end
 
+  #  def recruitment_params
+  #   params.require(:recruitment).permit(:title,
+  #                                      :content,
+  #                                      user_attributes:[
+  #                                        :id,
+  #                                        friend_relations_attributes:[
+  #                                          :id,
+  #                                          :to_target_id,
+  #                                          :status
+  #                                        ],
+  #  ])
+  #end
+
   def set_recruitment
     @recruitment = Recruitment.find(params[:id])
   end

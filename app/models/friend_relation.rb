@@ -2,10 +2,18 @@ class FriendRelation < ApplicationRecord
   belongs_to :from_applicant, class_name: "User"
   belongs_to :to_target, class_name: "User"
 
-  enum status: { "フレンド": 1, "申請中": 2, "ブロック": 3 }, _prefix: true
+  enum status: { "未定義": 0, "フレンド": 1, "申請中": 2, "ブロック": 3 }, _prefix: true
 
   def self.check_already_friend?(current_user, other_user)
     FriendRelation.exists?(from_applicant_id: current_user.id, to_target_id: other_user.id) || FriendRelation.exists?(from_applicant_id: other_user.id, to_target_id: current_user.id)
+  end
+
+  def self.get_friend_info(current_user, other_user)
+    if answer = FriendRelation.find_by(from_applicant_id: current_user.id, to_target_id: other_user.id).present?
+      answer
+    else FriendRelation.find_by(from_applicant_id: other_user.id, to_target_id: current_user.id).present?
+      answer = false
+    end
   end
 
   def self.get_friend_status(current_user, other_user)
@@ -35,7 +43,7 @@ class FriendRelation < ApplicationRecord
   end
 
   def self.check_friend_status(current_user, other_user)
-    if FriendRelation.find_by(from_applicant_id: current_user.id, to_target_id: other_user.id, status: 1) || FriendRelation.find_by(from_applicant_id: other_user.id, to_target_id: current_user.id, status: 1)
+    if FriendRelation.find_by(from_applicant_id: current_user.id, to_target_id: other_user.id, status: "フレンド") || FriendRelation.find_by(from_applicant_id: other_user.id, to_target_id: current_user.id, status: "フレンド")
       return true
     end
   end

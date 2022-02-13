@@ -15,6 +15,7 @@ class MessagesController < ApplicationController
     # 相手とやり取りしてるチャットルームを検索
     participant = Participant.find_by(user_id: @user.id, chat_room_id: chat_rooms)
 
+=begin
     chat_room = nil
     if participant.nil?
     chat_room = ChatRoom.new
@@ -25,6 +26,8 @@ class MessagesController < ApplicationController
       # チャットルームの情報を変数に格納
       chat_room = participant.chat_room
     end
+=end
+    chat_room = participant.chat_room
     #chat_roomに紐づくmessagesテーブルの全レコードを取得
     @messages = chat_room.messages
     #showページのform_withでチャットを送信する際に必要なメッセージが空のインスタンス
