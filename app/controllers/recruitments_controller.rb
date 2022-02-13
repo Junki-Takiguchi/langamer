@@ -30,6 +30,7 @@ class RecruitmentsController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    redirect_to recruitments_path, notice: "不正なアクセスです。" if FriendRelation.check_block_status(current_user, @user)
     @profile = @user.user_detail
     @learn_languages = @user.learn_languages
     @speak_languages = @user.speak_languages

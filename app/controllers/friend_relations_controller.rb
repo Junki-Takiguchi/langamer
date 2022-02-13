@@ -19,19 +19,14 @@ class FriendRelationsController < ApplicationController
   def update
     @friend_relation = FriendRelation.find(params[:id])
     @friend_relation.update(status: params[:friend_relation][:status])
-    from_applicant = User.find(params[:friend_relation][:from_applicant_id])
-    to_target = User.find(params[:friend_relation][:to_target_id])
+    @from_applicant = User.find(params[:friend_relation][:from_applicant_id])
+    @to_target = User.find(params[:friend_relation][:to_target_id])
     if params[:friend_relation][:status] == "フレンド"
       create_participant_table
-      @user = from_applicant
+      @user = @from_applicant
     else
       redirect_to recruitments_path
     end
-    #elsif FriendRelation.get_friend_info(current_user, to_target) == true
-    #  @user = to_target
-    #else
-    #  @user = from_applicant
-    #end
   end
 
   def destroy
@@ -47,7 +42,7 @@ class FriendRelationsController < ApplicationController
 
 
   def create_participant_table
-    if params[:friend_relation][:status] == "フレンド"
+    unless Participant.already_created_records?(@from_applicant, @to_target)
       chat_room = ChatRoom.new
       chat_room.save
       Participant.create(user_id: @friend_relation.from_applicant_id, chat_room_id: chat_room.id)

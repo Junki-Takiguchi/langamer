@@ -5,6 +5,7 @@
     <%= @profile.account_name %>さんの募集詳細ページ
   <% end %>
 </h2>
+<%= link_to "投稿の編集", edit_recruitment_path %><br/>
 <h2><%= @recruitment.title %></h2>
 <p><%= @recruitment.content %></p>
 <%= render './users/user_show' %>
