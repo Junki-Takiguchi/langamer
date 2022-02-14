@@ -4,7 +4,7 @@ class RecruitmentsController < ApplicationController
 
 
   def index
-    @recruitments = Recruitment.where.not(user_id: current_user.id)
+    @recruitments = Recruitment.where.not(user_id: current_user.id).order(updated_at: :desc).page(params[:page])
   end
 
   def new
