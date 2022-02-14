@@ -154,7 +154,7 @@ Recruitment.create!(
 )
 
 i = 4
-10.times do
+160.times do
 User.create!(
   email: Faker::Internet.email,
   password: "test00",

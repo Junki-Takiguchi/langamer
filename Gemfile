@@ -1,5 +1,4 @@
 source 'https://rubygems.org'
-git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.0.3'
 gem 'rails', '~> 6.0.4', '>= 6.0.4.4'
@@ -20,6 +19,7 @@ gem 'cancancan'
 gem 'rails_admin'
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'kaminari'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
