@@ -323,6 +323,7 @@ DEPENDENCIES
   country_select
   devise
   jbuilder (~> 2.7)
+  kaminari
   language_list
   letter_opener_web
   listen (~> 3.2)
