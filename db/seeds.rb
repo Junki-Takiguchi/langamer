@@ -6,6 +6,7 @@ GamePlatform.create!(name: "Nintendo Switch" )
 User.create!(
   email: "test01@gmail.com",
   password: "test01",
+  confirmed_at: Time.now,
   admin: true
 )
 UserDetail.create!(
@@ -55,6 +56,7 @@ Recruitment.create!(
 User.create!(
   email: "test02@gmail.com",
   password: "test02",
+  confirmed_at: Time.now,
   admin: false
 )
 UserDetail.create!(
@@ -104,6 +106,7 @@ Recruitment.create!(
 User.create!(
   email: "test03@gmail.com",
   password: "test03",
+  confirmed_at: Time.now,
   admin: false
 )
 UserDetail.create!(
@@ -155,6 +158,7 @@ i = 4
 User.create!(
   email: Faker::Internet.email,
   password: "test00",
+  confirmed_at: Time.now,
   admin: false
 )
 UserDetail.create!(
@@ -204,6 +208,5 @@ Recruitment.create!(
   content: Faker::Book.title,
   user_id: i
 )
-
 i += 1
 end
