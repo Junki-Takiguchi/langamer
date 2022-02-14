@@ -14,6 +14,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     super
+    if params[:back]
+      render :new
+    end
   end
 
   # GET /resource/edit

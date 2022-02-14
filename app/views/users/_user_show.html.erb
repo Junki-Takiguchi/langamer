@@ -1,9 +1,8 @@
 
-<div>---------------------------------------------<br/></div>
 <h2>基本情報</h2>
 <div class="field">
   <%= @profile.account_name %>
-  <%= render './users/friend_request', user: user = @user %><br/>
+  <%= render './friend_relations/friend_request', user: user = @user %><br/>
 </div>
 <div class="field">プロフィール画像:
   <%= image_tag @profile.profile_picture.large.url %>
@@ -72,6 +71,6 @@
   <div class="field">その他ID: <%= @game_account.other_id %> <%= @game_account.other_id_status if current_user.id == @user.id %><br/></div>
 <% end %>
 
-<% if current_user != @user %>
+<% if current_user != @user && FriendRelation.check_friend_status(current_user, @user) %>
   <%= link_to 'チャット', chat_message_path(@user.id) %>
 <% end %>

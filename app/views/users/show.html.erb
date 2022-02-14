@@ -4,5 +4,11 @@
   <% end %>
 </h2>
 <%= render 'user_show' %>
+<div>------------------------------------------------------------------------<br/></div>
+<h3>募集中の投稿</h3>
+<% @recruitments.each do |recruitment| %>
+  <%= link_to recruitment.title, recruitment_path(recruitment.id), class: "recruitment-title" %><br/>
+<% end %>
+
 
 <%= link_to "プロフィールの編集", edit_user_registration_path %>

@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   }
   resources :recruitments
   resources :users, only: [:index, :update, :show]
+  patch 'friend_relation/:id', to: 'friend_relations#index'
   resources :friend_relations, only: [:index, :create, :update, :destroy]
   resources :chat_rooms, only: [:index]
 

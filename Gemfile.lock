@@ -108,6 +108,8 @@ GEM
       responders
       warden (~> 1.2.3)
     erubi (1.10.0)
+    faker (2.19.0)
+      i18n (>= 1.6, < 2)
     ffi (1.15.5)
     globalid (1.0.0)
       activesupport (>= 5.0)
@@ -322,6 +324,7 @@ DEPENDENCIES
   carrierwave
   country_select
   devise
+  faker
   jbuilder (~> 2.7)
   language_list
   letter_opener_web

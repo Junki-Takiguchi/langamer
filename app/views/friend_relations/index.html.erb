@@ -6,14 +6,8 @@
         <%= image_tag request.from_applicant.user_detail.profile_picture.small.url %>
         <%= request.from_applicant.user_detail.account_name %>
       <% end %>
-      <%= form_with(model: request, method: :patch ) do |f| %>
-        <%= f.hidden_field :status, value: "フレンド" %>
-        <%= f.submit "申請を許可" %>
-      <% end %>
-      <%= form_with(model: request, method: :patch ) do |f| %>
-        <%= f.hidden_field :status, value: "ブロック" %>
-        <%= f.submit "申請を却下", data: { confirm: "申請を却下します。よろしいですか？"}  %>
-      <% end %>
+      <!-- <%#= render './friend_relations/friend_request', user: user = @user %><br/> -->
+      <%= render 'friend_request', user: user = request.from_applicant %><br/>
     </div>
   <% end %>
 </div>

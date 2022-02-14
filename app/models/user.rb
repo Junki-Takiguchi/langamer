@@ -29,7 +29,7 @@ class User < ApplicationRecord
 
 
   def send_friend_request!(other_user)
-    friend_relations.create!(to_target_id: other_user.id, status: 2)
+    friend_relations.create!(to_target_id: other_user.id, status: "申請中")
   end
 
   def check_already_friend?(other_user)
@@ -37,7 +37,7 @@ class User < ApplicationRecord
   end
 
   def update_friend_status!(other_user)
-    friend_relations.find_by(to_target_id: other_user.id).update!(status: 3)
+    friend_relations.find_by(to_target_id: other_user.id).update!(status: "ブロック")
   end
 
   def delete_friend!(other_user)

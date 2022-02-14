@@ -30,6 +30,7 @@ class RecruitmentsController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    redirect_to recruitments_path, notice: "不正なアクセスです。" if FriendRelation.check_block_status(current_user, @user)
     @profile = @user.user_detail
     @learn_languages = @user.learn_languages
     @speak_languages = @user.speak_languages
@@ -65,6 +66,19 @@ class RecruitmentsController < ApplicationController
   def recruitment_params
     params.require(:recruitment).permit(:title, :content)
   end
+
+  #  def recruitment_params
+  #   params.require(:recruitment).permit(:title,
+  #                                      :content,
+  #                                      user_attributes:[
+  #                                        :id,
+  #                                        friend_relations_attributes:[
+  #                                          :id,
+  #                                          :to_target_id,
+  #                                          :status
+  #                                        ],
+  #  ])
+  #end
 
   def set_recruitment
     @recruitment = Recruitment.find(params[:id])

@@ -10,12 +10,14 @@
 
 <%= link_to "新しく募集を作成する", new_recruitment_path %>
 <% @recruitments.each do |recruitment| %>
-  <%= link_to recruitment_path(recruitment.id), class: 'list-recruitments' do %>
-    <div class="field">
-      <%= image_tag recruitment.user.user_detail.profile_picture.small.url %>
-      <%= recruitment.user.user_detail.account_name %>
-      <%= recruitment.relative_post_date(recruitment.updated_at) %><br/>
-      <%= link_to recruitment.title, recruitment_path(recruitment.id) %>
-    </div>
+  <% unless FriendRelation.check_block_status(current_user.id, recruitment.user_id) %>
+    <%= link_to recruitment_path(recruitment.id), class: 'list-recruitments' do %>
+      <div class="field">
+        <%= image_tag recruitment.user.user_detail.profile_picture.small.url %>
+        <%= recruitment.user.user_detail.account_name %>
+        <%= recruitment.relative_post_date(recruitment.updated_at) %><br/>
+        <%= link_to recruitment.title, recruitment_path(recruitment.id) %>
+      </div>
+    <% end %>
   <% end %>
 <% end %>
