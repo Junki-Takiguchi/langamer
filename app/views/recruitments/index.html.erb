@@ -7,7 +7,14 @@
     <%= link_to "新着のメッセージが届いています。", chat_rooms_path %>
   <% end %>
 </div>
-
+<div class="search-data">
+  <h3>タイトル検索</h3>
+  <%= search_form_for @d, url: recruitments_search_path do |f| %>
+    <%= f.label :title_eq, 'タイトル検索' %>
+    <%= f.collection_select :title_eq, @title_date, :title, :title,  include_blank: '--------------------------' %>
+      <%= f.submit '検索' %>
+  <% end %>
+</div>
 <%= link_to "新しく募集を作成する", new_recruitment_path %>
 <% @recruitments.each do |recruitment| %>
   <% unless FriendRelation.check_block_status(current_user.id, recruitment.user_id) %>

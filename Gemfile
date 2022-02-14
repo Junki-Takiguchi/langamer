@@ -18,6 +18,7 @@ gem 'rails_admin'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'kaminari'
+gem 'ransack'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

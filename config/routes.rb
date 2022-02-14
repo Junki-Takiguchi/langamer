@@ -7,9 +7,10 @@ Rails.application.routes.draw do
         #sessions: 'users/sessions'
   }
   resources :recruitments
+  get 'recruitments/search'
   resources :users, only: [:index, :update, :show]
-  patch 'friend_relation/:id', to: 'friend_relations#index'
   resources :friend_relations, only: [:index, :create, :update, :destroy]
+  patch 'friend_relation/:id', to: 'friend_relations#index'
   resources :chat_rooms, only: [:index]
 
   get 'message/:id', to: 'messages#show', as: 'chat_message'

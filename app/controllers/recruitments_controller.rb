@@ -1,10 +1,11 @@
 class RecruitmentsController < ApplicationController
 
   before_action :set_recruitment, only: [:show, :edit, :update, :destroy]
-
+  before_action :search_recruitment, only: [:index, :search]
 
   def index
     @recruitments = Recruitment.where.not(user_id: current_user.id).order(updated_at: :desc).page(params[:page])
+    set_title_column # 追記
   end
 
   def new
@@ -62,26 +63,25 @@ class RecruitmentsController < ApplicationController
     render :new if @recruitment.invalid
   end
 
+  def search
+    @results = @d.result
+  end
+
   private
   def recruitment_params
     params.require(:recruitment).permit(:title, :content)
   end
 
-  #  def recruitment_params
-  #   params.require(:recruitment).permit(:title,
-  #                                      :content,
-  #                                      user_attributes:[
-  #                                        :id,
-  #                                        friend_relations_attributes:[
-  #                                          :id,
-  #                                          :to_target_id,
-  #                                          :status
-  #                                        ],
-  #  ])
-  #end
-
   def set_recruitment
     @recruitment = Recruitment.find(params[:id])
+  end
+
+  def search_recruitment
+    @d = Recruitment.ransack(params[:q])
+  end
+
+  def set_title_column # 追記
+    @title_date = Recruitment.select("title").distinct  # 重複なくnameカラムのデータを取り出す
   end
 
 end

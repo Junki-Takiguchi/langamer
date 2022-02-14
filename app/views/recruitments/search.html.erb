@@ -1,0 +1,30 @@
+<h1>投稿一覧画面</h1>
+<div class="information">
+  <% if current_user.count_application(current_user) > 0 %>
+    <%= link_to "フレンド申請が#{current_user.count_application(current_user)}件届いています。", friend_relations_path %><br/>
+  <% end %>
+  <% if current_user.check_newly_arrived_messages(current_user) == true %>
+    <%= link_to "新着のメッセージが届いています。", chat_rooms_path %>
+  <% end %>
+</div>
+<% if @results.length !=0 %>
+  <% @results.each do |result| %>
+    <td>
+    <br>
+    <li>
+      <%= result.sample_name %>
+      <%= result.sample_kana %>
+      <%= result.sample_email %>
+      <%= result.sample_tel %>
+      <%= result.sample_product_name %>
+      <%= result.price %>
+      <%= result.num_id %>
+      <%= result.start_time %>
+      <%= result.created_at %>
+    </li>
+  <% end %>
+<% else %>
+  該当する商品はありません
+<% end %>
+<br>
+<%= link_to 'トップページへ戻る', root_path %>
