@@ -30,7 +30,7 @@ class RecruitmentsController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    @user = User.find(Recruitment.find(params[:id]).user_id)
     redirect_to recruitments_path, notice: "不正なアクセスです。" if FriendRelation.check_block_status(current_user, @user)
     @profile = @user.user_detail
     @learn_languages = @user.learn_languages
@@ -43,11 +43,13 @@ class RecruitmentsController < ApplicationController
   end
 
   def edit
+    user_id = Recruitment.find(params[:id]).user_id
+    redirect_to recruitments_path , notice: "不正なアクセスです。" unless current_user.id == user_id
   end
 
   def update
     if @recruitment.update(recruitment_params)
-      redirect_to recruitments_path, notice: '投稿を編集しました。'
+      redirect_to recruitment_path(params[:id]), notice: '投稿を編集しました。'
     else
       render :edit
     end
