@@ -1,7 +1,7 @@
 class RecruitmentsController < ApplicationController
 
-  before_action :set_recruitment, only: [:show, :edit, :update, :destroy]
-  before_action :search_recruitment, only: [:index, :search]
+  before_action :set_recruitment, only: %i[show edit update destroy]
+  before_action :search_recruitment, only: %i[index search]
 
   def index
     @recruitments = Recruitment.where.not(user_id: current_user.id).order(updated_at: :desc).page(params[:page])
@@ -64,7 +64,7 @@ class RecruitmentsController < ApplicationController
   end
 
   def search
-    @results = @d.result
+    @recruitments = @search.result.where.not(user_id: current_user.id).order(updated_at: :desc).page(params[:page]).per(5)
   end
 
   private
@@ -73,15 +73,23 @@ class RecruitmentsController < ApplicationController
   end
 
   def set_recruitment
-    @recruitment = Recruitment.find(params[:id])
+    begin
+      @recruitment = Recruitment.find(params[:id])
+    rescue
+      recruitments_search_path
+    end
   end
 
-  def search_recruitment
-    @d = Recruitment.ransack(params[:q])
+  def search_recruitment # 追記
+    # ransack 検索オブジェクト
+    @search = Recruitment.ransack(params[:q])
   end
 
   def set_title_column # 追記
-    @title_date = Recruitment.select("title").distinct  # 重複なくnameカラムのデータを取り出す
+    @game_platform_list = GamePlatform.select("name")
+    @learn_language_list = LearnLanguage.select('learn_language').distinct
+    @speak_language_list = SpeakLanguage.select('speak_language').distinct
+
   end
 
 end

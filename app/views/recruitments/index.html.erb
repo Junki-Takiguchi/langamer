@@ -8,11 +8,13 @@
   <% end %>
 </div>
 <div class="search-data">
-  <h3>タイトル検索</h3>
-  <%= search_form_for @d, url: recruitments_search_path do |f| %>
-    <%= f.label :title_eq, 'タイトル検索' %>
-    <%= f.collection_select :title_eq, @title_date, :title, :title,  include_blank: '--------------------------' %>
-      <%= f.submit '検索' %>
+  <h3>検索</h3>
+  <%= search_form_for @search, url: search_recruitments_path, method: :search do |f| %>
+    <%= f.search_field :title_or_content_or_user_games_name_or_user_user_detail_self_introduction_cont, placeholder: "キーワード検索", class: 'form-control form-awesome' %><br />
+    <%= f.label :user_games_game_relations_game_platform_name_eq, 'ゲームプラットフォーム' %> <%= f.collection_select :user_games_game_relations_game_platform_name_eq, @game_platform_list, :name, :name,  include_blank: '-----------------------', class: 'form-control form-awesome' %><br />
+    <%= f.label :user_learn_languages_learn_language_eq, '学習中の言語' %> <%= f.collection_select :user_learn_languages_learn_language_eq, @learn_language_list, :learn_language, :learn_language,  include_blank: '-----------------', class: 'form-control form-awesome' %><br />
+    <%= f.label :user_speak_languages_speak_language_eq, '話せる言語' %> <%= f.collection_select :user_speak_languages_speak_language_eq, @speak_language_list, :speak_language, :speak_language,  include_blank: '-----------------', class: 'form-control form-awesome' %><br />
+    <%= f.submit '検索' %>
   <% end %>
 </div>
 <%= link_to "新しく募集を作成する", new_recruitment_path %>

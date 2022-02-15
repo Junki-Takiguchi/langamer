@@ -6,8 +6,12 @@ Rails.application.routes.draw do
         registrations: 'users/registrations'
         #sessions: 'users/sessions'
   }
-  resources :recruitments
-  get 'recruitments/search'
+  resources :recruitments do
+    collection do
+      match 'search', to: 'recruitments#search', via: [:get, :post]
+    end
+  end
+
   resources :users, only: [:index, :update, :show]
   resources :friend_relations, only: [:index, :create, :update, :destroy]
   patch 'friend_relation/:id', to: 'friend_relations#index'

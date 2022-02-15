@@ -39,7 +39,7 @@
 <div>------------------------------------------------------------------------<br/></div>
 <h2>プレイ可能なゲーム</h2>
 <% @games.each do |game| %>
-  <div class="field"><%= game.name %> (<%= game.game_relation_game_platforms.name %>)<br/></div>
+  <div class="field"><%= game.name %> (<%= game.game_relation_game_platforms[0].name %>)<br/></div>
 <% end %>
 <div>------------------------------------------------------------------------<br/></div>
 <h2>外部アカウント</h2>
