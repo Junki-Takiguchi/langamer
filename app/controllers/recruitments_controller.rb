@@ -1,8 +1,7 @@
 class RecruitmentsController < ApplicationController
 
   before_action :set_recruitment, only: %i[show edit update destroy]
-  before_action :search_recruitment, only: %i[index search]
-  before_action :set_filter_column, only: %i[index search]
+  before_action :set_filter, only: %i[index search]
 
 
   def index
@@ -82,16 +81,11 @@ class RecruitmentsController < ApplicationController
     end
   end
 
-  def set_filter_column # 追記
+  def set_filter # 追記
+    @search = Recruitment.ransack(params[:q])
     @game_platform_list = GamePlatform.select("name")
     @learn_language_list = LearnLanguage.select('learn_language').distinct
     @speak_language_list = SpeakLanguage.select('speak_language').distinct
   end
-
-  def search_recruitment # 追記
-    @search = Recruitment.ransack(params[:q])
-  end
-
-
 
 end
