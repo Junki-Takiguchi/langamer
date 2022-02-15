@@ -2,10 +2,12 @@ class RecruitmentsController < ApplicationController
 
   before_action :set_recruitment, only: %i[show edit update destroy]
   before_action :search_recruitment, only: %i[index search]
+  before_action :set_filter_column, only: %i[index search]
+
 
   def index
     @recruitments = Recruitment.where.not(user_id: current_user.id).order(updated_at: :desc).page(params[:page])
-    set_title_column # 追記
+    set_filter_column # 追記
   end
 
   def new
@@ -80,16 +82,16 @@ class RecruitmentsController < ApplicationController
     end
   end
 
-  def search_recruitment # 追記
-    # ransack 検索オブジェクト
-    @search = Recruitment.ransack(params[:q])
-  end
-
-  def set_title_column # 追記
+  def set_filter_column # 追記
     @game_platform_list = GamePlatform.select("name")
     @learn_language_list = LearnLanguage.select('learn_language').distinct
     @speak_language_list = SpeakLanguage.select('speak_language').distinct
-
   end
+
+  def search_recruitment # 追記
+    @search = Recruitment.ransack(params[:q])
+  end
+
+
 
 end
