@@ -157,7 +157,7 @@ i = 4
 160.times do
 User.create!(
   email: Faker::Internet.email,
-  password: "test00",
+  password: SecureRandom.urlsafe_base64,
   confirmed_at: Time.now,
   admin: false
 )
