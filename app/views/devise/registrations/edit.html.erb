@@ -84,7 +84,7 @@
   <% end %>
   <div>------------------------------------------------------------------------<br/></div>
   <h3>プレイ可能なゲーム</h3>
-  <% resource.speak_languages.each do |speak_language| %>
+  <% resource.games.each do |game| %>
     <%= f.fields_for :games do |g| %>
       <div class="field">
         <%= g.label :name, 'ゲーム名' %><br />

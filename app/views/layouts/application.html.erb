@@ -4,12 +4,13 @@
     <title>Langamer</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jscroll/2.4.1/jquery.jscroll.min.js"></script> -->
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <%= link_to "Langamer", root_path %>
     <% if user_signed_in? %>
       <!--ログインしてるユーザーが管理者の場合のみ-->
       <% if current_user.try(:admin?) %>

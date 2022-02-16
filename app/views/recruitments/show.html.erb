@@ -5,8 +5,11 @@
     <%= @profile.account_name %>さんの募集詳細ページ
   <% end %>
 </h2>
-<%= link_to "投稿の編集", edit_recruitment_path %><br/>
 <h2><%= @recruitment.title %></h2>
 <p><%= @recruitment.content %></p>
+<% if current_user.id == @user.id %>
+  <%= button_to "投稿編集", "/recruitments/#{@recruitment.id}/edit", method: :get %>
+  <%= button_to "投稿削除", "/recruitments/#{@recruitment.id}",  { method: :delete, data: { confirm: '本当に削除しますか？' } } %><br/>
+<% end %>
 <%= render './users/user_show' %>
 <p class="field"><%= link_to "TOPに戻る", recruitments_path %></p>

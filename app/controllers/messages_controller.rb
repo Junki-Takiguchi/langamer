@@ -15,7 +15,7 @@ class MessagesController < ApplicationController
     participant = Participant.find_by(user_id: @user.id, chat_room_id: chat_rooms)
     chat_room = participant.chat_room
     #chat_roomに紐づくmessagesテーブルの全レコードを取得
-    @messages = chat_room.messages
+    @messages = chat_room.messages.page(params[:page]).per(5)
     #showページのform_withでチャットを送信する際に必要なメッセージが空のインスタンス
     @message = Message.new(chat_room_id: chat_room.id)
   end

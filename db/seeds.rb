@@ -204,7 +204,7 @@ GameRelation.create!(
   game_platform_id: rand(4)+1
 )
 Recruitment.create!(
-  title: Faker::Superhero.name,
+  title: Faker::Creature::Animal.name,
   content: Faker::Book.title,
   user_id: i
 )

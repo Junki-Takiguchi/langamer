@@ -11,19 +11,17 @@
 1. AWS EC2
 2. devise
 3. メッセージ機能
+4. ページネーション（kaminari）
+5. 画像投稿機能 (carrierwave)
 
 - カリキュラムで学んでいない技術で、アプリケーションに取り入れようと考えているものを記載すること
 
 1. Docker
 2. Gem ransack
-3. Gem Rails_admin
+3. Gem rails_admin
 4. Gem cancancan
 5. Gem language_list
 6. Gem country_select
-7. Gem game_scraper
-8. Gem rails_admin
-9. Gem cancancan
-10. Gem ransack
 
 - アプリケーションの実行手順（クローンから起動までの手順）
 
@@ -41,13 +39,17 @@ $ git clone https://github.com/Junki-Takiguchi/langamer.git
 $ docker volume create --name langamer
 ```
 
-4. docker-compose ファイルのあるパスで docker-compose コマンドで docker コンテナを起動する
+4. docker-compose ファイルに記載したパス上で docker-compose コマンドを使い docker コンテナを起動する
 
 ```
 $ docker-compose run app
 ```
 
 5. 起動した app コンテナのコンソールにアクセスし、バインドマウントしたソースコードのパスに移動する
+
+```
+docker exec -it langamer_app /bin/bash
+```
 
 6. bundle install を実行
 
@@ -78,6 +80,12 @@ $ rails webpacker:compile
 
 https://qiita.com/shizen-shin/items/38fd774ffc87bc8838c9
 https://prograshi.com/framework/rails/git-clone-webpacker-not-found/
+
+$ jquery のインストールで失敗している場合は別途コンソールから yarn コマンドでインストールします
+
+```
+yarn add jquery
+```
 
 サインイン URL
 http://localhost:3000/users/sign_in
