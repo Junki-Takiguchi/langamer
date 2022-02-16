@@ -4,8 +4,8 @@ module GuestUser
   def self.guest_user_create
     unless User.exists?(email: 'guest@example.com')
       user = User.create!(
-        email: 'guest@example.com',
-        password: SecureRandom.urlsafe_base64,
+        email: "test01@gmail.com",
+        password: "test01",
         confirmed_at: Time.now,
         admin: false
       )
@@ -14,14 +14,20 @@ module GuestUser
         self_introduction: 'ゲスト用ユーザーです。',
         living_country: "US",
         native_country: "JP",
-        date_of_birth: '19900101',
+        date_of_birth: Faker::Date.birthday(min_age: 20, max_age: 60),
         gender: rand(3),
         user_id: user.id
       )
       LearnLanguage.create!(
         learn_language: "English",
-        rank: rand(3),
+        rank: rand(4),
         user_id: user.id
+      )
+      LearnLanguage.create!(
+      learn_language: "Chinese",
+      rank: rand(4),
+      learn_language_status: rand(3),
+      user_id: user.id
       )
       SpeakLanguage.create!(
         speak_language: "Japanese",
@@ -51,8 +57,8 @@ module GuestUser
     end
     unless User.exists?(email: 'guest2@example.com')
       user2 = User.create!(
-        email: 'guest2@example.com',
-        password: SecureRandom.urlsafe_base64,
+        email: "test02@gmail.com",
+        password: "test02",
         confirmed_at: Time.now,
         admin: false
       )
@@ -96,8 +102,8 @@ module GuestUser
     end
     unless User.exists?(email: 'guest3@example.com')
       user3 = User.create!(
-        email: 'guest3@example.com',
-        password: SecureRandom.urlsafe_base64,
+        email: "test03@gmail.com",
+        password: "test03",
         confirmed_at: Time.now,
         admin: false
       )
@@ -141,8 +147,8 @@ module GuestUser
     end
     unless User.exists?(email: 'guest4@example.com')
       user4 = User.create!(
-        email: 'guest4@example.com',
-        password: SecureRandom.urlsafe_base64,
+        email: "test04@gmail.com",
+        password: "test04",
         confirmed_at: Time.now,
         admin: false
       )
@@ -235,7 +241,7 @@ module GuestUser
     unless User.exists?(email: 'admin.guest@example.com')
       admin = User.create!(
         email: 'admin.guest@example.com',
-        password: SecureRandom.urlsafe_base64,
+        password: 'admin01',
         confirmed_at: Time.now,
         admin: true
       )
