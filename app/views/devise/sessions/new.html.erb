@@ -23,4 +23,25 @@
   </div>
 <% end %>
 
+<br />
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="field">
+    <%= f.hidden_field :email, value: 'test01@gmail.com' %>
+    <%= f.hidden_field :password, value: 'test01' %>
+  </div>
+  <div class="actions">
+    <%= f.submit "一般ユーザーとしてゲストログイン" %>
+  </div>
+<% end %>
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="field">
+    <%= f.hidden_field :email, value: 'admin01@gmail.com' %>
+    <%= f.hidden_field :password, value: 'admin01' %>
+  </div>
+  <div class="actions">
+    <%= f.submit "管理者ユーザー（管理者）としてゲストログイン" %>
+  </div>
+<% end %>
+
+<br />
 <%= render "devise/shared/links" %>

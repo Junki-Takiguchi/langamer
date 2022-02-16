@@ -27,6 +27,10 @@ ADD Gemfile Gemfile
 ADD Gemfile.lock Gemfile.lock
 RUN bundle install
 
+RUN rails webpacker:install
+RUN rails webpacker:compile
+RUN yarn add jquery
+
 # githubの公開キーのコピー
 ADD .ssh /root/.ssh
 RUN chmod 600 /root/.ssh

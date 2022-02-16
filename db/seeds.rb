@@ -3,210 +3,397 @@ GamePlatform.create!(name: "PlayStation" )
 GamePlatform.create!(name: "Xbox" )
 GamePlatform.create!(name: "Nintendo Switch" )
 
-User.create!(
+user = User.create!(
   email: "test01@gmail.com",
   password: "test01",
   confirmed_at: Time.now,
-  admin: true
+  admin: false
 )
 UserDetail.create!(
-  account_name: "テストアカウント01",
-  self_introduction: "テストアカウント01の自己紹介文",
+  account_name: 'ゲストユーザー（一般）',
+  self_introduction: 'ゲスト用ユーザーです。',
   living_country: "US",
   native_country: "JP",
-  date_of_birth: "20111114",
-  gender: "男性",
-  user_id: 1
+  date_of_birth: Faker::Date.birthday(min_age: 20, max_age: 60),
+  gender: rand(3),
+  user_id: user.id
 )
 LearnLanguage.create!(
   learn_language: "English",
-  rank: "上級者",
-  user_id: 1
+  rank: rand(4),
+  user_id: user.id
 )
 LearnLanguage.create!(
   learn_language: "Chinese",
-  rank: "初級者",
-  learn_language_status: "フレンドのみ公開",
-  user_id: 1
+  rank: rand(4),
+  learn_language_status: rand(3),
+  user_id: user.id
 )
 SpeakLanguage.create!(
   speak_language: "Japanese",
   rank: "ネイティブ",
-  user_id: 1
+  user_id: user.id
 )
 GameAccount.create!(
-  discord_id: "test01#0001",
-  twitter_id: "@test01",
-  user_id: 1
+  discord_id: 'guest#0001',
+  twitter_id: "@guest01",
+  user_id: user.id
 )
-Game.create!(
-  name: "VALORANT",
-  user_id: 1
+game = Game.create!(
+  name: 'Minecraft',
+  user_id: user.id
 )
 GameRelation.create!(
-  game_id: 1,
-  game_platform_id: 2
+  game_id: game.id,
+  game_platform_id: 1
 )
 Recruitment.create!(
-  title: "タイトル01",
-  content: "投稿本文01",
-  user_id: 1
+  title: "ゲストユーザーの募集投稿",
+  content: "ゲストユーザーの募集投稿内容が表示されます。",
+  user_id: user.id
 )
 
-User.create!(
+user2 = User.create!(
   email: "test02@gmail.com",
   password: "test02",
   confirmed_at: Time.now,
   admin: false
 )
 UserDetail.create!(
-  account_name: "テストアカウント02",
-  self_introduction: "テストアカウント02の自己紹介文",
-  living_country: "US",
-  native_country: "JP",
-  date_of_birth: "19951114",
-  gender: "女性",
-  user_id: 2
+  account_name: 'ゲストユーザー2（一般）',
+  self_introduction: 'ゲスト用ユーザー2です。',
+  living_country: "JP",
+  native_country: "US",
+  date_of_birth: Faker::Date.birthday(min_age: 20, max_age: 60),
+  gender: rand(3),
+  user_id: user2.id
 )
 LearnLanguage.create!(
   learn_language: "Japanese",
-  rank: "上級者",
-  user_id: 2
+  rank: rand(4),
+  user_id: user2.id
 )
 LearnLanguage.create!(
   learn_language: "Chinese",
-  rank: "中級者",
-  learn_language_status: "非公開",
-  user_id: 2
+  rank: rand(4),
+  learn_language_status: rand(3),
+  user_id: user2.id
 )
 SpeakLanguage.create!(
   speak_language: "English",
   rank: "ネイティブ",
-  user_id: 2
+  user_id: user2.id
 )
 GameAccount.create!(
-  discord_id: "test02#0002",
-  twitter_id: "@test02",
-  user_id: 2
+  discord_id: 'guest#0002',
+  twitter_id: "@guest02",
+  user_id: user2.id
 )
-Game.create!(
-  name: "Apex Legends",
-  user_id: 2
+game = Game.create!(
+  name: 'Minecraft',
+  user_id: user2.id
 )
 GameRelation.create!(
-  game_id: 2,
+  game_id: game.id,
   game_platform_id: 1
 )
 Recruitment.create!(
-  title: "タイトル02",
-  content: "投稿本文02",
-  user_id: 2
+  title: "ゲストユーザーの募集投稿",
+  content: "ゲストユーザーの募集投稿内容が表示されます。",
+  user_id: user2.id
 )
 
-User.create!(
+user3 = User.create!(
   email: "test03@gmail.com",
   password: "test03",
   confirmed_at: Time.now,
   admin: false
 )
 UserDetail.create!(
-  account_name: "テストアカウント03",
-  self_introduction: "テストアカウント03の自己紹介文",
-  living_country: "US",
-  native_country: "JP",
-  date_of_birth: "19970122",
-  gender: "女性",
-  user_id: 3
-)
-LearnLanguage.create!(
-  learn_language: "Japanese",
-  rank: "初級者",
-  user_id: 3
-)
-LearnLanguage.create!(
-  learn_language: "Chinese",
-  rank: "上級者",
-  learn_language_status: "非公開",
-  user_id: 3
-)
-SpeakLanguage.create!(
-  speak_language: "English",
-  rank: "ネイティブ",
-  user_id: 3
-)
-GameAccount.create!(
-  discord_id: "test03#0003",
-  twitter_id: "@test03",
-  user_id: 3
-)
-Game.create!(
-  name: "FINAL FANTASY 14",
-  user_id: 3
-)
-GameRelation.create!(
-  game_id: 3,
-  game_platform_id: 1
-)
-Recruitment.create!(
-  title: "タイトル03",
-  content: "投稿本文03",
-  user_id: 3
-)
-
-i = 4
-160.times do
-User.create!(
-  email: Faker::Internet.email,
-  password: "test00",
-  confirmed_at: Time.now,
-  admin: false
-)
-UserDetail.create!(
-  account_name: Faker::Name.name,
-  self_introduction: Faker::Quote.famous_last_words,
-  living_country: "US",
-  native_country: "JP",
+  account_name: 'ゲストユーザー3（一般）',
+  self_introduction: 'ゲスト用ユーザー3です。',
+  living_country: "JP",
+  native_country: "US",
   date_of_birth: Faker::Date.birthday(min_age: 20, max_age: 60),
   gender: rand(3),
-  living_country_status: rand(3),
-  native_country_status: rand(3),
-  gender_status: rand(3),
-  user_id: i
+  user_id: user3.id
 )
 LearnLanguage.create!(
   learn_language: "Japanese",
-  rank: rand(3),
-  learn_language_status: rand(3),
-  user_id: i
+  rank: rand(4),
+  user_id: user3.id
 )
 LearnLanguage.create!(
   learn_language: "Chinese",
   rank: rand(4),
   learn_language_status: rand(3),
-  user_id: i
+  user_id: user3.id
 )
 SpeakLanguage.create!(
   speak_language: "English",
   rank: "ネイティブ",
-  user_id: i
+  user_id: user3.id
 )
 GameAccount.create!(
-  discord_id: Faker::Number.number(digits: 12),
-  twitter_id: Faker::Number.number(digits: 12),
-  user_id: i
+  discord_id: 'guest#0002',
+  twitter_id: "@guest02",
+  user_id: user3.id
 )
-Game.create!(
-  name: Faker::Game.title,
-  user_id: i
+game = Game.create!(
+  name: 'Minecraft',
+  user_id: user3.id
 )
 GameRelation.create!(
-  game_id: i,
-  game_platform_id: rand(4)+1
+  game_id: game.id,
+  game_platform_id: 1
 )
 Recruitment.create!(
-  title: Faker::Creature::Animal.name,
-  content: Faker::Book.title,
-  user_id: i
+  title: "ゲストユーザーの募集投稿",
+  content: "ゲストユーザーの募集投稿内容が表示されます。",
+  user_id: user3.id
 )
-i += 1
+
+user4 = User.create!(
+  email: "test04@gmail.com",
+  password: "test04",
+  confirmed_at: Time.now,
+  admin: false
+)
+UserDetail.create!(
+  account_name: 'ゲストユーザー4（一般）',
+  self_introduction: 'ゲスト用ユーザー4です。',
+  living_country: "JP",
+  native_country: "US",
+  date_of_birth: Faker::Date.birthday(min_age: 20, max_age: 60),
+  gender: rand(3),
+  user_id: user4.id
+)
+LearnLanguage.create!(
+  learn_language: "Japanese",
+  rank: rand(4),
+  user_id: user4.id
+)
+LearnLanguage.create!(
+  learn_language: "Chinese",
+  rank: rand(4),
+  learn_language_status: rand(3),
+  user_id: user4.id
+)
+SpeakLanguage.create!(
+  speak_language: "English",
+  rank: "ネイティブ",
+  user_id: user4.id
+)
+GameAccount.create!(
+  discord_id: 'guest#0002',
+  twitter_id: "@guest02",
+  user_id: user4.id
+)
+game = Game.create!(
+  name: 'Minecraft',
+  user_id: user4.id
+)
+GameRelation.create!(
+  game_id: game.id,
+  game_platform_id: 1
+)
+Recruitment.create!(
+  title: "ゲストユーザーの募集投稿",
+  content: "ゲストユーザーの募集投稿内容が表示されます。",
+  user_id: user4.id
+)
+
+FriendRelation.create!(
+  from_applicant_id: user.id,
+  to_target_id: user2.id,
+  status: 1
+)
+chat_room = ChatRoom.create!()
+Participant.create!(
+  user_id: user.id,
+  chat_room_id: chat_room.id
+)
+Participant.create!(
+  user_id: user2.id,
+  chat_room_id: chat_room.id
+)
+12.times do
+  Message.create!(
+    message: Faker::Quote.famous_last_words,
+    user_id: user.id,
+    chat_room_id: chat_room.id
+  )
+  Message.create!(
+    message: Faker::Quote.famous_last_words,
+    user_id: user2.id,
+    chat_room_id: chat_room.id
+  )
+end
+FriendRelation.create!(
+  from_applicant_id: user.id,
+  to_target_id: user3.id,
+  status: 2
+)
+FriendRelation.create!(
+  from_applicant_id: user4.id,
+  to_target_id: user.id,
+  status: 2
+)
+
+
+admin = User.create!(
+  email: 'admin01@gmail.com',
+  password: 'admin01',
+  confirmed_at: Time.now,
+  admin: true
+)
+UserDetail.create!(
+  account_name: 'ゲストユーザー（管理者）',
+  self_introduction: 'ゲスト用管理者ユーザーです。',
+  living_country: "US",
+  native_country: "JP",
+  date_of_birth: Faker::Date.birthday(min_age: 20, max_age: 60),
+  gender: rand(3),
+  user_id: admin.id
+)
+LearnLanguage.create!(
+  learn_language: "English",
+  rank: rand(3),
+  user_id: admin.id
+)
+SpeakLanguage.create!(
+  speak_language: "Japanese",
+  rank: "ネイティブ",
+  user_id: admin.id
+)
+GameAccount.create!(
+  discord_id: 'admin#0001',
+  twitter_id: "@admin01",
+  user_id: admin.id
+)
+game = Game.create!(
+  name: 'Minecraft',
+  user_id: admin.id
+)
+GameRelation.create!(
+  game_id: game.id,
+  game_platform_id: 1
+)
+Recruitment.create!(
+  title: "管理者ユーザーの募集投稿",
+  content: "管理者ユーザーの募集投稿内容が表示されます。",
+  user_id: admin.id
+)
+FriendRelation.create!(
+  from_applicant_id: admin.id,
+  to_target_id: user2.id,
+  status: 1
+)
+chat_room2 = ChatRoom.create!()
+Participant.create!(
+  user_id: admin.id,
+  chat_room_id: chat_room2.id
+)
+Participant.create!(
+  user_id: user2.id,
+  chat_room_id: chat_room2.id
+)
+Message.create!(
+  message: "message post test from admin_guest_user!",
+  user_id: admin.id,
+  chat_room_id: chat_room2.id
+)
+Message.create!(
+  message: "to admin user, Hello, this message is a sending test",
+  user_id: user2.id,
+  chat_room_id: chat_room2.id
+)
+12.times do
+  Message.create!(
+    message: Faker::Quote.famous_last_words,
+    user_id: admin.id,
+    chat_room_id: chat_room2.id
+  )
+  Message.create!(
+    message: Faker::Quote.famous_last_words,
+    user_id: user2.id,
+    chat_room_id: chat_room2.id
+  )
+end
+FriendRelation.create!(
+  from_applicant_id: admin.id,
+  to_target_id: user3.id,
+  status: 2
+)
+FriendRelation.create!(
+  from_applicant_id: user4.id,
+  to_target_id: admin.id,
+  status: 2
+)
+
+i = 5
+country = ["JP, CH, US"]
+language = ["Japanese", "English", "Chinese"]
+
+57.times do
+  User.create!(
+    email: Faker::Internet.email,
+    password: SecureRandom.urlsafe_base64,
+    confirmed_at: Time.now,
+    admin: false
+  )
+  UserDetail.create!(
+    account_name: Faker::Name.name,
+    self_introduction: Faker::Quote.famous_last_words,
+    living_country: country.sample,
+    native_country: country.sample,
+    date_of_birth: Faker::Date.birthday(min_age: 20, max_age: 60),
+    gender: rand(3),
+    living_country_status: rand(3),
+    native_country_status: rand(3),
+    gender_status: rand(3),
+    user_id: i
+  )
+  n = language.sample
+  LearnLanguage.create(
+    learn_language: n,
+    rank: rand(4),
+    learn_language_status: rand(3),
+    user_id: i
+  )
+  language.delete(n)
+  n = language.sample
+  LearnLanguage.create(
+    learn_language: n,
+    rank: rand(4),
+    learn_language_status: rand(3),
+    user_id: i
+  )
+  language.delete(n)
+  SpeakLanguage.create(
+    speak_language: n,
+    rank: "ネイティブ",
+    user_id: i
+  )
+  GameAccount.create!(
+    discord_id: Faker::Number.number(digits: 12),
+    twitter_id: Faker::Number.number(digits: 12),
+    user_id: i
+  )
+  Game.create!(
+    name: Faker::Game.title,
+    user_id: i
+  )
+  GameRelation.create!(
+    game_id: i,
+    game_platform_id: rand(4)+1
+  )
+  Recruitment.create!(
+    title: Faker::Creature::Animal.name,
+    content: Faker::Book.title,
+    user_id: i
+  )
+  i += 1
+  country = ["JP, CH, US"]
+  language = ["Japanese", "English", "Chinese"]
 end
