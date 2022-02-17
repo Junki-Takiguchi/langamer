@@ -1,5 +1,4 @@
 source 'https://rubygems.org'
-git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.0.3'
 gem 'rails', '~> 6.0.4', '>= 6.0.4.4'
@@ -12,8 +11,17 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'devise'
 gem 'rexml'
-#gem 'unicorn'
-#gem 'unicorn-rails'
+gem 'language_list'
+gem 'country_select'
+gem 'cancancan'
+gem 'rails_admin'
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'kaminari'
+gem 'ransack'
+gem 'faker'
+gem 'fog-aws'
+gem 'dotenv-rails'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -25,6 +33,16 @@ group :development do
   gem 'listen', '~> 3.2'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'letter_opener_web'
+  gem 'annotate'
+  gem 'rails-flog', require: 'flog'
+  gem 'capistrano', '3.16.0'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'capistrano-rbenv'
+  gem 'capistrano3-unicorn'
+  gem 'ed25519'
+  gem 'bcrypt_pbkdf'
 end
 
 group :test do

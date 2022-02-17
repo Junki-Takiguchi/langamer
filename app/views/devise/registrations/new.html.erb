@@ -1,0 +1,110 @@
+<h2>Sign up</h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= f.password_field :password %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation %>
+  </div>
+
+
+  <%= f.fields_for :user_detail, @user.build_user_detail do |m| %>
+    <div class="field">
+      <%= m.label :account_name, 'アカウント名' %><br />
+      <%= m.text_field :account_name %>
+    </div>
+    <div class="field">
+      <%= m.label :self_introduction, '自己紹介文' %><br />
+      <%= m.text_area :self_introduction %>
+    </div>
+    <div class="field">
+      <%= m.label :living_country, '住んでる国' %><br />
+      <%= m.country_select :living_country %>
+      <%= m.radio_button :living_country_status, :公開, checked: true %>公開 <%= m.radio_button :living_country_status, :非公開 %>非公開 <%= m.radio_button :living_country_status, :フレンドのみ公開 %>フレンドのみ公開
+    </div>
+    <div class="field">
+      <%= m.label :native_country, '出身国' %><br />
+      <%= m.country_select :native_country %>
+      <%= m.radio_button :native_country_status, :公開, checked: true %>公開 <%= m.radio_button :native_country_status, :非公開 %>非公開 <%= m.radio_button :native_country_status, :フレンドのみ公開 %>フレンドのみ公開
+    </div>
+    <div class="field">
+      <%= m.label :date_of_birth, '生年月日' %><br />
+      <%= m.date_select(:date_of_birth,
+                        use_month_numbers: true,
+                        start_year: 1920,
+                        end_year: (Time.now.year),
+                        default: Date.new(1990, 1, 1),
+                        date_separator: '/'
+      ) %>
+      <%= m.radio_button :date_of_birth_status, :公開, checked: true %>公開 <%= m.radio_button :date_of_birth_status, :非公開 %>非公開 <%= m.radio_button :date_of_birth_status, :フレンドのみ公開 %>フレンドのみ公開
+    </div>
+    <div class="field">
+      <%= m.label :gender, '性別' %><br />
+      <%= m.select :gender, UserDetail.genders.keys, { include_blank: '--------'}, {id: 'user_gender'} %>
+      <%= m.radio_button :gender_status, :公開, checked: true %>公開 <%= m.radio_button :gender_status, :非公開 %>非公開 <%= m.radio_button :gender_status, :フレンドのみ公開 %>フレンドのみ公開
+    </div>
+  <% end %>
+  <%= f.fields_for :learn_languages, @user.learn_languages.build do |l| %>
+    <div class="field">
+      <%= l.label :learn_language, '学習中の言語' %><br />
+      <%= l.select :learn_language, LanguageList::COMMON_LANGUAGES.map { |lang| lang.name }, { include_blank: '-----------------'}, {id: 'learn_language'} %>
+      <%= l.label :rank, '習得レベル' %>
+      <%= l.select :rank, [["初級者", "初級者"], ["中級者", "中級者"], ["上級者", "上級者"], ["ネイティブ", "ネイティブ"]], { include_blank: '-----------------'}, {id: 'rank'} %>
+      <%= l.radio_button :learn_language_status, :公開, checked: true %>公開 <%= l.radio_button :learn_language_status, :非公開 %>非公開 <%= l.radio_button :learn_language_status, :フレンドのみ公開 %>フレンドのみ公開
+    </div>
+  <% end %>
+  <%= f.fields_for :speak_languages, @user.speak_languages.build do |s| %>
+    <div class="field">
+      <%= s.label :speak_language, '話せる言語' %><br />
+      <%= s.select :speak_language, LanguageList::COMMON_LANGUAGES.map { |lang| lang.name }, { include_blank: '-----------------'}, {id: 'speak_language'} %>
+      <%= s.label :rank, '習得レベル' %>
+      <%= s.select :rank, [["初級者", "初級者"], ["中級者", "中級者"], ["上級者", "上級者"], ["ネイティブ", "ネイティブ"]], { include_blank: '-----------------'}, {id: 'rank'} %>
+      <%= s.radio_button :speak_language_status, :公開, checked: true %>公開 <%= s.radio_button :speak_language_status, :非公開 %>非公開 <%= s.radio_button :speak_language_status, :フレンドのみ公開 %>フレンドのみ公開
+    </div>
+  <% end %>
+<h3>プレイ可能なゲーム</h3>
+  <%= f.fields_for :games, @user.games.build do |g| %>
+    <div class="field">
+      <%= g.label :name, 'ゲーム名' %><br />
+      <%= g.text_field :name %>
+    </div>
+    <%= g.fields_for :game_relations, @user.games.build.game_relations.build do |r| %>
+      <div class="field">
+        <%= r.label :game_platform_id, 'ゲームプラットフォーム' %><br />
+        <%= r.select :game_platform_id, GamePlatform.all.map { |p| [p.name, p.id] }, { include_blank: '-----------------------'}, {id: 'game_platform_name'} %>
+      </div>
+    <% end %>
+  <% end %>
+<h3>外部アカウントの登録</h3>
+  <%= f.fields_for :game_account, @user.build_game_account do |a| %>
+    <div class="field">
+      <%= a.label :discord_id, 'Discord ID' %><br />
+      <%= a.text_field :discord_id %>
+      <%= a.radio_button :discord_id_status, :公開 %>公開 <%= a.radio_button :discord_id_status, :非公開 %>非公開 <%= a.radio_button :discord_id_status, :フレンドのみ公開, checked: true %>フレンドのみ公開
+    </div>
+    <div class="field">
+      <%= a.label :twitter_id, 'Twitter ID' %><br />
+      <%= a.text_field :twitter_id %>
+      <%= a.radio_button :twitter_id_status, :公開 %>公開 <%= a.radio_button :twitter_id_status, :非公開 %>非公開 <%= a.radio_button :twitter_id_status, :フレンドのみ公開, checked: true %>フレンドのみ公開
+    </div>
+  <% end %>
+  <div class="actions">
+    <%= f.submit "Sign up" %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>

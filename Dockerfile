@@ -8,7 +8,7 @@ ENV RAILS_APP langamer
 
 # setup
 RUN apt-get update -qq && apt-get install -y postgresql-client
-# RUN apt install -y nginx
+RUN apt install -y nginx
 ENV APP_ROOT /workspace
 
 RUN mkdir -p $APP_ROOT/$RAILS_APP
@@ -26,6 +26,9 @@ RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
 ADD Gemfile Gemfile
 ADD Gemfile.lock Gemfile.lock
 RUN bundle install
+
+RUN yarn add jquery
+
 
 # githubの公開キーのコピー
 ADD .ssh /root/.ssh

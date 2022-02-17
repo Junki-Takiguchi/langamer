@@ -17,5 +17,5 @@ test:
 production:
   <<: *default
   database: langamer_production
-  username: langamer
-  password: <%= ENV['LANGAMER_DATABASE_PASSWORD'] %>
+#  username: langamer
+#  password: <%= ENV['LANGAMER_DATABASE_PASSWORD'] %>
