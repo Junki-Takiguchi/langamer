@@ -35,8 +35,8 @@
 yarn-debug.log*
 .yarn-integrity
 
-#Dockerfile
-#docker-compose.yml
+Dockerfile
+docker-compose.yml
 README_about_docker.md
 .ssh
 .ENV
