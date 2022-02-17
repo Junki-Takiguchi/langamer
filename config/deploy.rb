@@ -6,7 +6,7 @@ set :application, 'langamer'
 
 # cloneするgitのレポジトリ
 # （xxxxxxxx：ユーザ名、yyyyyyyy：アプリケーション名）
-set :repo_url, 'https://github.com/Junki-Takiguchi/langamer'
+set :repo_url, 'https://github.com/Junki-Takiguchi/langamer.git'
 
 # deployするブランチ。デフォルトでmainを使用している場合、masterをmainに変更してください。
 set :branch, ENV['BRANCH'] || 'master'
