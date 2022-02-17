@@ -42,11 +42,6 @@ group :development do
   gem 'capistrano-rails'
   gem 'capistrano-rbenv'
   gem 'capistrano3-unicorn'
-  gem 'capistrano3-puma', '4.0'
-  gem 'capistrano-rails-collection' # 例：　rails:rake:db:migrate　など
-  gem 'capistrano-rails-console' # cap production rails:c でコンソールにアクセスしたい場合
-  gem 'capistrano-rake' # 例：　cap production invoke:rake TASK=paperclip:refresh
-  gem 'capistrano-sidekiq', '1.0.2' # sidekiqを使う場合
   gem 'ed25519'
   gem 'bcrypt_pbkdf'
 end
