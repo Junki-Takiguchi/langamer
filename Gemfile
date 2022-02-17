@@ -20,6 +20,8 @@ gem 'mini_magick'
 gem 'kaminari'
 gem 'ransack'
 gem 'faker'
+gem 'fog-aws'
+gem 'dotenv-rails'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
