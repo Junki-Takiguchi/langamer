@@ -331,11 +331,11 @@ FriendRelation.create!(
   status: 2
 )
 
-i = 5
+i = 6
 country = ["JP", "CH", "US"]
 language = ["Japanese", "English", "Chinese"]
 
-57.times do
+30.times do
   User.create!(
     email: Faker::Internet.email,
     password: SecureRandom.urlsafe_base64,
