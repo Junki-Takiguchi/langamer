@@ -1,3 +1,5 @@
+# Capistranoでデプロイするための設定ファイル
+
 # config valid only for current version of Capistrano
 lock '3.16.0'
 
@@ -12,7 +14,7 @@ set :repo_url, 'https://github.com/Junki-Takiguchi/langamer'
 set :branch, ENV['BRANCH'] || 'master'
 
 # deploy先のディレクトリ。
-set :deploy_to, '/workspace/langamer'
+set :deploy_to, '/home/app/workspace/langamer'
 
 # シンボリックリンクをはるフォルダ・ファイル
 set :linked_files, %w{.env config/secrets.yml}
