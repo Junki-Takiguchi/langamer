@@ -8,6 +8,7 @@ ENV RAILS_APP langamer
 
 # setup
 RUN apt-get update -qq && apt-get install -y postgresql-client
+Run apt install -y vim
 RUN apt install -y nginx
 ENV APP_ROOT /workspace
 
