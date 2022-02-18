@@ -16,7 +16,6 @@ class UserDetail < ApplicationRecord
 
   def country_name(country_code)
     country = ISO3166::Country[country_code]
-    binding.pry
     country.translations[I18n.locale.to_s] || country.iso_short_name
   end
 end
