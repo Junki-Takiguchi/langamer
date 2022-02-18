@@ -135,8 +135,6 @@ GEM
     faker (2.19.0)
       i18n (>= 1.6, < 2)
     ffi (1.15.5)
-    figaro (1.2.0)
-      thor (>= 0.14.0, < 2)
     fog-aws (3.13.0)
       fog-core (~> 2.1)
       fog-json (~> 1.1)
@@ -186,6 +184,7 @@ GEM
       activerecord
       kaminari-core (= 1.2.2)
     kaminari-core (1.2.2)
+    kgio (2.11.4)
     language_list (1.2.1)
     launchy (2.5.0)
       addressable (~> 2.7)
@@ -284,6 +283,7 @@ GEM
       method_source
       rake (>= 0.8.7)
       thor (>= 0.20.3, < 2.0)
+    raindrops (0.20.0)
     rake (13.0.6)
     ransack (2.5.0)
       activerecord (>= 5.2.4)
@@ -345,6 +345,9 @@ GEM
     tzinfo (1.2.9)
       thread_safe (~> 0.1)
     unicode_utils (1.4.0)
+    unicorn (6.1.0)
+      kgio (~> 2.6)
+      raindrops (~> 0.7)
     warden (1.2.9)
       rack (>= 2.0.9)
     web-console (4.2.0)
@@ -389,7 +392,6 @@ DEPENDENCIES
   dotenv-rails
   ed25519
   faker
-  figaro
   fog-aws
   jbuilder (~> 2.7)
   kaminari
@@ -411,6 +413,7 @@ DEPENDENCIES
   spring-watcher-listen (~> 2.0.0)
   turbolinks (~> 5)
   tzinfo-data
+  unicorn
   web-console (>= 3.3.0)
   webdrivers
   webpacker (~> 5.0)

@@ -22,7 +22,7 @@ gem 'ransack'
 gem 'faker'
 gem 'fog-aws'
 gem 'dotenv-rails'
-gem "figaro"
+gem 'unicorn'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
