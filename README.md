@@ -100,7 +100,7 @@ http://localhost:3000/letter_opener
   [ワイヤーフレーム](https://drive.google.com/file/d/1ZFj1g5KjL58iOdleaSZqAbxB5T0XJ4aT/view?usp=sharing)
 
 - ER 図のスクリーンショット
-  ![Entity Relationship Diagram](https://user-images.githubusercontent.com/92371564/151182644-4767d07d-5b66-48ea-9a3d-324baf8bfc32.png)
+  ![Entity Relationship Diagram](https://user-images.githubusercontent.com/92371564/154703801-d1220428-0695-45ff-916f-26b04ffaaadb.png)
 
 - 画面遷移図のスクリーンショット
   ![screen_transition_diagram](https://user-images.githubusercontent.com/92371564/151182896-39280e34-a894-4443-b474-7676c9676016.png)
