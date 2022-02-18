@@ -6,7 +6,7 @@ GamePlatform.create!(name: "Nintendo Switch" )
 user = User.create!(
   email: "test01@gmail.com",
   password: "test01",
-  confirmed_at: Time.now,
+  # confirmed_at: Time.now,
   admin: false
 )
 UserDetail.create!(
@@ -56,7 +56,7 @@ Recruitment.create!(
 user2 = User.create!(
   email: "test02@gmail.com",
   password: "test02",
-  confirmed_at: Time.now,
+  # confirmed_at: Time.now,
   admin: false
 )
 UserDetail.create!(
@@ -106,7 +106,7 @@ Recruitment.create!(
 user3 = User.create!(
   email: "test03@gmail.com",
   password: "test03",
-  confirmed_at: Time.now,
+  # confirmed_at: Time.now,
   admin: false
 )
 UserDetail.create!(
@@ -156,7 +156,7 @@ Recruitment.create!(
 user4 = User.create!(
   email: "test04@gmail.com",
   password: "test04",
-  confirmed_at: Time.now,
+  # confirmed_at: Time.now,
   admin: false
 )
 UserDetail.create!(
@@ -244,7 +244,7 @@ FriendRelation.create!(
 admin = User.create!(
   email: 'admin01@gmail.com',
   password: 'admin01',
-  confirmed_at: Time.now,
+  # confirmed_at: Time.now,
   admin: true
 )
 UserDetail.create!(
@@ -339,7 +339,7 @@ language = ["Japanese", "English", "Chinese"]
   User.create!(
     email: Faker::Internet.email,
     password: SecureRandom.urlsafe_base64,
-    confirmed_at: Time.now,
+    # confirmed_at: Time.now,
     admin: false
   )
   c1 = country.sample
