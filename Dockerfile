@@ -30,9 +30,9 @@ RUN bundle install
 
 RUN yarn add jquery
 
-
 # githubの公開キーのコピー
 ADD .ssh /root/.ssh
 RUN chmod 600 /root/.ssh
 
 EXPOSE 3000
+# EXPOSE 80

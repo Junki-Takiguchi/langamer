@@ -26,11 +26,13 @@ services:
     environment:
       TZ: "Asia/Tokyo"
       RAILS_ENV: "development"
+      AWS_ACCESS_KEY_ID: "AKIAXNUVV66UKUX6QCFZ"
+      AWS_SECRET_ACCESS_KEY: "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"
       POSTGRES_USER: "postgres"
       POSTGRES_PASSWORD: "langamerdb"
     ports:
       - 3000:3000
-      - 8080:80
+      # - 8080:80
     tty: true
     stdin_open: true
     depends_on:

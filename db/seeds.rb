@@ -332,7 +332,7 @@ FriendRelation.create!(
 )
 
 i = 5
-country = ["JP, CH, US"]
+country = ["JP", "CH", "US"]
 language = ["Japanese", "English", "Chinese"]
 
 57.times do
@@ -342,11 +342,14 @@ language = ["Japanese", "English", "Chinese"]
     confirmed_at: Time.now,
     admin: false
   )
+  c1 = country.sample
+  country.delete(c1)
+  c2 = country.sample
   UserDetail.create!(
     account_name: Faker::Name.name,
     self_introduction: Faker::Quote.famous_last_words,
-    living_country: country.sample,
-    native_country: country.sample,
+    living_country: c1,
+    native_country: c2,
     date_of_birth: Faker::Date.birthday(min_age: 20, max_age: 60),
     gender: rand(3),
     living_country_status: rand(3),
@@ -394,6 +397,6 @@ language = ["Japanese", "English", "Chinese"]
     user_id: i
   )
   i += 1
-  country = ["JP, CH, US"]
+  country = ["JP", "CH", "US"]
   language = ["Japanese", "English", "Chinese"]
 end
