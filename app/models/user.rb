@@ -2,7 +2,8 @@ class User < ApplicationRecord
 
   devise :database_authenticatable, :registerable,
           :recoverable, :rememberable, :validatable,
-          :confirmable, :lockable, :timeoutable, :trackable #, :omniauthable
+          :lockable, :timeoutable, :trackable
+          #:confirmable, :omniauthable
 
   has_one :user_detail, dependent: :destroy
   accepts_nested_attributes_for :user_detail, allow_destroy: true

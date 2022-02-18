@@ -8,6 +8,7 @@ ENV RAILS_APP langamer
 
 # setup
 RUN apt-get update -qq && apt-get install -y postgresql-client
+RUN apt install -y vim
 RUN apt install -y nginx
 ENV APP_ROOT /workspace
 
@@ -29,9 +30,9 @@ RUN bundle install
 
 RUN yarn add jquery
 
-
 # githubの公開キーのコピー
 ADD .ssh /root/.ssh
 RUN chmod 600 /root/.ssh
 
 EXPOSE 3000
+# EXPOSE 80

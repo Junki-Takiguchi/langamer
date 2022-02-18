@@ -1,3 +1,5 @@
+# Capistranoでデプロイするための設定ファイル
+
 # config valid only for current version of Capistrano
 lock '3.16.0'
 
@@ -21,8 +23,8 @@ set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets public/uploads}
 # 保持するバージョンの個数(※後述)
 set :keep_releases, 5
 # Rubyのバージョン
-#set :rbenv_ruby, '3.0.3'
-#set :rbenv_type, :system
+set :rbenv_ruby, '3.0.3'
+set :rbenv_type, :system
 
 # 出力するログのレベル。エラーログを詳細に見たい場合は :debug に設定する。
 # 本番環境用のものであれば、 :info程度が普通。

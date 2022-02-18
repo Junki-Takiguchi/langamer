@@ -6,7 +6,7 @@ GamePlatform.create!(name: "Nintendo Switch" )
 user = User.create!(
   email: "test01@gmail.com",
   password: "test01",
-  confirmed_at: Time.now,
+  # confirmed_at: Time.now,
   admin: false
 )
 UserDetail.create!(
@@ -56,7 +56,7 @@ Recruitment.create!(
 user2 = User.create!(
   email: "test02@gmail.com",
   password: "test02",
-  confirmed_at: Time.now,
+  # confirmed_at: Time.now,
   admin: false
 )
 UserDetail.create!(
@@ -106,7 +106,7 @@ Recruitment.create!(
 user3 = User.create!(
   email: "test03@gmail.com",
   password: "test03",
-  confirmed_at: Time.now,
+  # confirmed_at: Time.now,
   admin: false
 )
 UserDetail.create!(
@@ -156,7 +156,7 @@ Recruitment.create!(
 user4 = User.create!(
   email: "test04@gmail.com",
   password: "test04",
-  confirmed_at: Time.now,
+  # confirmed_at: Time.now,
   admin: false
 )
 UserDetail.create!(
@@ -244,7 +244,7 @@ FriendRelation.create!(
 admin = User.create!(
   email: 'admin01@gmail.com',
   password: 'admin01',
-  confirmed_at: Time.now,
+  # confirmed_at: Time.now,
   admin: true
 )
 UserDetail.create!(
@@ -331,22 +331,25 @@ FriendRelation.create!(
   status: 2
 )
 
-i = 5
-country = ["JP, CH, US"]
+i = 6
+country = ["JP", "CH", "US"]
 language = ["Japanese", "English", "Chinese"]
 
-57.times do
+30.times do
   User.create!(
     email: Faker::Internet.email,
     password: SecureRandom.urlsafe_base64,
-    confirmed_at: Time.now,
+    # confirmed_at: Time.now,
     admin: false
   )
+  c1 = country.sample
+  country.delete(c1)
+  c2 = country.sample
   UserDetail.create!(
     account_name: Faker::Name.name,
     self_introduction: Faker::Quote.famous_last_words,
-    living_country: country.sample,
-    native_country: country.sample,
+    living_country: c1,
+    native_country: c2,
     date_of_birth: Faker::Date.birthday(min_age: 20, max_age: 60),
     gender: rand(3),
     living_country_status: rand(3),
@@ -394,6 +397,6 @@ language = ["Japanese", "English", "Chinese"]
     user_id: i
   )
   i += 1
-  country = ["JP, CH, US"]
+  country = ["JP", "CH", "US"]
   language = ["Japanese", "English", "Chinese"]
 end
