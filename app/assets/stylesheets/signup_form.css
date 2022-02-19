@@ -1,0 +1,38 @@
+.signup-form {
+	background-color: white;
+	margin-top: 300px;
+	margin-bottom: 300px;
+	padding: 20px;
+}
+
+.main-image {
+	background-image: url("/theme/main-image.jpg");
+	height: 100%;
+	background-size: cover;
+}
+
+.guest-login {
+	margin-bottom: 5px;
+}
+
+#logo {
+	margin-top: 105px;
+	font-family: "Anton", sans-serif;
+	text-align: center;
+	font-size: 12.5rem;
+	color: forestgreen;
+}
+
+#explanation {
+	font-family: "Hina Mincho", serif;
+	margin-top: 50px;
+	padding-left: 5px;
+	padding-bottom: 5px;
+	background-color: rgba(240, 255, 240, 0.4);
+	font-size: 2.5rem;
+}
+
+#explanation-title {
+	font-size: 5rem;
+	margin-bottom: 5px;
+}
