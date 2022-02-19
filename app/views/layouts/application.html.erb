@@ -34,10 +34,11 @@
       <% if alert.present? %><p class="alert"><%= alert %></p><% end %>
     <% end %>
     <%= yield %>
-    <% if user_signed_in? %>
-      <footer class="p-3 mb-2 bg-transparent text-dark">
-        <p>Copyright © 2022 Langamer All RIGHTS RESERVED.
-      </footer>
+    <% if user_signed_in? %>%>
+      <div class="border-top footer-border"></div>
     <% end %>
+    <footer class="p-5 bg-transparent text-dark">
+      <p id="copyright">Copyright © 2022 Langamer All RIGHTS RESERVED.</p>
+    </footer>
   </body>
 </html>

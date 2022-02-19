@@ -40,11 +40,18 @@ header {
 	height: 50px;
 }
 
+.footer-border {
+	margin-top: 40px;
+}
+
 footer {
-	position: absolute;
 	text-align: center;
 	line-height: 25px;
 	bottom: 0;
+}
+
+#copyright {
+	margin: 0;
 }
 
 .contents {
