@@ -1,0 +1,36 @@
+.information {
+	padding-top: 80px;
+	text-align: center;
+}
+
+.search-data {
+	padding-top: 60px;
+}
+
+.recruitment-post {
+	text-align: center;
+}
+
+.img-position {
+	float: left;
+	padding-top: 15px;
+	margin-left: 30px;
+}
+
+.recruitment-img {
+	width: 75px;
+	height: auto; /* ←縦横比を維持する高さを自動計算 */
+}
+
+.article-user-name {
+	font-size: 1.8rem;
+	margin: 0;
+}
+.article-title {
+	font-size: 2rem;
+	margin: 0;
+}
+
+.pagination {
+	justify-content: center;
+}

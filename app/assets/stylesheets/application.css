@@ -16,9 +16,26 @@
 html {
 	font-size: 62.5%;
 }
-body {
-	font-size: 1.5rem;
-	height: 100%;
+@media (prefers-color-scheme: dark) {
+	body {
+		font-size: 1.5rem;
+		height: 100%;
+		background-color: rgb(39, 39, 39);
+		color: rgb(198, 207, 200);
+	}
+}
+
+.contents {
+	background-color: rgb(65, 65, 65);
+	padding: 20px 30px;
+}
+
+a {
+	text-decoration: none;
+	color: rgb(198, 207, 200);
+}
+a:hover {
+	color: azure;
 }
 
 .container {
@@ -38,6 +55,25 @@ header {
 	position: fixed;
 	top: 0px;
 	height: 50px;
+	padding: 5px 0px;
+	margin-top: 3px;
+	background-color: rgb(39, 39, 39);
+}
+
+.langamer-logo {
+	font-family: "Anton", sans-serif;
+	color: forestgreen;
+	font-size: 2.5rem;
+	padding-bottom: 5px;
+}
+.langamer-logo:hover {
+	color: forestgreen;
+}
+
+.link-btn {
+	font-family: "Shippori Mincho", serif;
+	font-size: 1.5rem;
+	padding-top: 5px;
 }
 
 .footer-border {
@@ -50,12 +86,11 @@ footer {
 	bottom: 0;
 }
 
-#copyright {
-	margin: 0;
+.page-title {
+	padding-top: 60px;
+	text-align: center;
 }
 
-.contents {
-	padding: 100px 30px;
-	background-color: #e9f1fb;
-	height: 100%;
+#copyright {
+	margin: 0;
 }
