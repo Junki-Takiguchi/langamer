@@ -13,3 +13,42 @@
  *= require_tree .
  *= require_self
  */
+html {
+	font-size: 62.5%;
+}
+body {
+	font-size: 1.5rem;
+	height: 100%;
+}
+
+.container {
+	width: 100%;
+}
+
+.row {
+	width: 100%;
+}
+
+header,
+footer {
+	width: 100%;
+}
+
+header {
+	position: fixed;
+	top: 0px;
+	height: 50px;
+}
+
+footer {
+	position: absolute;
+	text-align: center;
+	line-height: 25px;
+	bottom: 0;
+}
+
+.contents {
+	padding: 100px 30px;
+	background-color: #e9f1fb;
+	height: 100%;
+}
