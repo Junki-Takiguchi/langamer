@@ -1,41 +1,40 @@
 <div class="container">
   <div class="row">
     <div class="col-md-3">
-      <div class="information">
-        <div class="contents">
-          <% if notice.present? %><p class="notice text-info"><%= notice %></p><% end %>
-          <% if alert.present? %><p class="alert text-danger"><%= alert %></p><% end %>
-          <% if current_user.count_application(current_user) > 0 %>
-            <%= link_to "フレンド申請が#{current_user.count_application(current_user)}件届いています。", friend_relations_path, class: "text-info" %><br/>
-          <% end %>
-          <% if current_user.check_newly_arrived_messages(current_user) == true %>
-            <%= link_to "新着のメッセージが届いています。", chat_rooms_path, class: "text-info" %>
-          <% end %>
-        </div>
-      </div>
     </div>
     <div class="col-md-6">
       <h1 class="page-title">投稿一覧画面</h1>
     </div>
     <div class="col-md-3">
-      <div class="information d-grid gap-2 d-md-block">
-        <%= button_to "新しく募集を作成する", new_recruitment_path, method: :get, class: "btn btn-secondary btn-lg" %>
-      </div>
     </div>
   </div>
 </div>
 <div class="container">
   <div class="row">
     <div class="col-md-3">
+      <div class="information new-post d-grid gap-2 d-md-block">
+        <%= button_to "新しく募集を作成する", new_recruitment_path, method: :get, class: "p-3 btn btn-success btn-lg w-75" %>
+      </div>
       <div class="search-data">
         <div class="contents">
-          <h3>検索</h3>
+          <h3 class="form-label">検索</h3>
           <%= search_form_for @search, url: search_recruitments_path, method: :search do |f| %>
             <%= f.search_field :title_or_content_or_user_games_name_or_user_user_detail_self_introduction_cont, placeholder: "キーワード検索", class: 'form-control form-awesome' %><br />
-            <%= f.label :user_games_game_relations_game_platform_name_eq, 'ゲームプラットフォーム' %> <%= f.collection_select :user_games_game_relations_game_platform_name_eq, @game_platform_list, :name, :name,  include_blank: '-------------------', class: 'form-control form-awesome' %><br />
-            <%= f.label :user_learn_languages_learn_language_eq, '学習中の言語' %> <%= f.collection_select :user_learn_languages_learn_language_eq, @learn_language_list, :learn_language, :learn_language,  include_blank: '-----------------', class: 'form-control form-awesome' %><br />
-            <%= f.label :user_speak_languages_speak_language_eq, '話せる言語' %> <%= f.collection_select :user_speak_languages_speak_language_eq, @speak_language_list, :speak_language, :speak_language,  include_blank: '-----------------', class: 'form-control form-awesome' %><br />
-            <%= f.submit '検索' %>
+            <div class="search-box">
+              <%= f.label :user_games_game_relations_game_platform_name_eq, 'ゲームプラットフォーム', class: "form-label" %>
+              <%= f.collection_select :user_games_game_relations_game_platform_name_eq, @game_platform_list, :name, :name,  include_blank: '-------------------', class: 'form-control form-awesome' %>
+            </div>
+            <div class="search-box">
+              <%= f.label :user_learn_languages_learn_language_eq, '学習中の言語', class: "text-padding-left form-label" %>
+              <%= f.collection_select :user_learn_languages_learn_language_eq, @learn_language_list, :learn_language, :learn_language,  include_blank: '-----------------', class: 'form-control form-awesome' %>
+            </div>
+            <div class="search-box">
+              <%= f.label :user_speak_languages_speak_language_eq, '話せる言語', class: "text-padding-left form-label" %>
+              <%= f.collection_select :user_speak_languages_speak_language_eq, @speak_language_list, :speak_language, :speak_language,  include_blank: '-----------------', class: 'form-control form-awesome' %>
+            </div>
+            <div class="search-box search-button">
+              <%= f.submit '検索', class: "btn btn-success btn-lg w-25" %>
+            </div>
           <% end %>
         </div>
       </div>
@@ -51,11 +50,12 @@
                 <%= image_tag recruitment.user.user_detail.profile_picture.url, class: 'recruitment-img' %>
               </div>
               <div class="main-article">
-                <div class="contents">
-                  <p class='article-user-name'>
-                    <%= recruitment.user.user_detail.account_name %>  <%= recruitment.relative_post_date(recruitment.updated_at) %>
-                  </p>
+                <div class='article-content'>
+                  <p class='article-user-name'><%= recruitment.user.user_detail.account_name %></p>
                   <p class='article-title'><%= recruitment.title %></p>
+                </div>
+                <div class='article-date'>
+                  <%= recruitment.relative_post_date(recruitment.updated_at) %>
                 </div>
               </div>
             <% end %>
@@ -66,6 +66,18 @@
       <%= paginate @recruitments %>
     </div>
     <div class="col-md-3">
+      <div class="information info-field">
+        <div class="contents">
+          <% if notice.present? %><p class="notice text-info"><%= notice %></p><% end %>
+          <% if alert.present? %><p class="alert text-danger"><%= alert %></p><% end %>
+          <% if current_user.count_application(current_user) > 0 %>
+            <%= link_to "フレンド申請が#{current_user.count_application(current_user)}件届いています。", friend_relations_path, class: "text-info" %><br/>
+          <% end %>
+          <% if current_user.check_newly_arrived_messages(current_user) == true %>
+            <%= link_to "新着のメッセージが届いています。", chat_rooms_path, class: "text-info" %>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
 </div>

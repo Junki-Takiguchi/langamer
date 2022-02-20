@@ -1,10 +1,31 @@
 .information {
-	padding-top: 80px;
 	text-align: center;
+}
+
+.new-post {
+	padding-top: 30px;
+}
+
+.info-field {
+	padding-top: 7px;
+	margin-left: 20px;
 }
 
 .search-data {
 	padding-top: 60px;
+}
+
+.search-box {
+	margin: 5px;
+}
+
+.text-padding-left {
+	margin-right: 10px;
+}
+
+.search-button {
+	text-align: right;
+	margin-top: 25px;
 }
 
 .recruitment-post {
@@ -22,12 +43,29 @@
 	height: auto; /* ←縦横比を維持する高さを自動計算 */
 }
 
-.article-user-name {
-	font-size: 1.8rem;
-	margin: 0;
+.main-article {
+	background-color: rgb(65, 65, 65);
+	padding: 22px 25px 54px 100px;
 }
+
+.article-content {
+	float: left;
+}
+
+.article-user-name {
+	font-size: 1.3rem;
+	margin-bottom: 6px;
+}
+
 .article-title {
+	text-align: left;
 	font-size: 2rem;
+	margin-left: 20px;
+}
+
+.article-date {
+	text-align: right;
+	font-size: 1.2rem;
 	margin: 0;
 }
 
