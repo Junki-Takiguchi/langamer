@@ -71,3 +71,8 @@
 .before-render {
 	margin-bottom: 10px;
 }
+
+.danger-button {
+	text-align: right;
+	margin-top: 5px;
+}
