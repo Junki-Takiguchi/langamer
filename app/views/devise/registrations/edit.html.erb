@@ -1,4 +1,15 @@
-<h2>ユーザー情報編集</h2>
+<div>
+  <h1 class="page-title">ユーザー情報編集</h1>
+</div>
+<!-- <div class="container-fluid main-contents">
+<div class="container main-contents">
+  <div class="row">
+    <div class="col-md-1">
+    </div>
+    <div class="col-md-2">
+      <div class="recruitment-img">
+
+-->
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>

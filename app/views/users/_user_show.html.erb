@@ -89,7 +89,7 @@
           <div class="profile-content">
             <p class="content-padding"><%= @profile.gender %>
               <% if current_user.id == @user.id %>
-                | <%= @profile.gender_status %> %>
+                | <%= @profile.gender_status %>
               <% end %>
             </p>
           </div>
@@ -106,7 +106,22 @@
     <% end %>
   </div>
 </div>
-<div>
+
+<% if @profile.self_introduction.present?%>
+  <div>
+    <h1 class="page-title">自己紹介</h1>
+  </div>
+  <div class="container main-contents">
+  <div class="row">
+    <div class="col-md-3">
+    </div>
+    <div class="col-md-7 profile-field">
+      <%= @profile.self_introduction %>
+    </div>
+    <div class="col-md-2">
+    </div>
+  </div>
+<% end %>
   <h1 class="page-title">言語情報</h1>
 </div>
 <div class="container main-contents">
