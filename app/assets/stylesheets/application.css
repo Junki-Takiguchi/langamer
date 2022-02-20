@@ -25,6 +25,14 @@ html {
 	}
 }
 
+.form-control {
+	font-size: 1.5rem;
+}
+
+::placeholder {
+	font-size: 1.3rem;
+}
+
 .contents {
 	background-color: rgb(65, 65, 65);
 	padding: 20px 30px;
@@ -87,6 +95,15 @@ footer {
 	margin-top: 55px;
 }
 
+.content_field {
+	margin-bottom: 3px;
+}
+
+.form_box {
+	margin-bottom: 10px;
+	text-align: center;
+}
+
 .select-size-auto {
 	width: auto;
 }
@@ -94,4 +111,9 @@ footer {
 #copyright {
 	margin: 0;
 	color: rgb(198, 207, 200);
+}
+
+.basic-button {
+	text-align: right;
+	margin-top: 25px;
 }
