@@ -1,18 +1,10 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-3">
-    </div>
-    <div class="col-md-6">
+<div>
       <h1 class="page-title">投稿一覧画面</h1>
-    </div>
-    <div class="col-md-3">
-    </div>
-  </div>
 </div>
-<div class="container">
+<div class="container main-contents">
   <div class="row">
-    <div class="col-md-3">
-      <div class="information new-post d-grid gap-2 d-md-block">
+    <div class="col-lg-3">
+      <div class="information new-post d-grid gap-2 d-lg-block">
         <%= button_to "新しく募集を作成する", new_recruitment_path, method: :get, class: "p-3 btn btn-success btn-lg w-75" %>
       </div>
       <div class="search-data">
@@ -22,7 +14,7 @@
             <%= f.search_field :title_or_content_or_user_games_name_or_user_user_detail_self_introduction_cont, placeholder: "キーワード検索", class: 'form-control form-awesome' %><br />
             <div class="search-box">
               <%= f.label :user_games_game_relations_game_platform_name_eq, 'ゲームプラットフォーム', class: "form-label" %>
-              <%= f.collection_select :user_games_game_relations_game_platform_name_eq, @game_platform_list, :name, :name,  include_blank: '-------------------', class: 'form-control form-awesome' %>
+              <%= f.collection_select :user_games_game_relations_game_platform_name_eq, @game_platform_list, :name, :name,  include_blank: '-------------------', class: 'form-control form-awesome select-size-auto' %>
             </div>
             <div class="search-box">
               <%= f.label :user_learn_languages_learn_language_eq, '学習中の言語', class: "text-padding-left form-label" %>
@@ -38,10 +30,11 @@
           <% end %>
         </div>
       </div>
+      <br />
     </div>
-    <div class="col-md-1">
+    <div class="col-lg-1">
     </div>
-    <div class="col-md-5">
+    <div class="col-lg-5">
       <% @recruitments.each do |recruitment| %>
         <% unless FriendRelation.check_block_status(current_user.id, recruitment.user_id) %>
           <article class="recruitment-post">
@@ -65,7 +58,7 @@
       <% end %>
       <%= paginate @recruitments %>
     </div>
-    <div class="col-md-3">
+    <div class="col-lg-3">
       <div class="information info-field">
         <div class="contents">
           <% if notice.present? %><p class="notice text-info"><%= notice %></p><% end %>
