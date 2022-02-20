@@ -67,3 +67,7 @@
 .pagination {
 	justify-content: center;
 }
+
+.before-render {
+	margin-bottom: 10px;
+}
