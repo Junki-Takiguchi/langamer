@@ -1,0 +1,31 @@
+.recruitment-img {
+	width: 75px;
+	height: auto;
+	margin-bottom: 30px;
+}
+
+.profile-field {
+	background-color: rgb(65, 65, 65);
+	padding: 20px;
+}
+
+.profile-title {
+	float: left;
+	text-align: left;
+	padding-top: 15px;
+	width: 30%;
+}
+
+.profile-content {
+	padding-top: 15px;
+	text-align: left;
+}
+
+.content-padding {
+	padding-left: 103px;
+}
+
+.button-padding {
+	padding-top: 27px;
+	padding-left: 20px;
+}

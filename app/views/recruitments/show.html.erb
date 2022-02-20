@@ -21,11 +21,11 @@
         <p class="form-control"><%= @recruitment.content %></p>
       </div>
       <% if current_user.id == @user.id %>
-        <div class="form_box basic-button">
+        <div class="basic-button">
           <%= button_to "投稿編集", "/recruitments/#{@recruitment.id}/edit", method: :get, class: "btn btn-success btn-lg w-15" %>
         </div>
-        <div class="basic-button">
-          <%= button_to "投稿削除", "/recruitments/#{@recruitment.id}", { method: :delete, class: "btn btn-success btn-lg w-15", data: { confirm: '本当に削除しますか？' } } %>
+        <div class="danger-button">
+          <%= button_to "投稿削除", "/recruitments/#{@recruitment.id}", { method: :delete, class: "btn btn-danger btn-lg w-15", data: { confirm: '本当に削除しますか？' } } %>
         </div>
       <% end %>
     </div>
