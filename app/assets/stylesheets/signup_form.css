@@ -16,7 +16,7 @@
 }
 
 #logo {
-	margin-top: 105px;
+	margin-top: 120px;
 	font-family: "Anton", sans-serif;
 	text-align: center;
 	font-size: 12.5rem;
@@ -25,9 +25,10 @@
 
 #explanation {
 	font-family: "Hina Mincho", serif;
-	margin-top: 50px;
-	padding-left: 5px;
-	padding-bottom: 5px;
+	margin-top: 85px;
+	padding-left: 53px;
+	padding-top: 10px;
+	padding-bottom: 15px;
 	background-color: rgba(240, 255, 240, 0.4);
 	font-size: 2.5rem;
 }
