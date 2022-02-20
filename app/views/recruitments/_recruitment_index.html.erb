@@ -1,5 +1,5 @@
 <div>
-      <h1 class="page-title">投稿一覧画面</h1>
+  <h1 class="page-title">投稿一覧画面</h1>
 </div>
 <div class="container main-contents">
   <div class="row">
@@ -24,7 +24,7 @@
               <%= f.label :user_speak_languages_speak_language_eq, '話せる言語', class: "text-padding-left form-label" %>
               <%= f.collection_select :user_speak_languages_speak_language_eq, @speak_language_list, :speak_language, :speak_language,  include_blank: '-----------------', class: 'form-control form-awesome' %>
             </div>
-            <div class="search-box search-button">
+            <div class="search-box basic-button">
               <%= f.submit '検索', class: "btn btn-success btn-lg w-25" %>
             </div>
           <% end %>
@@ -61,13 +61,13 @@
     <div class="col-lg-3">
       <div class="information info-field">
         <div class="contents">
-          <% if notice.present? %><p class="notice text-info"><%= notice %></p><% end %>
+          <% if notice.present? %><p class="notice text-warning"><%= notice %></p><% end %>
           <% if alert.present? %><p class="alert text-danger"><%= alert %></p><% end %>
           <% if current_user.count_application(current_user) > 0 %>
-            <%= link_to "フレンド申請が#{current_user.count_application(current_user)}件届いています。", friend_relations_path, class: "text-info" %><br/>
+            <%= link_to "フレンド申請が#{current_user.count_application(current_user)}件届いています。", friend_relations_path, class: "text-warning" %><br/>
           <% end %>
           <% if current_user.check_newly_arrived_messages(current_user) == true %>
-            <%= link_to "新着のメッセージが届いています。", chat_rooms_path, class: "text-info" %>
+            <%= link_to "新着のメッセージが届いています。", chat_rooms_path, class: "text-warning" %>
           <% end %>
         </div>
       </div>
