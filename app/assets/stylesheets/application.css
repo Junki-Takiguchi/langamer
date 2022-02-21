@@ -33,6 +33,14 @@ html {
 	font-size: 1.3rem;
 }
 
+.form-control,
+.form-control:focus,
+select,
+input,
+textarea {
+	background-color: rgb(215, 215, 215);
+}
+
 .contents {
 	background-color: rgb(65, 65, 65);
 	padding: 20px 30px;
