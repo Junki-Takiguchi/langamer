@@ -1,12 +1,39 @@
-<h1>チャット一覧画面</h1>
-<div class="information">
-  <% @chat_users.each do |chat_user| %>
-    <% if FriendRelation.check_friend_status(current_user, chat_user) == true %>
-      <div class="chat-room">
-        <%= link_to chat_message_path(chat_user.user.id) do %>
-          <%= image_tag chat_user.profile_picture.small.url %> <%= chat_user.account_name %>
-        <% end %>
-      </div>
-    <% end %>
-  <% end %>
+<div>
+  <h1 class="page-title">チャット一覧</h1>
 </div>
+<% @chat_users.each do |chat_user| %>
+  <% if FriendRelation.check_friend_status(current_user, chat_user) == true %>
+    <div class="container main-contents">
+      <div class="row">
+        <div class="col-lg-3">
+        </div>
+        <div class="col-lg-6">
+          <div class="chatroom-box">
+            <%= link_to chat_message_path(chat_user.user.id) do %>
+              <div class="chat_img-position">
+                <%= image_tag chat_user.profile_picture.url, size: '70x70' %>
+              </div>
+              <div class="main-chatroom-content">
+                <% message = ChatRoom.get_newly_message(current_user, chat_user) %>
+                <% if message.present? %>
+                  <div class="chatroom-name-box">
+                    <p class='chatroom-name'><%= chat_user.account_name %></p>
+                  </div>
+                  <div class="new-message">
+                    <p class="chat-message"><%= message %></p>
+                  </div>
+                <% else %>
+                  <div class="chatroom-name-box-false">
+                    <p class='chatroom-name'><%= chat_user.account_name %></p>
+                  </div>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        <div class="col-lg-3">
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>

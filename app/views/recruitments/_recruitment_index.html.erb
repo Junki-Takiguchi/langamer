@@ -13,7 +13,6 @@
               <%= link_to "フレンド申請が#{current_user.count_application(current_user)}件届いています。", friend_relations_path, class: "text-warning" %><br/>
             <% end %>
             <% if current_user.check_newly_arrived_messages(current_user) %>
-              <% binding.pry %>
               <%= link_to "新着のメッセージが届いています。", chat_rooms_path, class: "text-warning" %>
             <% end %>
           </div>

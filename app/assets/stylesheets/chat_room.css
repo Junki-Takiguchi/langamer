@@ -1,0 +1,36 @@
+.chatroom-box {
+	text-align: center;
+}
+
+.chat_img-position {
+	float: left;
+	padding-top: 25px;
+	margin-left: 30px;
+}
+
+.main-chatroom-content {
+	background-color: rgb(65, 65, 65);
+	padding: 20px 20px 20px 105px;
+}
+
+.chat-message {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.chatroom-name-box {
+	text-align: left;
+	padding-top: 6px;
+	margin-left: 10px;
+}
+
+.chatroom-name {
+	font-size: 2rem;
+}
+
+.chatroom-name-box-false {
+	text-align: left;
+	margin-left: 10px;
+	margin-bottom: 48px;
+}
