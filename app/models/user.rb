@@ -60,8 +60,11 @@ class User < ApplicationRecord
   def check_newly_arrived_messages(current_user)
     current_user.chat_rooms.each do |chat_room|
       chat_room.messages.each do | message |
-        return true if message.user_id != current_user.id && message.read == "未読"
+        if message.user_id != current_user.id && message.read == "未読"
+          break true
+        end
       end
+    return false
     end
   end
 

@@ -11,7 +11,7 @@
   <% elsif FriendRelation.are_you_applicant?(current_user, user) %>
     <%= form_with(model: current_user.friend_relations.find_by(to_target_id: user.id), method: :delete ) do |f| %>
       <%= f.hidden_field :to_target_id %>
-      <%= f.submit "申請をキャンセル", data: { confirm: "申請をキャンセルしますか？", class: 'btn btn-danger btn-lg w-75'}  %>
+      <%= f.submit "申請をキャンセル", class: 'btn btn-danger btn-lg w-75', data: { confirm: "申請をキャンセルしますか？"}  %>
     <% end %>
   <!-- 申請中かつ自分が申請を受け取ったの場合 -->
   <% elsif FriendRelation.are_you_receiver?(current_user, user)%>
@@ -25,7 +25,7 @@
       <%= f.hidden_field :status, value: "ブロック" %>
       <%= f.hidden_field :to_target_id, value: current_user.id %>
       <%= f.hidden_field :from_applicant_id, value: user.id %>
-      <%= f.submit "申請を却下", data: { confirm: "申請を却下します。よろしいですか？", class: 'btn btn-warning btn-lg w-75' }  %>
+      <%= f.submit "申請を却下", class: 'btn btn-warning btn-lg w-75', data: { confirm: "申請を却下します。よろしいですか？" }  %>
     <% end %>
   <!-- フレンドの場合 -->
   <% elsif FriendRelation.get_friend_info(current_user, user) == true && FriendRelation.check_friend_status(current_user, user) %>
@@ -33,14 +33,14 @@
       <%= f.hidden_field :status, value: "ブロック" %>
       <%= f.hidden_field :to_target_id, value: user.id %>
       <%= f.hidden_field :from_applicant_id, value: current_user.id %>
-      <%= f.submit "フレンドを解除", data: { confirm: "フレンドを解除しますか？", class: 'btn btn-danger btn-lg w-75'} %>
+      <%= f.submit "フレンドを解除", class: 'btn btn-danger btn-lg w-75', data: { confirm: "フレンドを解除しますか？"} %>
     <% end %>
   <% elsif FriendRelation.get_friend_info(current_user, user) == false && FriendRelation.check_friend_status(current_user, user) %>
     <%= form_with(model: user.friend_relations.find_by(to_target_id: current_user.id), method: :patch ) do |f| %>
       <%= f.hidden_field :status, value: "ブロック" %>
       <%= f.hidden_field :to_target_id, value: current_user.id %>
       <%= f.hidden_field :from_applicant_id, value: user.id %>
-      <%= f.submit "フレンドを解除", data: { confirm: "フレンドを解除しますか？", class: 'btn btn-danger btn-lg w-75'} %>
+      <%= f.submit "フレンドを解除", class: 'btn btn-danger btn-lg w-75', data: { confirm: "フレンドを解除しますか？"} %>
     <% end %>
   <% else %>
   <% end %>
