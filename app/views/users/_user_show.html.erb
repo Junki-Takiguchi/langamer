@@ -3,8 +3,6 @@
 </div>
 <div class="container main-contents">
   <div class="row">
-    <div class="col-md-1">
-    </div>
     <div class="col-md-2">
       <div class="recruitment-img">
         <%= image_tag @profile.profile_picture.large.url %>
@@ -15,7 +13,7 @@
         </div>
       <% end %>
     </div>
-    <div class="col-md-7 profile-field">
+    <div class="col-md-8 profile-field">
       <div class="form_box">
         <div class="profile-title">
           <p>アカウント名：</p>
@@ -100,7 +98,7 @@
       <%= render './friend_relations/friend_request', user: user = @user %><br/>
     </div>
     <% if current_user != @user && FriendRelation.check_friend_status(current_user, @user) %>
-      <div class="col-md-2 button-padding">
+      <div class="button-padding">
         <%= link_to 'チャット', chat_message_path(@user.id) %>
       </div>
     <% end %>
@@ -111,12 +109,12 @@
   <div>
     <h1 class="page-title">自己紹介</h1>
   </div>
-  <div class="container main-contents">
+  <div class="container">
   <div class="row">
-    <div class="col-md-3">
+    <div class="col-md-2">
     </div>
-    <div class="col-md-7 profile-field">
-      <%= @profile.self_introduction %>
+    <div class="col-md-8 show-content">
+      <%= safe_join(@profile.self_introduction.split("\n"), tag(:br, class: "form-control textarea-show-box") ) %>
     </div>
     <div class="col-md-2">
     </div>
@@ -124,14 +122,13 @@
 <% end %>
   <h1 class="page-title">言語情報</h1>
 </div>
-<div class="container main-contents">
+<div class="container">
   <div class="row">
-    <div class="col-md-3">
+    <div class="col-md-2">
     </div>
-    <div class="col-md-7 profile-field">
+    <div class="col-md-8 profile-field">
       <% @learn_languages.each do |learn_language| %>
         <% if @user.release_info(current_user, @user, learn_language.learn_language, learn_language.learn_language_status ) == true %>
-          <br />
           <div class="form_box">
             <div class="profile-title">
               <p>学習中の言語：</p>
@@ -148,7 +145,6 @@
       <% end %>
       <% @speak_languages.each do |speak_language| %>
         <% if @user.release_info(current_user, @user, speak_language.speak_language, speak_language.speak_language_status ) == true %>
-          <br />
           <div class="form_box">
             <div class="profile-title">
               <p>話せる言語：</p>
@@ -171,13 +167,12 @@
 <div>
   <h1 class="page-title">プレイ可能なゲーム</h1>
 </div>
-<div class="container main-contents">
+<div class="container">
   <div class="row">
-    <div class="col-md-3">
+    <div class="col-md-2">
     </div>
-    <div class="col-md-7 profile-field">
+    <div class="col-md-8 profile-field">
       <% @games.each do |game| %>
-        <br />
         <div class="form_box">
           <div class="profile-title">
             <p><%= game.game_relation_game_platforms[0].name %>:</p>
@@ -195,11 +190,11 @@
 <div>
   <h1 class="page-title">外部アカウント</h1>
 </div>
-<div class="container main-contents">
+<div class="container">
   <div class="row">
-    <div class="col-md-3">
+    <div class="col-md-2">
     </div>
-    <div class="col-md-7 profile-field">
+    <div class="col-md-8 profile-field">
       <% if @game_account.twitter_id.present? && @user.release_info(current_user, @user, @game_account.twitter_id, @game_account.twitter_id_status ) == true %>
         <div class="form_box">
           <div class="profile-title">
@@ -213,7 +208,6 @@
             </p>
           </div>
         </div>
-      <br />
       <% end %>
       <% if @game_account.discord_id.present? && @user.release_info(current_user, @user, @game_account.discord_id, @game_account.discord_id_status ) == true %>
         <div class="form_box">
@@ -332,7 +326,6 @@
               <% end %>
             </p>
           </div>
-        </div>
       <% end %>
     </div>
     <div class="col-md-2 button-padding">

@@ -38,7 +38,7 @@ html {
 select,
 input,
 textarea {
-	background-color: rgb(215, 215, 215);
+	background-color: rgb(245, 245, 245);
 }
 
 .contents {
@@ -52,6 +52,10 @@ a {
 }
 a:hover {
 	color: azure;
+}
+
+ul {
+	list-style-type: none;
 }
 
 .container {
@@ -110,6 +114,16 @@ footer {
 .form_box {
 	margin-bottom: 10px;
 	text-align: center;
+}
+
+.textarea-show-box {
+	text-align: left;
+}
+
+.show-content {
+	color: black;
+	background-color: rgb(190, 190, 190) !important;
+	padding: 10px 20px;
 }
 
 .select-size-auto {
