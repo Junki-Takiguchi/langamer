@@ -1,5 +1,8 @@
-require 'rails_helper'
+# bundle exec rspec spec/models/recruitment_spec.rb
 
-RSpec.describe Recruitment, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+require 'rails_helper'
+describe '募集投稿機能', type: :model do
+  before do
+    FactoryBot.create(:user)
+  end
 end
