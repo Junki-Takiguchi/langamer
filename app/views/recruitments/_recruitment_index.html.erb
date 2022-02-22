@@ -4,27 +4,38 @@
 <div class="container main-contents">
   <div class="row">
     <div class="col-lg-3">
-      <div class="information new-post d-grid gap-2 d-lg-block">
-        <%= button_to "新しく募集を作成する", new_recruitment_path, method: :get, class: "p-3 btn btn-success btn-lg w-75" %>
-      </div>
+      <% if notice.present? || alert.present? || (current_user.count_application(current_user) > 0) || current_user.check_newly_arrived_messages(current_user) %>
+        <div class="information info-field">
+          <div class="contents">
+            <% if notice.present? %><p class="notice text-warning"><%= notice %></p><% end %>
+            <% if alert.present? %><p class="alert text-danger"><%= alert %></p><% end %>
+            <% if current_user.count_application(current_user) > 0 %>
+              <%= link_to "フレンド申請が#{current_user.count_application(current_user)}件届いています。", friend_relations_path, class: "text-warning" %><br/>
+            <% end %>
+            <% if current_user.check_newly_arrived_messages(current_user) %>
+              <%= link_to "新着のメッセージが届いています。", chat_rooms_path, class: "text-warning" %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
       <div class="search-data">
         <div class="contents">
           <h3 class="form-label">検索</h3>
           <%= search_form_for @search, url: search_recruitments_path, method: :search do |f| %>
             <%= f.search_field :title_or_content_or_user_games_name_or_user_user_detail_self_introduction_cont, placeholder: "キーワード検索", class: 'form-control form-awesome' %><br />
             <div class="search-box">
-              <%= f.label :user_games_game_relations_game_platform_name_eq, 'ゲームプラットフォーム', class: "form-label" %>
+              <%= f.label :user_games_game_relations_game_platform_name_eq, 'ゲームプラットフォーム', class: "form-label" %><br />
               <%= f.collection_select :user_games_game_relations_game_platform_name_eq, @game_platform_list, :name, :name,  include_blank: '-------------------', class: 'form-control form-awesome select-size-auto' %>
             </div>
             <div class="search-box">
-              <%= f.label :user_learn_languages_learn_language_eq, '学習中の言語', class: "text-padding-left form-label" %>
+              <%= f.label :user_learn_languages_learn_language_eq, '学習中の言語', class: "text-padding-left form-label" %><br />
               <%= f.collection_select :user_learn_languages_learn_language_eq, @learn_language_list, :learn_language, :learn_language,  include_blank: '-----------------', class: 'form-control form-awesome' %>
             </div>
             <div class="search-box">
-              <%= f.label :user_speak_languages_speak_language_eq, '話せる言語', class: "text-padding-left form-label" %>
+              <%= f.label :user_speak_languages_speak_language_eq, '話せる言語', class: "text-padding-left form-label" %><br />
               <%= f.collection_select :user_speak_languages_speak_language_eq, @speak_language_list, :speak_language, :speak_language,  include_blank: '-----------------', class: 'form-control form-awesome' %>
             </div>
-            <div class="search-box basic-button">
+            <div class="basic-button">
               <%= f.submit '検索', class: "btn btn-success btn-lg" %>
             </div>
           <% end %>
@@ -59,17 +70,8 @@
       <%= paginate @recruitments %>
     </div>
     <div class="col-lg-3">
-      <div class="information info-field">
-        <div class="contents">
-          <% if notice.present? %><p class="notice text-warning"><%= notice %></p><% end %>
-          <% if alert.present? %><p class="alert text-danger"><%= alert %></p><% end %>
-          <% if current_user.count_application(current_user) > 0 %>
-            <%= link_to "フレンド申請が#{current_user.count_application(current_user)}件届いています。", friend_relations_path, class: "text-warning" %><br/>
-          <% end %>
-          <% if current_user.check_newly_arrived_messages(current_user) == true %>
-            <%= link_to "新着のメッセージが届いています。", chat_rooms_path, class: "text-warning" %>
-          <% end %>
-        </div>
+      <div class="information new-post d-grid gap-2 d-lg-block">
+        <%= button_to "新しく募集を作成する", new_recruitment_path, method: :get, class: "p-3 btn btn-success btn-lg w-75" %>
       </div>
     </div>
   </div>

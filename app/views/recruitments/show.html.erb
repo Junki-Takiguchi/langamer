@@ -12,20 +12,23 @@
     <div class="col-lg-1">
     </div>
     <div class="col-lg-10 contents">
-      <div class="form_box">
-        <h2 class="content_field form-label">タイトル</h2>
-        <p class="form-control"><%= @recruitment.title %></p>
+      <div>
+        <h2 class="content_field form-label recruitment-title">タイトル</h2>
+        <p class="form-control show-content"><%= @recruitment.title %></p>
       </div>
-      <div class="form_box">
-        <h2 class="content_field form-label">募集内容</h2>
-        <p class="form-control"><%= @recruitment.content %></p>
+      <div>
+        <h2 class="content_field form-label recruitment-title">募集内容</h2>
+        <div class="show-content">
+          <%= safe_join(@recruitment.content.split("\n"), tag(:br, class: "form-control textarea-show-box") ) %>
+        </div>
+        <!-- <p class="form-control show-content"><%#= @recruitment.content %></p> -->
       </div>
       <% if current_user.id == @user.id %>
         <div class="basic-button">
-          <%= button_to "投稿編集", "/recruitments/#{@recruitment.id}/edit", method: :get, class: "btn btn-success btn-lg w-15" %>
+          <%= button_to "投稿編集", "/recruitments/#{@recruitment.id}/edit", method: :get, class: "btn btn-success btn-lg w-25" %>
         </div>
         <div class="danger-button">
-          <%= button_to "投稿削除", "/recruitments/#{@recruitment.id}", { method: :delete, class: "btn btn-danger btn-lg w-15", data: { confirm: '本当に削除しますか？' } } %>
+          <%= button_to "投稿削除", "/recruitments/#{@recruitment.id}", { method: :delete, class: "btn btn-danger btn-lg w-25", data: { confirm: '本当に削除しますか？' } } %>
         </div>
       <% end %>
     </div>

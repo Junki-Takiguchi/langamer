@@ -15,17 +15,16 @@
 <% end %>
 <div class="container main-contents">
   <div class="row">
-    <div class="col-md-3">
+    <div class="col-md-2">
     </div>
-    <div class="col-md-7 profile-field">
+    <div class="col-md-8 profile-field">
       <% @recruitments.each do |recruitment| %>
         <br />
         <div class="form_box">
-          <div class="profile-content">
-            <%= link_to recruitment.title, recruitment_path(recruitment.id), class: "recruitment-title content-padding" %>
+          <div class="profile-post">
+            <%= link_to recruitment.title, recruitment_path(recruitment.id), class: "recruitment-title" %>
           </div>
         </div>
-        <br/>
       <% end %>
     </div>
     <div class="col-md-2 button-padding">

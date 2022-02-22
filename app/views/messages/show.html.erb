@@ -40,9 +40,9 @@
                   </tbody>
                 <% end %>
               <% end %>
-              <%= paginate @messages %>
               </div>
             </table>
+            <%= paginate @messages %>
             <%= form_with model: @message, remote: true do |f| %>
               <%= f.text_field :message %>
               <%= f.hidden_field :chat_room_id %>
