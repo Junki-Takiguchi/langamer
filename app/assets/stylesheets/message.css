@@ -1,0 +1,91 @@
+.message-container {
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+	width: 100%;
+}
+
+.message-title-container {
+	margin-bottom: 40px;
+}
+.left-th {
+	text-align: left;
+}
+.right-th {
+	text-align: right;
+	margin-left: 10px;
+}
+
+.w95 {
+	width: 95%;
+}
+
+.left-name-title {
+	font-size: 1.8rem;
+	padding-left: 15%;
+}
+.right-name-title {
+	font-size: 1.8rem;
+	padding-right: 15%;
+}
+
+.left-content {
+	font-size: 1.8rem;
+}
+.right-content {
+	font-size: 1.8rem;
+}
+
+.message-img-position {
+	float: left;
+	padding-top: 15px;
+	margin-left: 15px;
+}
+
+.message-img {
+	width: 75px;
+	height: auto;
+}
+
+.main-message-box {
+	background-color: rgb(65, 65, 65);
+	padding: 20px 20px 20px 100px;
+	width: 95%;
+	margin-bottom: 20px;
+}
+
+.message-user {
+	float: left;
+}
+
+.post-time {
+	text-align: right;
+}
+
+.message-text {
+	margin: 0;
+	padding: 10px 20px;
+	background-color: rgb(201, 201, 201);
+	color: rgb(29, 29, 29);
+	font-size: 1.6rem;
+	overflow-wrap: break-word;
+	word-wrap: break-word;
+}
+
+.left-message-text {
+	text-align: left;
+}
+
+.message-date {
+	padding-right: 5px;
+}
+
+.left-box,
+.right-box {
+	width: 50%;
+}
+
+.message-table {
+	width: 100%;
+	table-layout: fixed;
+}

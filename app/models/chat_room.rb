@@ -2,6 +2,15 @@ class ChatRoom < ApplicationRecord
   has_many :participants
   has_many :messages
 
+  def last_time(room, current_user)
+    last_message = room.messages.where.not(user_id: current_user.id).last
+    if last_message.present?
+      time = last_message.created_at
+    else
+      time = room.created_at
+    end
+  end
+
   def get_speaker(room, current_user)
     speaker_id = room.participants.where.not(user_id: current_user.id).pluck(:user_id)
     @speaker = UserDetail.find_by(user_id: speaker_id)

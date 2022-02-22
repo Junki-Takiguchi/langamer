@@ -1,55 +1,108 @@
-<div class="container">
-    <div class="row">
-        <div class="col-xs-6">
-            <h2><%= @profile.account_name %>とのメッセージ</h2>
-            <table class="message">
-              <thead>
-                <tr>
-                  <th style="text-align: left; font-size: 20px;"><%= @profile.account_name %></th>
-                  <th style="text-align: right; font-size: 20px;"><%= current_user.user_detail.account_name %></th>
-                </tr>
-              </thead>
-              <div class="scroll-list jscroll">
-              <% @messages.each do |comment| %>
-                <% unless comment.user_id == current_user.id %>
-                  <% comment.update_status(comment) if comment.read == "未読" %>
-                  <tbody>
-                    <tr>
-                      <th>
-                        <div class="post_message">
-                          <%= image_tag @profile.profile_picture.middle.url %>
-                          <%= @profile.account_name %>
-                          <p style="text-align: left;"><%= comment.message %></p>
-                        </div>
-                      </th>
-                      <th></th>
-                    </tr>
-                  </tbody>
-                <% else %>
-                  <tbody>
-                    <tr>
-                      <th></th>
-                      <th>
-                        <div class="post_message">
-                          <%= image_tag current_user.user_detail.profile_picture.middle.url %>
-                          <%= current_user.user_detail.account_name %>
-                          <p style="text-align: right;"><%= comment.message %></p>
-                        </div>
-                      </th>
-                    </tr>
-                  </tbody>
-                <% end %>
-              <% end %>
-              </div>
-            </table>
-            <%= paginate @messages %>
-            <%= form_with model: @message, remote: true do |f| %>
-              <%= f.text_field :message %>
-              <%= f.hidden_field :chat_room_id %>
-              <%= f.submit "送信", class:"btn btn-sm btn-success message-btn" %>
-            <% end %>
-        </div>
+<div>
+  <h1 class="page-title"><%= @profile.account_name %>とのメッセージ</h1>
+</div>
+<div class="container main-contents message-title-container">
+  <div class="row">
+    <div class="col-md-1">
     </div>
+    <div class="col-md-10">
+      <table class="message-container message-table">
+        <tr>
+          <th class="left-box left-th left-name-title"><%= @profile.account_name %></th>
+          <th class="right-box right-th right-name-title"><%= current_user.user_detail.account_name %></th>
+        </tr>
+      </table>
+    </div>
+    <div class="col-md-1">
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-1">
+    </div>
+    <div class="col-md-10">
+      <table class="message-container message-table">
+        <% @messages.each do |comment| %>
+          <% unless comment.user_id == current_user.id %>
+            <% comment.update_status(comment) if comment.read == "未読" %>
+              <tr>
+                <th class="left-box">
+                  <div class="post_message">
+                    <div class="message-img-position">
+                      <%= image_tag @profile.profile_picture.url, class: 'message-img' %>
+                    </div>
+                    <div class="main-message-box left-th w95">
+                      <div class="message-user">
+                        <p class="message-user-name"><%= @profile.account_name %></p>
+                      </div>
+                      <div class="post-time">
+                        <p class='message-date'><%= comment.relative_post_date(comment.created_at) %></p>
+                      </div>
+                      <div>
+                        <p class="message-text"><%= comment.message %></p>
+                      </div>
+                    </div>
+                  </div>
+                </th>
+                <th class="right-box">
+                  <div class="w95">
+                  </div>
+                </th>
+              </tr>
+            <% else %>
+              <tr>
+                <th class="left-box">
+                  <div class="w95">
+                  </div>
+                </th>
+                <th class="right-box">
+                  <div class="post_message">
+                    <div class="message-img-position">
+                      <%= image_tag current_user.user_detail.profile_picture.url, class: 'message-img' %>
+                    </div>
+                    <div class="main-message-box right-th w95">
+                      <div class="message-user">
+                        <p class="message-user-name"><%= current_user.user_detail.account_name %></p>
+                      </div>
+                      <div class="post-time">
+                        <p class="message-date"><%= comment.relative_post_date(comment.created_at) %></p>
+                      </div>
+                      <div>
+                        <p class="message-text left-message-text"><%= comment.message %></p>
+                      </div>
+                    </div>
+                  </div>
+                </th>
+              </tr>
+            <% end %>
+          <% end %>
+        </div>
+      </table>
+    <%= paginate @messages %><br />
+    </div>
+    <div class="col-md-1">
+    </div>
+  </div>
+</div>
+<div class="container main-contents">
+  <div class="row">
+    <div class="col-md-3">
+    </div>
+    <div class="col-md-6 contents">
+      <%= form_with model: @message, remote: true do |f| %>
+        <div class="form_box">
+          <%= f.text_area :message, size: "8x6", placeholder: "コメントを入力してください。", class: "form-control overflow-auto"  %>
+          <%= f.hidden_field :chat_room_id %>
+        </div>
+        <div class="form_box basic-button">
+          <%= f.submit "送信", class:"btn btn-success btn-lg w-25" %>
+        </div>
+      <% end %>
+    </div>
+    <div class="col-md-3">
+    </div>
+  </div>
 </div>
 <script>
   $(function() {

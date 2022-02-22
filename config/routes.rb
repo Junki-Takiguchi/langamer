@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :users, only: [:index, :update, :show]
+  resources :users, only: [:update, :show]
   resources :friend_relations, only: [:index, :create, :update, :destroy]
   patch 'friend_relation/:id', to: 'friend_relations#index'
   resources :chat_rooms, only: [:index]
