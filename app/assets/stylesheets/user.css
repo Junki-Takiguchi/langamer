@@ -1,0 +1,85 @@
+.recruitment-img {
+	width: 75px;
+	height: auto;
+	margin-bottom: 30px;
+}
+
+.profile-field {
+	background-color: rgb(65, 65, 65);
+	padding: 20px;
+}
+
+.profile-title {
+	float: left;
+	text-align: left;
+	/* padding-top: 15px; */
+	width: 30%;
+}
+
+.profile-content {
+	/* padding-top: 15px; */
+	text-align: left;
+}
+
+.profile-post {
+	text-align: center;
+}
+
+.content-padding {
+	padding-left: 103px;
+}
+
+.button-padding {
+	padding-top: 27px;
+	padding-left: 20px;
+}
+
+.file-text {
+	background-color: rgb(39, 39, 39) !important;
+}
+
+.edit-profile {
+	margin-bottom: 10px;
+}
+
+.btn-lg {
+	padding: 0.5rem;
+}
+
+.user-margin-bottom {
+	margin-bottom: 20px;
+}
+
+.language-margin {
+	margin-right: 20px;
+}
+
+.left-fit-box {
+	margin-left: 68px;
+}
+.bottom-fit-box {
+	margin-bottom: 8px;
+}
+
+.btn-position {
+	margin: 0;
+	text-align: right;
+}
+.update-btn,
+.delete-btn {
+	margin-top: 15px;
+}
+.update-btn {
+	width: 130px;
+}
+.delete-btn {
+	width: 95px;
+}
+
+.user-margin-top {
+	margin-top: 19px;
+}
+
+.edit-prof {
+	padding-left: 6px;
+}

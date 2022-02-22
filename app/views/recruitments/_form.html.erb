@@ -1,22 +1,42 @@
-<%= form_with(model: @recruitment, local: true) do |form| %>
-  <% if @recruitment.errors.any? %>
-    <div id="error_explanation">
-      <p class="error"><%= @recruitment.errors.count %>件のエラーがあります。</p>
-      <ul>
-        <% @recruitment.errors.full_messages.each do |msg| %>
-          <li class="error"><%= msg %></li>
-        <% end %>
-      </ul>
+<% if @recruitment.errors.any? %>
+  <div class="container main-contents">
+    <div class="row">
+      <div class="col-lg-1">
+      </div>
+      <div class="col-lg-10">
+        <div id="error_explanation">
+          <ul>
+            <% @recruitment.errors.full_messages.each do |msg| %>
+              <li class="alert alert-danger"><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-1">
+      </div>
     </div>
-  <% end %>
-  <div class="recruitment_post">
-    <p class="main-info-post"><%= form.label "タイトル" %></p>
-    <p class="main-info-post"><%= form.text_field :title, id: 'recruitment_title' %></p>
   </div>
-  <div class="recruitment_post">
-    <p class="main-info-post"><%= form.label "募集内容" %></p>
-    <p class="main-info-post"><%= form.text_field :content, id: 'recruitment_content' %></p>
-  </div>
-  <p class="main-info-post"><%= form.submit '登録する', id: '登録する' %></p>
 <% end %>
-<p class="main-info-post"><%= link_to "TOPに戻る", recruitments_path %></p>
+<div class="container main-contents">
+  <div class="row">
+    <div class="col-lg-1">
+    </div>
+    <div class="col-lg-10 contents">
+      <%= form_with(model: @recruitment, local: true) do |form| %>
+        <div class="form_box">
+          <%= form.label "タイトル", class: "content_field form-label" %>
+          <%= form.text_field :title, id: 'recruitment_title', placeholder: "タイトルを入力してください。", class: "form-control" %>
+        </div>
+        <div class="form_box">
+          <%= form.label "募集内容", class: "content_field form-label" %></p>
+          <%= form.text_area :content, size: "30x20", id: 'recruitment_content', placeholder: "募集する内容を入力してください。", class: "form-control overflow-auto" %>
+        </div>
+        <div class="form_box basic-button">
+          <%= form.submit '登録する', id: '登録する', class: "btn btn-success btn-lg w-15" %>
+        </div>
+      <% end %>
+    </div>
+    <div class="col-lg-1 ">
+    </div>
+  </div>
+</div>

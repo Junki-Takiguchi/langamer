@@ -16,9 +16,46 @@
 html {
 	font-size: 62.5%;
 }
-body {
+@media (prefers-color-scheme: dark) {
+	body {
+		font-size: 1.5rem;
+		height: 100%;
+		background-color: rgb(39, 39, 39);
+		color: rgb(198, 207, 200);
+	}
+}
+
+.form-control {
 	font-size: 1.5rem;
-	height: 100%;
+}
+
+::placeholder {
+	font-size: 1.3rem;
+}
+
+.form-control,
+.form-control:focus,
+select,
+input,
+textarea {
+	background-color: rgb(245, 245, 245);
+}
+
+.contents {
+	background-color: rgb(65, 65, 65);
+	padding: 20px 30px;
+}
+
+a {
+	text-decoration: none;
+	color: rgb(198, 207, 200);
+}
+a:hover {
+	color: azure;
+}
+
+ul {
+	list-style-type: none;
 }
 
 .container {
@@ -29,26 +66,84 @@ body {
 	width: 100%;
 }
 
-header,
-footer {
-	width: 100%;
+.header {
+	background-color: rgb(39, 39, 39);
 }
 
-header {
-	position: fixed;
-	top: 0px;
-	height: 50px;
+.langamer-logo {
+	font-family: "Anton", sans-serif;
+	color: forestgreen !important;
+	font-size: 2.5rem;
+	padding-left: 15px;
+	padding-bottom: 5px;
+}
+.langamer-logo:hover {
+	color: forestgreen;
+}
+
+.header-left {
+	padding-right: 5px;
+}
+.nav-item {
+	padding-right: 15px;
+}
+
+.link-btn {
+	font-family: "Shippori Mincho", serif;
+	font-size: 1.5rem;
+	padding-top: 5px;
+}
+
+.footer-border {
+	margin-top: 40px;
 }
 
 footer {
-	position: absolute;
 	text-align: center;
 	line-height: 25px;
 	bottom: 0;
+	width: 100%;
 }
 
-.contents {
-	padding: 100px 30px;
-	background-color: #e9f1fb;
-	height: 100%;
+.page-title {
+	padding-top: 62px;
+	margin-bottom: 25px;
+	text-align: center;
+}
+
+.main-contents {
+	margin-top: 55px;
+}
+
+.content_field {
+	margin-bottom: 3px;
+}
+
+.form_box {
+	margin-bottom: 10px;
+	text-align: center;
+}
+
+.textarea-show-box {
+	text-align: left;
+}
+
+.show-content {
+	color: black;
+	background-color: rgb(190, 190, 190) !important;
+	padding: 10px 20px;
+}
+
+.select-size-auto {
+	width: auto;
+}
+
+#copyright {
+	margin: 0;
+	color: rgb(198, 207, 200);
+}
+
+.basic-button {
+	text-align: right;
+	margin-top: 25px;
 }

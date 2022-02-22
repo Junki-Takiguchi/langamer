@@ -24,6 +24,7 @@ class FriendRelationsController < ApplicationController
     if params[:friend_relation][:status] == "フレンド"
       create_participant_table
       @user = @from_applicant
+      redirect_to chat_rooms_path
     else
       redirect_to recruitments_path
     end

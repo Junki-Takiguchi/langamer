@@ -22,7 +22,7 @@ class RecruitmentsController < ApplicationController
       render :new
     else
       if @recruitment.save
-        redirect_to recruitments_path, notice: "新規募集を投稿しました。"
+        redirect_to recruitments_path, notice: "募集文を投稿しました。"
       else
         render :new
       end

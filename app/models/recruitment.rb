@@ -1,7 +1,7 @@
 class Recruitment < ApplicationRecord
   belongs_to :user
-  validates :title, presence: true, length: { maximum: 32}
-  validates :content, presence: true, length: { maximum: 1000}
+  validates :title, presence: true, length: { maximum: 128}
+  validates :content, presence: true, length: { maximum: 3000}
 
   def relative_post_date(updated_at)
     sec = (Time.zone.now - updated_at).round

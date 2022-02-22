@@ -1,5 +1,0 @@
-  <h2>ユーザー</h2>
-  <% @users.each do |user| %>
-    <%= user.email %>
-    <%= render './friend_relations/friend_request', user: user %>
-  <% end %>

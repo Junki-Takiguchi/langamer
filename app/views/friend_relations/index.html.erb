@@ -1,13 +1,28 @@
-<h1>フレンド申請一覧</h1>
-<div class="friend-request-list">
-  <% @friend_requests.each do |request| %>
-    <div class="request">
-      <%= link_to user_path(request.from_applicant_id) do %>
-        <%= image_tag request.from_applicant.user_detail.profile_picture.small.url %>
-        <%= request.from_applicant.user_detail.account_name %>
-      <% end %>
-      <!-- <%#= render './friend_relations/friend_request', user: user = @user %><br/> -->
-      <%= render 'friend_request', user: user = request.from_applicant %><br/>
-    </div>
-  <% end %>
+<div>
+  <h1 class="page-title">フレンド申請一覧</h1>
 </div>
+<% @friend_requests.each do |request| %>
+  <div class="container main-contents">
+    <div class="row">
+      <div class="col-sm-4 friend-empty-box">
+      </div>
+      <div class="col-sm-4">
+        <div class="chatroom-box">
+          <%= link_to user_path(request.from_applicant_id) do %>
+            <div class="friend_img-position">
+              <%= image_tag request.from_applicant.user_detail.profile_picture.url, size: '60x60' %>
+            </div>
+            <div class="main-friend-content">
+              <div class="friend-name-box">
+                <%= request.from_applicant.user_detail.account_name %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="col-sm-4 friend-empty-box friend-request-btn">
+          <%= render 'friend_request', user: user = request.from_applicant %><br/>
+      </div>
+    </div>
+  </div>
+<% end %>
