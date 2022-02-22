@@ -74,10 +74,18 @@ ul {
 	font-family: "Anton", sans-serif;
 	color: forestgreen !important;
 	font-size: 2.5rem;
+	padding-left: 15px;
 	padding-bottom: 5px;
 }
 .langamer-logo:hover {
 	color: forestgreen;
+}
+
+.header-left {
+	padding-right: 5px;
+}
+.nav-item {
+	padding-right: 15px;
 }
 
 .link-btn {

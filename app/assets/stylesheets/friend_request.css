@@ -1,0 +1,27 @@
+.request-btn {
+	margin-bottom: 5px;
+}
+
+.friend-empty-box {
+	margin: 0;
+	padding: 0;
+}
+
+.friend-request-btn {
+	width: 15%;
+}
+
+.friend_img-position {
+	float: left;
+	padding-top: 6px;
+	margin-left: 30px;
+}
+
+.main-friend-content {
+	background-color: rgb(65, 65, 65);
+	padding: 25px 20px 25px 105px;
+}
+
+.friend-name-box {
+	text-align: left;
+}
