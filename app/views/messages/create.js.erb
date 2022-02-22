@@ -4,7 +4,7 @@ $('.message').append('<tbody>\
                         <th></th>\
                         <th>\
                           <div class="post_message">\
-                            <%= image_tag current_user.user_detail.profile_picture.middle.url %>\
+                            <%= image_tag current_user.user_detail.profile_picture.url %>\
                             <%= current_user.user_detail.account_name %>\
                             <p style="text-align: right;"><%= @message.message %></p>\
                           </div>\

@@ -27,6 +27,8 @@ class User < ApplicationRecord
   has_many :applicant, through: :friend_relations, source: :to_target
   has_many :reverse_of_target, through: :reverse_of_relations, source: :from_applicant
 
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  validates :email, {presence: true, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }}
 
 
   def send_friend_request!(other_user)

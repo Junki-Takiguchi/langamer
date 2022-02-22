@@ -21,6 +21,7 @@
 	text-align: center;
 	font-size: 12.5rem;
 	color: forestgreen;
+	text-shadow: 1px 1px 1px black;
 }
 
 #explanation {
@@ -31,6 +32,7 @@
 	padding-bottom: 15px;
 	background-color: rgba(240, 255, 240, 0.4);
 	font-size: 2.5rem;
+	text-shadow: 1px 1px 1px black;
 }
 
 #explanation-title {

@@ -54,12 +54,14 @@
                 <%= image_tag recruitment.user.user_detail.profile_picture.url, class: 'recruitment-img' %>
               </div>
               <div class="main-article">
-                <div class='article-content'>
+                <div class='article-user'>
                   <p class='article-user-name'><%= recruitment.user.user_detail.account_name %></p>
-                  <p class='article-title'><%= recruitment.title %></p>
                 </div>
-                <div class='article-date'>
-                  <%= recruitment.relative_post_date(recruitment.updated_at) %>
+                <div class='article-time'>
+                  <p class="article-date"><%= recruitment.relative_post_date(recruitment.updated_at) %></p>
+                </div>
+                <div>
+                  <p class='article-title'><%= recruitment.title %></p>
                 </div>
               </div>
             <% end %>
