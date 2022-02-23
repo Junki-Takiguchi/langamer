@@ -335,7 +335,7 @@ i = 6
 country = ["JP", "CH", "US"]
 language = ["Japanese", "English", "Chinese"]
 
-30.times do
+10.times do
   User.create!(
     email: Faker::Internet.email,
     password: SecureRandom.urlsafe_base64,

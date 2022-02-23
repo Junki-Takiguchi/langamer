@@ -11,7 +11,7 @@ module Langamer
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.yml').to_s]
     config.active_model.i18n_customize_full_message = true # 追記
     config.generators do |g|
-      g.test_framework :rspec,
+                        g.test_framework :rspec,
                         model_specs: true,
                         view_specs: false,
                         helper_specs: false,

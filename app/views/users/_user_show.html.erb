@@ -5,7 +5,7 @@
   <div class="row">
     <div class="col-md-2">
       <div class="recruitment-img">
-        <%= image_tag @profile.profile_picture.large.url %>
+        <%= image_tag @profile.profile_picture.url, size: '100x100' %>
       </div>
       <% if current_user.id == @user.id %>
         <div class="recruitment-img">
