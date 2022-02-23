@@ -7,6 +7,9 @@ module Langamer
     config.load_defaults 6.0
     config.time_zone = 'Tokyo'
     config.active_record.default_timezone = :local
+    config.i18n.default_locale = :ja
+    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.yml').to_s]
+    config.active_model.i18n_customize_full_message = true # 追記
     config.generators do |g|
       g.test_framework :rspec,
                         model_specs: true,

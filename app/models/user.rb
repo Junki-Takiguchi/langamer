@@ -60,14 +60,17 @@ class User < ApplicationRecord
   end
 
   def check_newly_arrived_messages(current_user)
-    current_user.chat_rooms.each do |chat_room|
-      messages = chat_room.messages.order(created_at: "DESC")
-      new_message = messages.where(read: "未読").where.not(user_id: current_user.id)
-      if new_message.present?
-        return true
-      else
-        return false
+    if current_user.chat_rooms.present?
+      current_user.chat_rooms.each do |chat_room|
+        messages = chat_room.messages.order(created_at: "DESC")
+        new_message = messages.where(read: "未読").where.not(user_id: current_user.id)
+        if new_message.present?
+          return true
+        else
+          return false
+        end
       end
     end
   end
+
 end

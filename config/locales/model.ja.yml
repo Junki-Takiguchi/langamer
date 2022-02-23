@@ -1,54 +1,87 @@
 ja:
   activerecord:
     models:
-      user: ユーザー
-      user_detail: ユーザー詳細
-      speak_language: 話す言語
-      learn_language: 学習中の言語
-      game: ゲーム
-      game_platform: ゲームプラットフォーム
-      game_account: ゲームアカウント
-      chat_room: チャットルーム
-      message: メッセージ
-      recruitment: 募集投稿
+      user: "ユーザー"
+      user_detail: "ユーザー詳細"
+      speak_language: "話す言語"
+      learn_language: "学習中の言語"
+      game: "ゲーム"
+      game_platform: "ゲームプラットフォーム"
+      game_account: "ゲームアカウント"
+      chat_room: "チャットルーム"
+      message: "メッセージ"
+      recruitment: "募集投稿"
     attributes:
       user:
-        email: メールアドレス
-        admin: 管理者
-      user_details:
-        account_name: アカウント名
-        profile_picture: プロフィール画像
-        self_introduction: 自己紹介文
-        living_country: 住んでる国
-        native_country: 出身国
-        date_of_birth: 生年月日
-        gender: 性別
+        email: "メールアドレス"
+        admin: "管理者"
+      user_detail:
+        account_name: "アカウント名"
+        profile_picture: "プロフィール画像"
+        self_introduction: "自己紹介文"
+        living_country: "居住地"
+        native_country: "出身地"
+        date_of_birth: "生年月日"
+        gender: "性別"
       speak_language:
-        speak_language: 話す言語
-        rank: 習得レベル
-        speak_language_status: 公開設定
+        speak_language: "話せる言語"
+        rank: "習得レベル"
+        speak_language_status: "公開設定"
       learn_language:
-        learn_language: 学習中の言語
-        rank: 習得レベル
-        learn_language_status: 公開設定
+        learn_language: "学習中の言語"
+        rank: "習得レベル"
+        learn_language_status: "公開設定"
       game:
-        name: ゲーム名
-        game_picture: ゲーム画像
+        name: "ゲーム名"
+        game_picture: "ゲーム画像"
       game_platform:
-        name: ゲーム機
-      game_platform:
-        discord_id: Discord ID
-        steam_id: Steam ID
-        origin_id: origin ID
-        riot_id: RIOT ID
-        psn_id: PSN ID
-        xbox_id: Xbox ID
-        nintendo_id: 任天堂ID
-        other_id: その他のID
-        twitter_id: Twitter ID
+        name: "ゲーム機"
+      game_account:
+        discord_id: "Discord ID"
+        steam_id: "Steam ID"
+        origin_id: "origin ID"
+        riot_id: "RIOT ID"
+        psn_id: "PSN ID"
+        xbox_id: "Xbox ID"
+        nintendo_id: "任天堂ID"
+        other_id: "その他のID"
+        twitter_id: "Twitter ID"
       message:
-        message: メッセージ
-        read: 既読
+        message: "メッセージ"
+        read: "既読"
       recruitment:
-        title: タイトル
-        content: 募集本文
+        title: "タイトル"
+        content: "募集本文"
+    errors:
+      models:
+        user_detail:
+          attributes:
+            account_name:
+              format: "%{message}"
+              blank: "%{attribute}を入力してください。"
+        game_platform:
+          attributes:
+            name:
+              format: "%{message}"
+              blank: "遊べる%{attribute}を選択してください。"
+        game:
+          attributes:
+            name:
+              format: "%{message}"
+              blank: "遊べる%{attribute}を入力してください。"
+        learn_language:
+          attributes:
+            learn_language:
+              format: "%{message}"
+              blank: "%{attribute}を選択してください。"
+            rank:
+              format: "%{message}"
+              blank: "学んでる言語の%{attribute}を選択してください。"
+        speak_language:
+          attributes:
+            speak_language:
+              format: "%{message}"
+              blank: "%{attribute}を選択してください。"
+            rank:
+              format: "%{message}"
+              blank: "学んでる言語の%{attribute}を選択してください。"

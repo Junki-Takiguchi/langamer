@@ -20,7 +20,7 @@ FactoryBot.define do
     living_country_status { rand(3) }
     native_country_status { rand(3) }
     gender_status { rand(3) }
-    user_id { User.find_by(admin: true) }
+    user_id { User.find_by(admin: true).id }
   end
 
   factory :admin_learn_language, class: LearnLanguage do
@@ -29,7 +29,7 @@ FactoryBot.define do
     learn_language { n }
     rank { rand(4) }
     learn_language_status { rand(3) }
-    user_id { User.find_by(admin: true) }
+    user_id { User.find_by(admin: true).id }
   end
 
   factory :admin_speak_language, class: SpeakLanguage do
@@ -39,18 +39,18 @@ FactoryBot.define do
     speak_language { n }
     rank { "ネイティブ" }
     speak_language_status { rand(3) }
-    user_id { User.find_by(admin: true) }
+    user_id { User.find_by(admin: true).id }
   end
 
   factory :admin_game_account, class: GameAccount do
     discord_id { Faker::Number.number(digits: 12) }
     twitter_id { Faker::Number.number(digits: 12) }
-    user_id { User.find_by(admin: true) }
+    user_id { User.find_by(admin: true).id }
   end
 
   factory :admin_game, class: Game do
     name { Faker::Game.title }
-    user_id { User.find_by(admin: true) }
+    user_id { User.find_by(admin: true).id }
   end
 
   factory :game_platform, class: GamePlatform do
@@ -85,7 +85,7 @@ FactoryBot.define do
     living_country_status { rand(3) }
     native_country_status { rand(3) }
     gender_status { rand(3) }
-    user_id { User.find_by(admin: false) }
+    user_id { User.find_by(admin: false).id }
   end
 
   factory :user_learn_language, class: LearnLanguage do
@@ -94,7 +94,7 @@ FactoryBot.define do
     learn_language { n }
     rank { rand(4) }
     learn_language_status { rand(3) }
-    user_id { User.find_by(admin: false) }
+    user_id { User.find_by(admin: false).id }
   end
 
   factory :user_speak_language, class: SpeakLanguage do
@@ -104,18 +104,18 @@ FactoryBot.define do
     speak_language { n }
     rank { "ネイティブ" }
     speak_language_status { rand(3) }
-    user_id { User.find_by(admin: false) }
+    user_id { User.find_by(admin: false).id }
   end
 
   factory :user_game_account, class: GameAccount do
     discord_id { Faker::Number.number(digits: 12) }
     twitter_id { Faker::Number.number(digits: 12) }
-    user_id { User.find_by(admin: false) }
+    user_id { User.find_by(admin: false).id }
   end
 
   factory :user_game, class: Game do
     name { Faker::Game.title }
-    user_id { User.find_by(admin: false) }
+    user_id { User.find_by(admin: false).id }
   end
 
   factory :user_game_relation, class: GameRelation do

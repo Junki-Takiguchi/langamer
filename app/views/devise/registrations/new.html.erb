@@ -79,7 +79,7 @@
           </div>
           <div class="form_box user-margin-bottom user-margin-top">
             <div class="profile-title">
-              <%= m.label :living_country, '住んでる国', class: "content_field form-label" %>
+              <%= m.label :living_country, '居住地', class: "content_field form-label" %>
             </div>
             <div class="profile-content">
               <%= m.country_select :living_country, class: "form-control" %><br />
@@ -90,7 +90,7 @@
           </div>
           <div class="form_box user-margin-bottom">
             <div class="profile-title">
-              <%= m.label :native_country, '出身国', class: "content_field form-label" %>
+              <%= m.label :native_country, '出身地', class: "content_field form-label" %>
             </div>
             <div class="profile-content">
               <%= m.country_select :native_country, class: "form-control" %><br />
@@ -200,18 +200,18 @@
       <div class="col-md-2">
       </div>
       <div class="col-md-8 profile-field">
-          <%= f.fields_for :games, @user.games.build do |g| %>
-            <div class="form_box user-margin-bottom">
-              <div class="profile-content bottom-fit-box">
-                <%= g.label :name, 'ゲーム名：', class: "left-fit-box" %> <%= g.text_field :name %>
-              </div>
-              <%= g.fields_for :game_relations, @user.games.build.game_relations.build do |r| %>
-                <div class="profile-content">
-                  <%= r.label :game_platform_id, 'ゲームプラットフォーム：' %> <%= r.select :game_platform_id, GamePlatform.all.map { |p| [p.name, p.id] }, { include_blank: '-----------------------'}, {id: 'game_platform_name'} %>
-                </div>
-              <% end %>
+        <%= f.fields_for :games, @user.games.build do |g| %>
+          <div class="form_box user-margin-bottom">
+            <div class="profile-content bottom-fit-box">
+              <%= g.label :name, 'ゲーム名：', class: "left-fit-box" %> <%= g.text_field :name %>
             </div>
-          <% end %>
+            <%= g.fields_for :game_relations, @user.games.build.game_relations.build do |r| %>
+              <div class="profile-content">
+                <%= r.label :game_platform_id, 'ゲームプラットフォーム：' %> <%= r.select :game_platform_id, GamePlatform.all.map { |p| [p.name, p.id] }, { include_blank: '-----------------------'}, {id: 'game_platform_name'} %>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
       </div>
       <div class="col-md-2">
       </div>
