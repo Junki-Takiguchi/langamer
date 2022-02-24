@@ -14,14 +14,6 @@ RSpec.describe '募集投稿機能', type: :system do
   let!(:admin_game_account) { FactoryBot.create(:admin_game_account) }
   let!(:admin_game) { FactoryBot.create(:admin_game) }
   let!(:admin_game_relation) { FactoryBot.create(:admin_game_relation) }
-  before do
-    @user = User.find_by(email: "rspec_user@sample.com")
-    @user_detail = UserDetail.find_by(user_id: @user.id)
-    @user_learn_language = LearnLanguage.find_by(user_id: @user.id)
-    @user_speak_language = SpeakLanguage.find_by(user_id: @user.id)
-    @user_game_account = GameAccount.find_by(user_id: @user.id)
-    @user_game = Game.find_by(user_id: @user.id)
-  end
   describe '募集投稿テスト' do
     context '各フォームに正常値を入れる' do
       it '募集投稿が登録される' do

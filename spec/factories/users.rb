@@ -17,7 +17,7 @@ FactoryBot.define do
     c1 = country.sample
     country.delete(c1)
     c2 = country.sample
-    account_name { Faker::Name.name }
+    account_name { "rspec_admin" }
     self_introduction { Faker::Quote.famous_last_words }
     living_country { c1 }
     native_country { c2 }
@@ -32,14 +32,14 @@ FactoryBot.define do
   factory :admin_learn_language, class: LearnLanguage do
     learn_language { "Japanese" }
     rank { rand(4) }
-    learn_language_status { rand(3) }
+    learn_language_status { "公開" }
     user_id { User.find_by(email: "rspec_admin@sample.com").id }
   end
 
   factory :admin_speak_language, class: SpeakLanguage do
     speak_language { "English" }
     rank { "ネイティブ" }
-    speak_language_status { rand(3) }
+    speak_language_status { "公開" }
     user_id { User.find_by(email: "rspec_admin@sample.com").id }
   end
 
@@ -76,7 +76,7 @@ FactoryBot.define do
     c1 = country.sample
     country.delete(c1)
     c2 = country.sample
-    account_name { Faker::Name.name }
+    account_name { "rspec_user" }
     self_introduction { Faker::Quote.famous_last_words }
     living_country { c1 }
     native_country { c2 }
@@ -91,14 +91,14 @@ FactoryBot.define do
   factory :user_learn_language, class: LearnLanguage do
     learn_language { "Chinese" }
     rank { rand(4) }
-    learn_language_status { rand(3) }
+    learn_language_status { "公開" }
     user_id { User.find_by(email: "rspec_user@sample.com").id }
   end
 
   factory :user_speak_language, class: SpeakLanguage do
     speak_language { "Japanese" }
     rank { "ネイティブ" }
-    speak_language_status { rand(3) }
+    speak_language_status { "公開" }
     user_id { User.find_by(email: "rspec_user@sample.com").id }
   end
 
@@ -122,22 +122,29 @@ FactoryBot.define do
     game_platform_id { 2 }
   end
 
-  factory :friend, class: FriendRelation do
-    from_applicant_id { User.find_by(email: "rspec_user@sample.com").id }
-    to_target_id { User.find_by(email: "rspec_admin@sample.com").id }
-    status { 1 }
+  factory :user02, class: User do
+    email { "rspec_user02@sample.com" }
+    password {'1234567+A'}
+    password_confirmation {'1234567+A'}
+    admin { false }
   end
 
-  factory :applicant, class: FriendRelation do
-    from_applicant_id { User.find_by(email: "rspec_user@sample.com").id }
-    to_target_id { User.find_by(email: "rspec_admin@sample.com").id }
-    status { 2 }
-  end
-
-  factory :target, class: FriendRelation do
-    from_applicant_id { User.find_by(email: "rspec_admin@sample.com").id }
-    to_target_id { User.find_by(email: "rspec_user@sample.com").id }
-    status { 2 }
+  factory :user_detail02, class: UserDetail do
+    profile_picture  {  Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec/fixtures/default.png')) }
+    country = ["JP", "CH", "US"]
+    c1 = country.sample
+    country.delete(c1)
+    c2 = country.sample
+    account_name { "rspec_user02" }
+    self_introduction { Faker::Quote.famous_last_words }
+    living_country { c1 }
+    native_country { c2 }
+    date_of_birth { Faker::Date.birthday(min_age: 20, max_age: 60) }
+    gender { rand(3) }
+    living_country_status { rand(3) }
+    native_country_status { rand(3) }
+    gender_status { rand(3) }
+    user_id { User.find_by(email: "rspec_user02@sample.com").id }
   end
 
 

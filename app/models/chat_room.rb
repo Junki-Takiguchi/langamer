@@ -12,7 +12,7 @@ class ChatRoom < ApplicationRecord
   end
 
   def get_speaker(room, current_user)
-    speaker_id = room.participants.where.not(user_id: current_user.id).pluck(:user_id)
+    speaker_id = room.participants.where.not(user_id: current_user.id).pluck(:user_id)[0]
     @speaker = UserDetail.find_by(user_id: speaker_id)
   end
 

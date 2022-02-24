@@ -1,16 +1,28 @@
 /*.messageを部分更新。appendメソッドで要素を追加 */
-$('.message').append('<tbody>\
-                      <tr>\
-                        <th></th>\
-                        <th>\
-                          <div class="post_message">\
-                            <%= image_tag current_user.user_detail.profile_picture.url %>\
-                            <%= current_user.user_detail.account_name %>\
-                            <p style="text-align: right;"><%= @message.message %></p>\
-                          </div>\
-                        </th>\
-                      </tr>\
-                    </tbody>\
+$('.message').append('<tr>\
+                <th class="left-box">\
+                  <div class="w95">\
+                  </div>\
+                </th>\
+                <th class="right-box">\
+                  <div class="post_message">\
+                    <div class="message-img-position">\
+                      <%= image_tag current_user.user_detail.profile_picture.url, class: 'message-img' %>\
+                    </div>\
+                    <div class="main-message-box right-th w95">\
+                      <div class="message-user">\
+                        <p class="message-user-name"><%= current_user.user_detail.account_name %></p>\
+                      </div>\
+                      <div class="post-time">\
+                        <p class="message-date"><%= Message.find_by(message: params[:message][:message]).relative_post_date(Message.find_by(message: params[:message][:message]).created_at) %></p>\
+                      </div>\
+                      <div>\
+                        <p class="message-text left-message-text"><%= params[:message][:message] %></p>\
+                      </div>\
+                    </div>\
+                  </div>\
+                </th>\
+              </tr>\
 ');
 
 /*チャット投稿後、フォームの値に前回の投稿内容が残らないようにする */

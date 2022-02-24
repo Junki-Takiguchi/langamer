@@ -331,7 +331,7 @@ FriendRelation.create!(
   status: 2
 )
 
-i = 6
+i = 1
 country = ["JP", "CH", "US"]
 language = ["Japanese", "English", "Chinese"]
 

@@ -3,7 +3,7 @@ ja:
     models:
       user: "ユーザー"
       user_detail: "ユーザー詳細"
-      speak_language: "話す言語"
+      speak_languages: "話す言語"
       learn_language: "学習中の言語"
       game: "ゲーム"
       game_platform: "ゲームプラットフォーム"
@@ -15,7 +15,7 @@ ja:
       user:
         email: "メールアドレス"
         admin: "管理者"
-      user_detail:
+      user/user_detail:
         account_name: "アカウント名"
         profile_picture: "プロフィール画像"
         self_introduction: "自己紹介文"
@@ -23,19 +23,19 @@ ja:
         native_country: "出身地"
         date_of_birth: "生年月日"
         gender: "性別"
-      speak_language:
+      user/speak_languages:
         speak_language: "話せる言語"
         rank: "習得レベル"
         speak_language_status: "公開設定"
-      learn_language:
+      user/learn_languages:
         learn_language: "学習中の言語"
         rank: "習得レベル"
         learn_language_status: "公開設定"
-      game:
+      user/games:
         name: "ゲーム名"
         game_picture: "ゲーム画像"
-      game_platform:
-        name: "ゲーム機"
+      user/games/game_relations:
+        game_platform: "ゲームプラットフォーム"
       game_account:
         discord_id: "Discord ID"
         steam_id: "Steam ID"
@@ -58,30 +58,30 @@ ja:
           attributes:
             account_name:
               format: "%{message}"
-              blank: "%{attribute}を入力してください。"
+              blank: "を入力してください。"
         game_platform:
           attributes:
             name:
               format: "%{message}"
-              blank: "遊べる%{attribute}を選択してください。"
+              blank: "を選択してください。"
         game:
           attributes:
             name:
               format: "%{message}"
-              blank: "遊べる%{attribute}を入力してください。"
+              blank: "を入力してください。"
         learn_language:
           attributes:
             learn_language:
               format: "%{message}"
-              blank: "%{attribute}を選択してください。"
+              blank: "を選択してください。"
             rank:
               format: "%{message}"
-              blank: "学んでる言語の%{attribute}を選択してください。"
+              blank: "を選択してください。"
         speak_language:
           attributes:
             speak_language:
               format: "%{message}"
-              blank: "%{attribute}を選択してください。"
+              blank: "を選択してください。"
             rank:
               format: "%{message}"
-              blank: "学んでる言語の%{attribute}を選択してください。"
+              blank: "を選択してください。"

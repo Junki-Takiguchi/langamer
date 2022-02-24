@@ -108,7 +108,7 @@ class RecruitmentsController < ApplicationController
     end
   end
 
-  def set_filter # 追記
+  def set_filter
     @search = Recruitment.ransack(params[:q])
     if params[:q].present?
       @selected_learn_language = params[:q][:user_learn_languages_learn_language_eq]

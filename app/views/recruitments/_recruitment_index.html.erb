@@ -10,7 +10,7 @@
             <% if notice.present? %><p class="notice text-warning"><%= notice %></p><% end %>
             <% if alert.present? %><p class="alert text-danger"><%= alert %></p><% end %>
             <% if current_user.count_application(current_user) > 0 %>
-              <%= link_to "フレンド申請が#{current_user.count_application(current_user)}件届いています。", friend_relations_path, class: "text-warning" %><br/>
+              <%= link_to "フレンド申請が#{current_user.count_application(current_user)}件届いています。", friend_relations_path, class: "text-warning", id: "receive-friend-request" %><br/>
             <% end %>
             <% if current_user.check_newly_arrived_messages(current_user) %>
               <%= link_to "新着のメッセージが届いています。", chat_rooms_path, class: "text-warning" %>
@@ -49,7 +49,7 @@
       <% @recruitments.each do |recruitment| %>
         <% unless FriendRelation.check_block_status(current_user.id, recruitment.user_id) %>
           <article class="recruitment-post">
-            <%= link_to recruitment_path(recruitment.id), class: 'list-recruitments' do %>
+            <%= link_to recruitment_path(recruitment.id), class: 'list-recruitments', id: 'recruit' do %>
               <div class="img-position">
                 <%= image_tag recruitment.user.user_detail.profile_picture.url, class: 'recruitment-img' %>
               </div>
