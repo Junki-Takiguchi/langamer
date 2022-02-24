@@ -31,67 +31,31 @@
 $ git clone https://github.com/Junki-Takiguchi/langamer.git
 ```
 
-2. docker-compose の 24 行目のバインド元の source を上記 1 でクローンしたファイルがあるパスを指定する
-
-3. Docker 用のボリュームを作成する
-
-```
-$ docker volume create --name langamer
-```
-
-4. docker-compose ファイルに記載したパス上で docker-compose コマンドを使い docker コンテナを起動する
-
-```
-$ docker-compose run app
-```
-
-5. 起動した app コンテナのコンソールにアクセスし、バインドマウントしたソースコードのパスに移動する
-
-```
-docker exec -it langamer_app /bin/bash
-```
-
-6. bundle install を実行
+2. bundle install を実行
 
 ```
 $ bundle install
 ```
 
-7. db を作成する
+3. DB の作成
 
 ```
 $ rails db:create
 ```
 
-8. rails server の起動
+4. DB のテストデータを入れる
+
+```
+rails db:seed
+```
+
+5. localhost で Web サーバーを起動
 
 ```
 $ rails server -b 0.0.0.0
 ```
 
-- Note
-  Webpacker::Manifest::MissingEntryError in...
-  というエラーで web ページがうまく立ち上がらないときの対処法
-
-```
-$ rails webpacker:install
-$ rails webpacker:compile
-```
-
-https://qiita.com/shizen-shin/items/38fd774ffc87bc8838c9
-https://prograshi.com/framework/rails/git-clone-webpacker-not-found/
-
-$ jquery のインストールで失敗している場合は別途コンソールから yarn コマンドでインストールします
-
-```
-yarn add jquery
-```
-
-サインイン URL
-http://localhost:3000/users/sign_in
-
-登録確認メール
-http://localhost:3000/letter_opener
+6. localhost からアクセスし、ゲストログインボタンからシステムにアクセスする
 
 - カタログ設計、テーブル定義書の URL
   [カタログ設計、テーブル定義書](https://docs.google.com/spreadsheets/d/12Lw16JhcY7DwdeNVp7J68OEt14decfDoZw2hDI-oTEo/edit?usp=sharing)
@@ -103,7 +67,7 @@ http://localhost:3000/letter_opener
   ![Entity Relationship Diagram](https://user-images.githubusercontent.com/92371564/154703801-d1220428-0695-45ff-916f-26b04ffaaadb.png)
 
 - 画面遷移図のスクリーンショット
-  ![screen_transition_diagram](https://user-images.githubusercontent.com/92371564/151182896-39280e34-a894-4443-b474-7676c9676016.png)
+  ![screen_transition_diagram](https://user-images.githubusercontent.com/92371564/155551216-cca00251-1468-4e44-afa5-0edaae8281fb.png)
 
 - 作成した各ファイルは以下の URL に格納されています。
   [DIC*卒業課題*設計資料](https://drive.google.com/drive/folders/1k4fdALXObLL_1xP7nWCBqqavKQHhvWXM?usp=sharing)
