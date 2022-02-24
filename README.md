@@ -1,5 +1,11 @@
 # README
 
+【アプリケーション名】
+Langamer
+
+公開 URL
+http://18.176.195.123:8080/
+
 - Ruby version
   3.0.3
 
