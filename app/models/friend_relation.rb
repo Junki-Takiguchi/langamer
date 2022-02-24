@@ -52,6 +52,10 @@ class FriendRelation < ApplicationRecord
     FriendRelation.find_by(from_applicant_id: current_user.id, to_target_id: other_user.id, status: "フレンド").present? || FriendRelation.find_by(from_applicant_id: other_user.id, to_target_id: current_user.id, status: "フレンド").present?
   end
 
+  def self.check_friend_status_for_chat(current_user, other_user)
+    FriendRelation.find_by(from_applicant_id: current_user.id, to_target_id: other_user.user_id, status: "フレンド").present? || FriendRelation.find_by(from_applicant_id: other_user.id, to_target_id: current_user.id, status: "フレンド").present?
+  end
+
   def self.check_block_status(current_user, other_user)
     FriendRelation.find_by(from_applicant_id: current_user, to_target_id: other_user, status: "ブロック").present? || FriendRelation.find_by(from_applicant_id: other_user, to_target_id: current_user, status: "ブロック").present?
   end

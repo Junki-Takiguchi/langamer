@@ -2,14 +2,14 @@
   <h1 class="page-title">チャット一覧</h1>
 </div>
 <% @chat_users.each do |chat_user| %>
-  <% if FriendRelation.check_friend_status(current_user, chat_user) == true %>
+  <% if FriendRelation.check_friend_status_for_chat(current_user, chat_user) == true %>
     <div class="container main-contents">
       <div class="row">
         <div class="col-lg-3">
         </div>
         <div class="col-lg-6">
           <div class="chatroom-box">
-            <%= link_to chat_message_path(chat_user.user.id) do %>
+            <%= link_to chat_message_path(chat_user.user.id), id: 'message-box' do %>
               <div class="chat_img-position">
                 <%= image_tag chat_user.profile_picture.url, size: '70x70' %>
               </div>

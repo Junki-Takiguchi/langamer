@@ -33,10 +33,10 @@
               </li>
             <% end %>
             <li class="nav-item">
-              <%= link_to "マイページ", user_path(current_user.id), class: "nav-link link-btn d-flex " %>
+              <%= link_to "マイページ", user_path(current_user.id), class: "nav-link link-btn d-flex", id: "my-page" %>
             </li>
             <li class="nav-item">
-              <%= link_to "メッセージ", chat_rooms_path, class: "nav-link link-btn d-flex" %>
+              <%= link_to "メッセージ", chat_rooms_path, class: "nav-link link-btn d-flex", id: "message-list" %>
             </li>
             <li class="nav-item">
               <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link link-btn d-flex" %>
