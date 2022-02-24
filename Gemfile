@@ -23,10 +23,13 @@ gem 'faker'
 gem 'fog-aws'
 gem 'dotenv-rails'
 gem 'unicorn'
+gem 'factory_bot_rails'
+gem 'devise-i18n'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'pry-byebug'
+  gem 'rspec-rails'
 end
 
 group :development do
@@ -37,11 +40,11 @@ group :development do
   gem 'letter_opener_web'
   gem 'annotate'
   gem 'rails-flog', require: 'flog'
+
 end
 
 group :test do
   gem 'capybara', '>= 2.15'
-  gem 'selenium-webdriver'
   gem 'webdrivers'
 end
 

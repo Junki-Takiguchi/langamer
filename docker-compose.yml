@@ -1,0 +1,44 @@
+version: "3.9"
+services:
+  db:
+    container_name: "langamer_db"
+    hostname: "langamer_db"
+    image: postgres
+    volumes:
+      - type: volume
+        source: langamer_DB_volume
+        target: /var/lib/postgresql/data
+    environment:
+      TZ: "Asia/Tokyo"
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "langamerdb"
+    ports:
+      - 5432:5432
+
+  app:
+    container_name: "langamer_app"
+    hostname: "langamer-app"
+    build: .
+    volumes:
+      - type: bind
+        source: ~/workspace
+        target: /workspace
+    environment:
+      TZ: "Asia/Tokyo"
+      RAILS_ENV: "development"
+      AWS_ACCESS_KEY_ID: "AKIAXNUVV66UKUX6QCFZ"
+      AWS_SECRET_ACCESS_KEY: "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"
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "langamerdb"
+    ports:
+      - 3000:3000
+      # - 8080:80
+    tty: true
+    stdin_open: true
+    depends_on:
+      - db
+
+volumes:
+  bundle:
+    driver: local
+  langamer_DB_volume:

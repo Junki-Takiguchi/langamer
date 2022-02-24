@@ -27,6 +27,8 @@ class User < ApplicationRecord
   has_many :applicant, through: :friend_relations, source: :to_target
   has_many :reverse_of_target, through: :reverse_of_relations, source: :from_applicant
 
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  validates :email, {presence: true, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }}
 
 
   def send_friend_request!(other_user)
@@ -58,14 +60,17 @@ class User < ApplicationRecord
   end
 
   def check_newly_arrived_messages(current_user)
-    current_user.chat_rooms.each do |chat_room|
-      messages = chat_room.messages.order(created_at: "DESC")
-      new_message = messages.where(read: "未読").where.not(user_id: current_user.id)
-      if new_message.present?
-        return true
-      else
-        return false
+    if current_user.chat_rooms.present?
+      current_user.chat_rooms.each do |chat_room|
+        messages = chat_room.messages.order(created_at: "DESC")
+        new_message = messages.where(read: "未読").where.not(user_id: current_user.id)
+        if new_message.present?
+          return true
+        else
+          return false
+        end
       end
     end
   end
+
 end

@@ -23,45 +23,13 @@
 	margin-right: 10px;
 }
 
-.recruitment-post {
-	text-align: center;
-}
-
-.img-position {
-	float: left;
-	padding-top: 15px;
-	margin-left: 30px;
-}
-
 .recruitment-img {
 	width: 75px;
 	height: auto; /* ←縦横比を維持する高さを自動計算 */
 }
 
-.main-article {
-	background-color: rgb(65, 65, 65);
-	padding: 22px 25px 54px 100px;
-}
-
 .article-content {
 	float: left;
-}
-
-.article-user-name {
-	font-size: 1.3rem;
-	margin-bottom: 6px;
-}
-
-.article-title {
-	text-align: left;
-	font-size: 2rem;
-	margin-left: 20px;
-}
-
-.article-date {
-	text-align: right;
-	font-size: 1.2rem;
-	margin: 0;
 }
 
 .pagination {
@@ -85,4 +53,47 @@
 
 .search-btn {
 	width: 75px;
+}
+
+.recruitment-post {
+	/*
+	text-align: center;
+	*/
+}
+
+.img-position {
+	float: left;
+	padding-top: 23px;
+	margin-left: 21px;
+}
+
+.main-article {
+	background-color: rgb(65, 65, 65);
+	padding: 20px 20px 20px 100px;
+	margin-bottom: 15px;
+}
+
+.article-user {
+	float: left;
+	margin-left: 10px;
+}
+
+.article-user-name {
+}
+
+.article-time {
+	text-align: right;
+}
+.article-date {
+	padding-right: 5px;
+}
+
+.article-title {
+	margin: 0;
+	padding: 10px 20px;
+	font-size: 1.6rem;
+	text-align: left;
+	/*
+	margin-left: 20px;
+			*/
 }
