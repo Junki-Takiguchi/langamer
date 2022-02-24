@@ -25,10 +25,10 @@ Capybara.register_driver :selenium_remote do |app|
         desired_capabilities: Selenium::WebDriver::Remote::Capabilities.chrome(
             chromeOptions: {
                 args: [
-                    'window-size=500,500', #念の為サイズも小さく
+                    'window-size=500,500',
                     'headless',
-                    '--no-sandbox', # crush回避
-                    '--disable-dev-shm-usage' # crush回避
+                    '--no-sandbox',
+                    '--disable-dev-shm-usage'
                 ]
             }
         ),
