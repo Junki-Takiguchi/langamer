@@ -335,7 +335,7 @@ i = 1
 country = ["JP", "CH", "US"]
 language = ["Japanese", "English", "Chinese"]
 
-10.times do
+15.times do
   User.create!(
     email: Faker::Internet.email,
     password: SecureRandom.urlsafe_base64,
@@ -383,12 +383,12 @@ language = ["Japanese", "English", "Chinese"]
     twitter_id: Faker::Number.number(digits: 12),
     user_id: i
   )
-  Game.create!(
+  game = Game.create!(
     name: Faker::Game.title,
     user_id: i
   )
   GameRelation.create!(
-    game_id: i,
+    game_id: game.id,
     game_platform_id: rand(4)+1
   )
   Recruitment.create!(
