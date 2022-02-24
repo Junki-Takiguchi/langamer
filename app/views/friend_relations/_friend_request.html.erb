@@ -25,7 +25,7 @@
       <%= f.hidden_field :status, value: "ブロック" %>
       <%= f.hidden_field :to_target_id, value: current_user.id %>
       <%= f.hidden_field :from_applicant_id, value: user.id %>
-      <%= f.submit "申請を却下", class: 'btn btn-secondary btn-lg w-75', data: { confirm: "申請を却下します。よろしいですか？" }  %>
+      <%= f.submit "申請を却下", class: 'btn btn-danger btn-lg w-75', data: { confirm: "申請を却下します。よろしいですか？" }  %>
     <% end %>
   <!-- フレンドの場合 -->
   <% elsif FriendRelation.get_friend_info(current_user, user) == true && FriendRelation.check_friend_status(current_user, user) %>

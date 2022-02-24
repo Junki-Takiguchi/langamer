@@ -6,6 +6,4 @@ class ChatRoomsController < ApplicationController
       room.get_speaker(room, current_user)
     }
   end
-
-
 end

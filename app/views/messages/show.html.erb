@@ -22,7 +22,7 @@
     <div class="col-md-1">
     </div>
     <div class="col-md-10">
-      <table class="message-container message-table">
+      <table class="message message-container message-table">
         <% @messages.each do |comment| %>
           <% unless comment.user_id == current_user.id %>
             <% comment.update_status(comment) if comment.read == "未読" %>
@@ -92,7 +92,7 @@
     <div class="col-md-6 contents">
       <%= form_with model: @message, remote: true do |f| %>
         <div class="form_box">
-          <%= f.text_area :message, size: "8x6", placeholder: "コメントを入力してください。", class: "form-control overflow-auto"  %>
+          <%= f.text_area :message, size: "8x6", placeholder: "コメントを入力してください。", class: "form-control overflow-auto" %>
           <%= f.hidden_field :chat_room_id %>
         </div>
         <div class="form_box basic-button">

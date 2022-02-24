@@ -33,6 +33,7 @@ services:
     ports:
       - 3000:3000
       # - 8080:80
+    shm_size: "2g"
     tty: true
     stdin_open: true
     depends_on:
