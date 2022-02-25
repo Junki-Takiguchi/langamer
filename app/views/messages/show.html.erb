@@ -91,6 +91,9 @@
     </div>
     <div class="col-md-6 contents">
       <%= form_with model: @message, remote: true do |f| %>
+
+        <div class="comment-error">
+        </div>
         <div class="form_box">
           <%= f.text_area :message, size: "8x6", placeholder: "コメントを入力してください。", class: "form-control overflow-auto" %>
           <%= f.hidden_field :chat_room_id %>

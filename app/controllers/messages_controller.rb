@@ -2,7 +2,12 @@ class MessagesController < ApplicationController
 
   def create
     @message = current_user.messages.new(message_params)
-    @message.save
+    if params[:message][:message].present?
+      @message.save
+    else
+      flash.now[:alert] = 'メッセージを入力してください。'
+      render :error
+    end
   end
 
   def show

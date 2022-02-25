@@ -89,3 +89,8 @@
 	width: 100%;
 	table-layout: fixed;
 }
+
+.comment-error {
+	color: rgb(240, 0, 0);
+	font-size: 1.4rem;
+}

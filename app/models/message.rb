@@ -2,7 +2,7 @@ class Message < ApplicationRecord
   belongs_to :user
   belongs_to :chat_room
 
-  validates :message, length: { maximum: 1000}
+  validates :message, presence: true, length: { maximum: 1000}
 
   enum read: { "未読": 0, "既読": 1 }
 
