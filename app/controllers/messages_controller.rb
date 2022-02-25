@@ -5,7 +5,6 @@ class MessagesController < ApplicationController
     if params[:message][:message].present?
       @message.save
     else
-      flash.now[:alert] = 'メッセージを入力してください。'
       render :error
     end
   end
