@@ -1,0 +1,87 @@
+ja:
+  activerecord:
+    models:
+      user: "ユーザー"
+      user_detail: "ユーザー詳細"
+      speak_languages: "話す言語"
+      learn_language: "学習中の言語"
+      game: "ゲーム"
+      game_platform: "ゲームプラットフォーム"
+      game_account: "ゲームアカウント"
+      chat_room: "チャットルーム"
+      message: "メッセージ"
+      recruitment: "募集投稿"
+    attributes:
+      user:
+        email: "メールアドレス"
+        admin: "管理者"
+      user/user_detail:
+        account_name: "アカウント名"
+        profile_picture: "プロフィール画像"
+        self_introduction: "自己紹介文"
+        living_country: "居住地"
+        native_country: "出身地"
+        date_of_birth: "生年月日"
+        gender: "性別"
+      user/speak_languages:
+        speak_language: "話せる言語"
+        rank: "習得レベル"
+        speak_language_status: "公開設定"
+      user/learn_languages:
+        learn_language: "学習中の言語"
+        rank: "習得レベル"
+        learn_language_status: "公開設定"
+      user/games:
+        name: "ゲーム名"
+        game_picture: "ゲーム画像"
+      user/games/game_relations:
+        game_platform: "ゲームプラットフォーム"
+      game_account:
+        discord_id: "Discord ID"
+        steam_id: "Steam ID"
+        origin_id: "origin ID"
+        riot_id: "RIOT ID"
+        psn_id: "PSN ID"
+        xbox_id: "Xbox ID"
+        nintendo_id: "任天堂ID"
+        other_id: "その他のID"
+        twitter_id: "Twitter ID"
+      message:
+        message: "メッセージ"
+        read: "既読"
+      recruitment:
+        title: "タイトル"
+        content: "募集本文"
+    errors:
+      models:
+        user_detail:
+          attributes:
+            account_name:
+              format: "%{message}"
+              blank: "を入力してください。"
+        game_platform:
+          attributes:
+            name:
+              format: "%{message}"
+              blank: "を選択してください。"
+        game:
+          attributes:
+            name:
+              format: "%{message}"
+              blank: "を入力してください。"
+        learn_language:
+          attributes:
+            learn_language:
+              format: "%{message}"
+              blank: "を選択してください。"
+            rank:
+              format: "%{message}"
+              blank: "を選択してください。"
+        speak_language:
+          attributes:
+            speak_language:
+              format: "%{message}"
+              blank: "を選択してください。"
+            rank:
+              format: "%{message}"
+              blank: "を選択してください。"
