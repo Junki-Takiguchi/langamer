@@ -174,7 +174,7 @@
           <%= f.fields_for :games do |g| %>
             <div class="form_box user-margin-bottom">
               <div class="profile-content bottom-fit-box">
-                <%= g.label :name, 'ゲーム名：', class: "left-fit-box" %> <%= g.text_field :name %>
+                <%= g.label :name, 'ゲーム名：' %> <%= g.text_field :name %>
               </div>
               <%= g.fields_for :game_relations do |r| %>
                 <div class="profile-content">

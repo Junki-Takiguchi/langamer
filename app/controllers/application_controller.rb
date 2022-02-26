@@ -2,9 +2,21 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception, except: :search
 
   before_action :authenticate_user!
-
   before_action :configure_sign_up_params, only: [:create], if: :devise_controller?
   before_action :configure_account_update_params, only: [:update], if: :devise_controller?
+  before_action :set_locale
+
+  def set_locale
+    I18n.locale = locale
+  end
+
+  def locale
+    @locale ||= params[:locale] ||= I18n.default_locale
+  end
+
+  def default_url_options(options = {})
+    options.merge(locale: locale)
+  end
 
   private
 

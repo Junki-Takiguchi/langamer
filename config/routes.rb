@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+scope "(:locale)", locale: /#{I18n.available_locales.map(&:to_s).join("|")}/ do
   root 'recruitments#index'
   devise_for :users, controllers: {
         registrations: 'users/registrations'
@@ -18,6 +19,8 @@ Rails.application.routes.draw do
 
   get 'message/:id', to: 'messages#show', as: 'chat_message'
   resources :messages, only: [:get, :create]
+
+  end
 
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"

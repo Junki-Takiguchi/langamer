@@ -85,3 +85,24 @@ en:
             rank:
               format: "%{message}"
               blank: "Please select"
+  enum:
+    user_detail:
+      gender:
+        男性: Male
+        女性: Female
+      living_country_status:
+        公開: Public
+        非公開: Private
+        フレンドのみ公開: Public to friends only
+      native_country_status:
+        公開: Public
+        非公開: Private
+        フレンドのみ公開: Public to friends only
+      date_of_birth_status:
+        公開: Public
+        非公開: Private
+        フレンドのみ公開: Public to friends only
+      gender_status:
+        公開: Public
+        非公開: Private
+        フレンドのみ公開: Public to friends only
