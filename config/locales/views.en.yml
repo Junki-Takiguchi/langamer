@@ -1,4 +1,16 @@
 en:
+  devise/sessions:
+    new:
+      langamer_1: "What is Langamer…?"
+      langamer_2: "Langamer is a service to find friends for language exchange through video games."
+      langamer_3: "Let's find someone who wants to learn the language you speak language,"
+      langamer_4: "then share the game world with them and talk about it!"
+      sign_in: "Sign in"
+      email: "Email"
+      password: "Password"
+      automatically_login_next_time: "Automatically login next time"
+      sign_up: "Sign up"
+      forgot_your_password: "Did you forget your password?"
   devise/registrations:
     new:
       create_an_account: "Create an account"
@@ -99,3 +111,6 @@ en:
       game_platform: "Game platform"
       learning_language: "Learning language"
       speaking_language: "Speaking language"
+  chat_rooms:
+    index:
+      chat_room_list: "List of chat rooms"

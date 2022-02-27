@@ -1,4 +1,16 @@
 ja:
+  devise/sessions:
+    new:
+      langamer_1: "Langamer とは…"
+      langamer_2: "ゲームを通して言語交流の友達を見つけるサービスです。"
+      langamer_3: "自分の話せる言語を学びたい相手を見つけて、"
+      langamer_4: "ゲームの世界を共有して話題を広げてみましょう！"
+      sign_in: "ログイン"
+      email: "Eメール"
+      password: "パスワード"
+      automatically_login_next_time: "次回から自動的にログイン"
+      sign_up: "新規登録"
+      forgot_your_password: "パスワードを忘れましたか？"
   devise/registrations:
     new:
       create_an_account: "アカウントの作成"
@@ -99,3 +111,6 @@ ja:
       game_platform: "ゲームプラットフォーム"
       learning_language: "学習中の言語"
       speaking_language: "話せる言語"
+  chat_rooms:
+    index:
+      chat_room_list: "チャット一覧"

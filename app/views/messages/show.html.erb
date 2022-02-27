@@ -1,5 +1,5 @@
 <div>
-  <h1 class="page-title"><%= @profile.account_name %>とのメッセージ</h1>
+  <h1 class="page-title"><%= @profile.account_name %></h1>
 </div>
 <div class="container main-contents message-title-container">
   <div class="row">
@@ -37,7 +37,7 @@
                         <p class="message-user-name"><%= @profile.account_name %></p>
                       </div>
                       <div class="post-time">
-                        <p class='message-date'><%= comment.relative_post_date(comment.created_at) %></p>
+                        <p class='message-date'><%= comment.relative_post_date(comment.created_at, params[:locale]) %></p>
                       </div>
                       <div>
                         <p class="message-text"><%= comment.message %></p>
@@ -66,7 +66,7 @@
                         <p class="message-user-name"><%= current_user.user_detail.account_name %></p>
                       </div>
                       <div class="post-time">
-                        <p class="message-date"><%= comment.relative_post_date(comment.created_at) %></p>
+                        <p class="message-date"><%= comment.relative_post_date(comment.created_at, params[:locale]) %></p>
                       </div>
                       <div>
                         <p class="message-text left-message-text"><%= comment.message %></p>
@@ -94,11 +94,19 @@
         <div class="comment-error">
         </div>
         <div class="form_box">
-          <%= f.text_area :message, size: "8x6", placeholder: "コメントを入力してください。", class: "form-control overflow-auto" %>
+          <% if params[:locale] == "ja" %>
+            <%= f.text_area :message, size: "8x6", placeholder: "コメントを入力してください。", class: "form-control overflow-auto" %>
+          <% else %>
+            <%= f.text_area :message, size: "8x6", placeholder: "Please enter a comment.", class: "form-control overflow-auto" %>
+          <% end %>
           <%= f.hidden_field :chat_room_id %>
         </div>
         <div class="form_box basic-button">
-          <%= f.submit "送信", class:"btn btn-success btn-lg w-25" %>
+          <% if params[:locale] == "ja" %>
+            <%= f.submit "送信", class:"btn btn-success btn-lg w-25" %>
+          <% else %>
+            <%= f.submit "Send", class:"btn btn-success btn-lg w-25" %>
+          <% end %>
         </div>
       <% end %>
     </div>
