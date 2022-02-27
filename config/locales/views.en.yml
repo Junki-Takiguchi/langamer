@@ -90,3 +90,12 @@ en:
       recruitment_detail: "recruitment detail pages"
       title: "Title"
       recruitment_content: "Details of recruitment"
+    recruitment_index:
+      recruitment_list: "Recruitment list"
+      front_receive_friend_request: "You have received"
+      behind_receive_friend_request: "friend request"
+      receive_message: "You have received new messages."
+      search: "Search"
+      game_platform: "Game platform"
+      learning_language: "Learning language"
+      speaking_language: "Speaking language"

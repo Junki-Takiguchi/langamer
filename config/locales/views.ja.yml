@@ -90,3 +90,12 @@ ja:
       recruitment_detail: "さんの募集詳細ページ"
       title: "タイトル"
       recruitment_content: "募集内容"
+    recruitment_index:
+      recruitment_list: "投稿一覧画面"
+      front_receive_friend_request: "フレンド申請が"
+      behind_receive_friend_request: "件届いています。"
+      receive_message: "新着のメッセージが届いています。"
+      search: "検索"
+      game_platform: "ゲームプラットフォーム"
+      learning_language: "学習中の言語"
+      speaking_language: "話せる言語"
