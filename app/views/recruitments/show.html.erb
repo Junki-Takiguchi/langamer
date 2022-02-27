@@ -25,17 +25,17 @@
       <% if current_user.id == @user.id %>
         <% if params[:locale] == "ja" %>
           <div class="basic-button">
-            <%= button_to "投稿編集", "/recruitments/#{@recruitment.id}/edit", method: :get, class: "btn btn-success btn-lg w-25" %>
+            <%= button_to "投稿編集", edit_recruitment_path, method: :get, class: "btn btn-success btn-lg w-25" %>
           </div>
           <div class="danger-button">
-            <%= button_to "投稿削除", "/recruitments/#{@recruitment.id}", { method: :delete, class: "btn btn-danger btn-lg w-25", data: { confirm: '本当に削除しますか？' } } %>
+            <%= button_to "投稿削除", recruitment_path, { method: :delete, class: "btn btn-danger btn-lg w-25", data: { confirm: '本当に削除しますか？' } } %>
           </div>
         <% else %>
           <div class="basic-button">
-            <%= button_to "Edit a post", "/recruitments/#{@recruitment.id}/edit", method: :get, class: "btn btn-success btn-lg w-25" %>
+            <%= button_to "Edit a post", edit_recruitment_path, method: :get, class: "btn btn-success btn-lg w-25" %>
           </div>
           <div class="danger-button">
-            <%= button_to "Delete a post", "/recruitments/#{@recruitment.id}", { method: :delete, class: "btn btn-danger btn-lg w-25", data: { confirm: 'Are you sure you want to delete it?' } } %>
+            <%= button_to "Delete a post", recruitment_path, { method: :delete, class: "btn btn-danger btn-lg w-25", data: { confirm: 'Are you sure you want to delete it?' } } %>
           </div>
         <% end %>
       <% end %>

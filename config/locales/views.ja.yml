@@ -82,6 +82,9 @@ ja:
       post_page: "新規募集投稿画面"
     edit:
       edit_post_page: "募集投稿の編集"
+    form:
+      title: "タイトル"
+      recruitment_content: "募集内容"
     show:
       my_recruitment_page: "自分の募集投稿画面"
       recruitment_detail: "さんの募集詳細ページ"

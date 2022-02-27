@@ -78,6 +78,13 @@ en:
       nintendo_id: "Nintendo ID"
       other_id: "Other ID"
   recruitments:
+    new:
+      post_page: "New recruitment post"
+    edit:
+      edit_post_page: "Edit a recruitment post"
+    form:
+      title: "Title"
+      recruitment_content: "Details of recruitment"
     show:
       my_recruitment_page: "Your recruitment posting page."
       recruitment_detail: "recruitment detail pages"
