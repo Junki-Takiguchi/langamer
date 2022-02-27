@@ -70,6 +70,11 @@
           </div>
         <% end %>
         <%= render "devise/shared/links" %>
+        <% if params[:locale] == "en" || params[:locale].blank? %>
+          <%= link_to "日本語ページへ", "/ja", class: "text-info" %>
+        <% elsif params[:locale] == "ja" %>
+          <%= link_to "Switch to English page", "/en", class: "text-info" %>
+        <% end %>
       </div>
     </div>
   </div>

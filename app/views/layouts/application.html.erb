@@ -33,6 +33,13 @@
               </li>
             <% end %>
             <li class="nav-item">
+              <% if params[:locale] == "en" || params[:locale].blank? %>
+                <%= link_to "日本語に切替", "/ja", class: "nav-link link-btn d-flex" %>
+              <% elsif params[:locale] == "ja" %>
+                <%= link_to "Switch to English", "/en", class: "nav-link link-btn d-flex" %>
+              <% end %>
+            </li>
+            <li class="nav-item">
               <%= link_to "#{t("layouts.application.my_page")}", user_path(current_user.id), class: "nav-link link-btn d-flex", id: "my-page" %>
             </li>
             <li class="nav-item">

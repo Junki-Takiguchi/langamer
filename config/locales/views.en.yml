@@ -125,6 +125,6 @@ en:
     friend_request:
       friend_applicant: "Friend request"
       cancel_request: "Cancel request"
-      approve_request: "Approve request"
-      reject_request: "Reject request"
+      approve_request: "Approve"
+      reject_request: "Reject"
       unfriend: "Unfriend"
