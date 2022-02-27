@@ -1,4 +1,9 @@
 ja:
+  layouts:
+    application:
+      my_page: "マイページ"
+      message: "メッセージ"
+      sign_out: "ログアウト"
   devise/sessions:
     new:
       langamer_1: "Langamer とは…"

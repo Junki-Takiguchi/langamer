@@ -1,4 +1,9 @@
 en:
+  layouts:
+    application:
+      my_page: "MyPage"
+      message: "Messages"
+      sign_out: "Sign out"
   devise/sessions:
     new:
       langamer_1: "What is Langamer…?"
