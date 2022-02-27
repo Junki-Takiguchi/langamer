@@ -1,16 +1,16 @@
 <div>
   <h1 class="page-title">
     <% if current_user.id == @user.id %>
-      マイページ
+      <%= t("users.show.my_page") %>
     <% else %>
-      <%= @profile.account_name %>の詳細ページ
+      <%= @profile.account_name %><%= t("users.show.details") %>
     <% end %>
   </h1>
 </div>
 <%= render 'user_show' %>
 <% if @recruitments.present? %>
   <div>
-    <h1 class="page-title">募集中の投稿</h1>
+    <h1 class="page-title"><%= t("users.show.recruiting_posts") %></h1>
   </div>
 <% end %>
 <div class="container main-contents">
