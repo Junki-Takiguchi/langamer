@@ -114,3 +114,12 @@ en:
   chat_rooms:
     index:
       chat_room_list: "List of chat rooms"
+  friend_relations:
+    index:
+      friend_request_list: "Friend request list"
+    friend_request:
+      friend_applicant: "Friend request"
+      cancel_request: "Cancel request"
+      approve_request: "Approve request"
+      reject_request: "Reject request"
+      unfriend: "Unfriend"

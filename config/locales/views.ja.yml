@@ -114,3 +114,12 @@ ja:
   chat_rooms:
     index:
       chat_room_list: "チャット一覧"
+  friend_relations:
+    index:
+      friend_request_list: "フレンド申請一覧"
+    friend_request:
+      friend_applicant: "フレンド申請"
+      cancel_request: "申請をキャンセル"
+      approve_request: "申請を許可"
+      reject_request: "申請を却下"
+      unfriend: "フレンドを解除"
