@@ -1,0 +1,108 @@
+en:
+  activerecord:
+    models:
+      user: "user"
+      user_detail: "user detail"
+      speak_languages: "speaking Language"
+      learn_language: "learning Language"
+      game: "game"
+      game_platform: "game platform"
+      game_account: "game account"
+      chat_room: "chat room"
+      message: "message"
+      recruitment: "recruitment post"
+    attributes:
+      user:
+        email: "email"
+        admin: "administrator"
+      user/user_detail:
+        account_name: "account name"
+        profile_picture: "profile image"
+        self_introduction: "self introduction"
+        living_country: "living country"
+        native_country: "native country"
+        date_of_birth: "date of birth"
+        gender: "gender"
+      user/speak_languages:
+        speak_language: "Speaking Language"
+        rank: "learning level"
+        speak_language_status: "public settings"
+      user/learn_languages:
+        learn_language: "learning Language"
+        rank: "learning level"
+        learn_language_status: "public settings"
+      user/games:
+        name: "game name"
+        game_picture: "game image"
+      user/games/game_relations:
+        game_platform: "game platform"
+      game_account:
+        discord_id: "Discord ID"
+        steam_id: "Steam ID"
+        origin_id: "origin ID"
+        riot_id: "RIOT ID"
+        psn_id: "PSN ID"
+        xbox_id: "Xbox ID"
+        nintendo_id: "Nintendo ID"
+        other_id: "other ID"
+        twitter_id: "Twitter ID"
+      message:
+        message: "message"
+        read: "read"
+      recruitment:
+        title: "title"
+        content: "recruitment message"
+    errors:
+      models:
+        user_detail:
+          attributes:
+            account_name:
+              format: "%{message}"
+              blank: "Please enter"
+        game_platform:
+          attributes:
+            name:
+              format: "%{message}"
+              blank: "Please select"
+        game:
+          attributes:
+            name:
+              format: "%{message}"
+              blank: "Please enter"
+        learn_language:
+          attributes:
+            learn_language:
+              format: "%{message}"
+              blank: "Please select"
+            rank:
+              format: "%{message}"
+              blank: "Please select"
+        speak_language:
+          attributes:
+            speak_language:
+              format: "%{message}"
+              blank: "Please select"
+            rank:
+              format: "%{message}"
+              blank: "Please select"
+  enum:
+    user_detail:
+      gender:
+        男性: Male
+        女性: Female
+      living_country_status:
+        公開: Public
+        非公開: Private
+        フレンドのみ公開: Public to friends only
+      native_country_status:
+        公開: Public
+        非公開: Private
+        フレンドのみ公開: Public to friends only
+      date_of_birth_status:
+        公開: Public
+        非公開: Private
+        フレンドのみ公開: Public to friends only
+      gender_status:
+        公開: Public
+        非公開: Private
+        フレンドのみ公開: Public to friends only

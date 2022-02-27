@@ -4,16 +4,16 @@
       <div class="col-md-7">
         <p id="logo">Langamer</p>
         <div id="explanation">
-          <strong><p id ="explanation-title">Langamer とは…</p></strong>
-          <em>ゲームを通して言語交流の友達を見つけるサービスです。<br />
-          自分の話せる言語を学びたい相手を見つけて、<br />
-          ゲームの世界を共有して話題を広げてみましょう！</em>
+          <strong><p id ="explanation-title"><%= t("devise/sessions.new.langamer_1") %></p></strong>
+          <em><%= t("devise/sessions.new.langamer_2") %><br />
+          <%= t("devise/sessions.new.langamer_3") %><br />
+          <%= t("devise/sessions.new.langamer_4") %></em>
         </div>
       </div>
       <div class="col-md-2">
       </div>
       <div class="col-md-3 signup-form border contents">
-        <h2 class="text-center">ログイン</h2>
+        <h2 class="text-center"><%= t("devise/sessions.new.sign_in") %></h2>
         <% if notice.present? %>
           <p class="notice"><%= notice %></p>
         <% end %>
@@ -22,21 +22,25 @@
         <% end %>
         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
           <div class="field">
-            <%= f.label :email, 'Eメール', class: "form-label" %><br />
+            <%= f.label :email, t("devise/sessions.new.email"), class: "form-label" %><br />
             <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
           </div>
           <div class="field">
-            <%= f.label :password, 'パスワード', class: "form-label" %><br />
+            <%= f.label :password, t("devise/sessions.new.password"), class: "form-label" %><br />
             <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
           </div>
           <% if devise_mapping.rememberable? %>
             <div class="field">
               <%= f.check_box :remember_me, class: "form-check-input" %>
-              <%= f.label :remember_me, '次回から自動的にログイン', class: "form-check-label" %>
+              <%= f.label :remember_me, t("devise/sessions.new.automatically_login_next_time"), class: "form-check-label" %>
             </div>
           <% end %>
           <div class="actions">
-            <%= f.submit "ログイン", class: "btn btn-primary btn-lg" %>
+            <% if params[:locale] == "ja" %>
+              <%= f.submit "#{t("devise/sessions.new.sign_in")}", class: "btn btn-primary btn-lg" %>
+            <% else %>
+              <%= f.submit "#{t("devise/sessions.new.sign_in")}", class: "btn btn-primary btn-lg" %>
+            <% end %>
           </div>
         <% end %>
         <br />
@@ -46,7 +50,11 @@
             <%= f.hidden_field :password, value: 'test01' %>
           </div>
           <div class="actions">
-            <%= f.submit "ゲストログイン", class: "btn btn-secondary guest-login" %>
+            <% if params[:locale] == "ja" %>
+              <%= f.submit "ゲストログイン", class: "btn btn-secondary guest-login" %>
+            <% else %>
+              <%= f.submit "Guest sign in", class: "btn btn-secondary guest-login" %>
+            <% end %>
           </div>
         <% end %>
         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -54,10 +62,19 @@
             <%= f.hidden_field :email, value: 'admin01@gmail.com' %>
             <%= f.hidden_field :password, value: 'admin01' %>
           <div class="actions">
-            <%= f.submit "ゲストログイン(admin)", class: "btn btn-secondary guest-login" %>
+            <% if params[:locale] == "ja" %>
+              <%= f.submit "ゲストログイン(admin)", class: "btn btn-secondary guest-login" %>
+            <% else %>
+              <%= f.submit "Guest sign in(admin)", class: "btn btn-secondary guest-login" %>
+            <% end %>
           </div>
         <% end %>
         <%= render "devise/shared/links" %>
+        <% if params[:locale] == "en" || params[:locale].blank? %>
+          <%= link_to "日本語ページへ", "/ja", class: "text-info" %>
+        <% elsif params[:locale] == "ja" %>
+          <%= link_to "Switch to English page", "/en", class: "text-info" %>
+        <% end %>
       </div>
     </div>
   </div>

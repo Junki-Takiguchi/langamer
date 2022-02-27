@@ -1,5 +1,5 @@
 <div>
-  <h1 class="page-title">チャット一覧</h1>
+  <h1 class="page-title"><%= t("chat_rooms.index.chat_room_list") %></h1>
 </div>
 <% @chat_users.each do |chat_user| %>
   <% if FriendRelation.check_friend_status_for_chat(current_user, chat_user) == true %>

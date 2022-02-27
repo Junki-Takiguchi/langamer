@@ -1,5 +1,5 @@
 <div>
-  <h1 class="page-title">ユーザー情報編集</h1>
+  <h1 class="page-title"><%= t("devise/registrations.edit.edit_an_account") %></h1>
 </div>
 <% if resource.errors.any? %>
   <div class="container main-contents">
@@ -31,7 +31,7 @@
           </div>
           <div class="form_box user-margin-bottom">
             <div class="profile-title">
-              <%= f.label :email, 'メールアドレス', class: "content_field form-label" %>
+              <%= f.label :email, t("devise/registrations.edit.email"), class: "content_field form-label" %>
             </div>
             <div class="profile-content">
               <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
@@ -39,7 +39,7 @@
           </div>
           <div class="form_box user-margin-bottom">
             <div class="profile-title">
-              <%= m.label :account_name, 'アカウント名', class: "content_field form-label" %>
+              <%= m.label :account_name, t("devise/registrations.edit.account_name"), class: "content_field form-label" %>
             </div>
             <div class="profile-content">
               <%= m.text_field :account_name, class: "form-control" %>
@@ -47,29 +47,29 @@
           </div>
           <div class="form_box user-margin-bottom user-margin-top">
             <div class="profile-title">
-              <%= m.label :living_country, '居住地', class: "content_field form-label" %>
+              <%= m.label :living_country, t("devise/registrations.edit.living_country"), class: "content_field form-label" %>
             </div>
             <div class="profile-content">
               <%= m.country_select :living_country, class: "form-control" %><br />
-              <%= m.radio_button :living_country_status, :公開, checked: resource.user_detail.living_country_status == "公開" %>公開
-              <%= m.radio_button :living_country_status, :非公開, checked: resource.user_detail.living_country_status == "非公開" %>非公開
-              <%= m.radio_button :living_country_status, :フレンドのみ公開, checked: resource.user_detail.living_country_status == "フレンドのみ公開" %>フレンドのみ公開
+              <%= m.radio_button :living_country_status, :公開, checked: resource.user_detail.living_country_status == "公開" %><%= t("devise/registrations.edit.public") %>
+              <%= m.radio_button :living_country_status, :非公開, checked: resource.user_detail.living_country_status == "非公開" %><%= t("devise/registrations.edit.private") %>
+              <%= m.radio_button :living_country_status, :フレンドのみ公開, checked: resource.user_detail.living_country_status == "フレンドのみ公開" %><%= t("devise/registrations.edit.public_to_friends_only") %>
             </div>
           </div>
           <div class="form_box user-margin-bottom">
             <div class="profile-title">
-              <%= m.label :native_country, '出身地', class: "content_field form-label" %>
+              <%= m.label :native_country, t("devise/registrations.edit.native_country"), class: "content_field form-label" %>
             </div>
             <div class="profile-content">
               <%= m.country_select :native_country, class: "form-control" %><br />
-              <%= m.radio_button :native_country_status, :公開, checked: resource.user_detail.native_country_status == "公開" %>公開
-              <%= m.radio_button :native_country_status, :非公開, checked: resource.user_detail.native_country_status == "非公開" %>非公開
-              <%= m.radio_button :native_country_status, :フレンドのみ公開, checked: resource.user_detail.native_country_status == "フレンドのみ公開" %>フレンドのみ公開
+              <%= m.radio_button :native_country_status, :公開, checked: resource.user_detail.native_country_status == "公開" %><%= t("devise/registrations.edit.public") %>
+              <%= m.radio_button :native_country_status, :非公開, checked: resource.user_detail.native_country_status == "非公開" %><%= t("devise/registrations.edit.private") %>
+              <%= m.radio_button :native_country_status, :フレンドのみ公開, checked: resource.user_detail.native_country_status == "フレンドのみ公開" %><%= t("devise/registrations.edit.public_to_friends_only") %>
             </div>
           </div>
           <div class="form_box">
             <div class="profile-title">
-              <%= m.label :date_of_birth, '生年月日', class: "content_field form-label" %>
+              <%= m.label :date_of_birth, t("devise/registrations.edit.date_of_birth"), class: "content_field form-label" %>
             </div>
             <div class="profile-content user-margin-bottom">
               <%= m.date_select(:date_of_birth,
@@ -80,19 +80,39 @@
                                 date_separator: '/',
                                 class: "form-control"
               ) %><br />
-              <%= m.radio_button :date_of_birth_status, :公開, checked: resource.user_detail.date_of_birth_status == "公開" %>公開
-              <%= m.radio_button :date_of_birth_status, :非公開, checked: resource.user_detail.date_of_birth_status == "非公開" %>非公開
-              <%= m.radio_button :date_of_birth_status, :フレンドのみ公開, checked: resource.user_detail.date_of_birth_status == "フレンドのみ公開" %>フレンドのみ公開
+              <%= m.radio_button :date_of_birth_status, :公開, checked: resource.user_detail.date_of_birth_status == "公開" %><%= t("devise/registrations.edit.public") %>
+              <%= m.radio_button :date_of_birth_status, :非公開, checked: resource.user_detail.date_of_birth_status == "非公開" %><%= t("devise/registrations.edit.private") %>
+              <%= m.radio_button :date_of_birth_status, :フレンドのみ公開, checked: resource.user_detail.date_of_birth_status == "フレンドのみ公開" %><%= t("devise/registrations.edit.public_to_friends_only") %>
             </div>
           <div class="form_box">
             <div class="profile-title">
-              <%= m.label :gender, '性別', class: "content_field form-label" %>
+              <%= m.label :gender, t("devise/registrations.edit.gender"), class: "content_field form-label" %>
             </div>
             <div class="profile-content">
-              <%= m.select :gender, UserDetail.genders.keys, { include_blank: '--------'}, {id: 'user_gender'} %><br />
-              <%= m.radio_button :gender_status, :公開, checked: resource.user_detail.gender_status == "公開" %>公開
-              <%= m.radio_button :gender_status, :非公開, checked: resource.user_detail.gender_status == "非公開" %>非公開
-              <%= m.radio_button :gender_status, :フレンドのみ公開, checked: resource.user_detail.gender_status == "フレンドのみ公開" %>フレンドのみ公開
+              <% if params[:locale] == "ja" %>
+                <%= m.select :gender, UserDetail.genders.keys, { include_blank: resource.user_detail.gender}, {id: 'user_gender'} %><br />
+              <% else %>
+                <%= m.select :gender, UserDetail.genders.keys.map.with_index { |gender, index|
+                  if index == 0
+                    "Male"
+                  elsif index == 1
+                    "Female"
+                  else
+                    "Gender Identity"
+                  end
+                }, { include_blank:
+                  if resource.user_detail.gender == "男性"
+                    "Male"
+                  elsif resource.user_detail.gender == "女性"
+                    "Female"
+                  else
+                    "Gender Identity"
+                  end
+                }, {id: 'user_gender'} %><br />
+              <% end %>
+              <%= m.radio_button :gender_status, :公開, checked: resource.user_detail.gender_status == "公開" %><%= t("devise/registrations.edit.public") %>
+              <%= m.radio_button :gender_status, :非公開, checked: resource.user_detail.gender_status == "非公開" %><%= t("devise/registrations.edit.private") %>
+              <%= m.radio_button :gender_status, :フレンドのみ公開, checked: resource.user_detail.gender_status == "フレンドのみ公開" %><%= t("devise/registrations.edit.public_to_friends_only") %>
             </div>
           </div>
         </div>
@@ -101,7 +121,7 @@
       </div>
     </div>
     <div>
-      <h1 class="page-title">自己紹介</h1>
+      <h1 class="page-title"><%= t("devise/registrations.edit.self_introduction") %></h1>
     </div>
     <div class="container">
       <div class="row">
@@ -110,7 +130,11 @@
         <div class="col-md-8">
           <div class="form_box">
             <div class="profile-content overflow-auto">
-              <%= m.text_area :self_introduction, size: "30x20", placeholder: "自己紹介文を入力してください。",  class: "form-control" %>
+              <% if params[:locale] == "ja" %>
+                <%= m.text_area :self_introduction, size: "20x15", placeholder: "自己紹介文を入力してください。",  class: "form-control" %>
+              <% else %>
+                <%= m.text_area :self_introduction, size: "20x15", placeholder: "Please enter a self introduction!",  class: "form-control" %>
+              <% end %>
             </div>
           </div>
         </div>
@@ -119,9 +143,8 @@
       </div>
     </div>
   <% end %>
-
   <div>
-    <h1 class="page-title">言語情報</h1>
+    <h1 class="page-title"><%= t("devise/registrations.edit.language_information") %></h1>
   </div>
   <div class="container main-contents">
     <div class="row">
@@ -131,28 +154,28 @@
         <%= f.fields_for :learn_languages do |l| %>
           <div class="form_box user-margin-bottom">
             <div class="profile-title">
-              <p>学習中の言語</p>
+              <p><%= t("devise/registrations.edit.learning_languages") %></p>
             </div>
             <div class="profile-content">
               <%= l.select :learn_language, LanguageList::COMMON_LANGUAGES.map { |lang| lang.name }, { include_blank: '-----------------'}, {id: 'learn_language', class: 'language-margin'} %>
-              <%= l.select :rank, [["初級者", "初級者"], ["中級者", "中級者"], ["上級者", "上級者"], ["ネイティブ", "ネイティブ"]], { include_blank: '-----------------'}, {id: 'rank'} %><br />
-              <%= l.radio_button :learn_language_status, :公開, checked: resource.learn_languages[l.index].learn_language_status == "公開" %>公開
-              <%= l.radio_button :learn_language_status, :非公開, checked: resource.learn_languages[l.index].learn_language_status == "非公開" %>非公開
-              <%= l.radio_button :learn_language_status, :フレンドのみ公開, checked: resource.learn_languages[l.index].learn_language_status == "フレンドのみ公開" %>フレンドのみ公開
+              <%= l.select :rank, [[t("devise/registrations.edit.beginner"), "初級者"], [t("devise/registrations.edit.intermediate"), "中級者"], [t("devise/registrations.edit.senior"), "上級者"], [t("devise/registrations.edit.native"), "ネイティブ"]], { include_blank: '-----------------'}, {id: 'rank'} %><br />
+              <%= l.radio_button :learn_language_status, :公開, checked: resource.learn_languages[l.index].learn_language_status == "公開" %><%= t("devise/registrations.edit.public") %>
+              <%= l.radio_button :learn_language_status, :非公開, checked: resource.learn_languages[l.index].learn_language_status == "非公開" %><%= t("devise/registrations.edit.private") %>
+              <%= l.radio_button :learn_language_status, :フレンドのみ公開, checked: resource.learn_languages[l.index].learn_language_status == "フレンドのみ公開" %><%= t("devise/registrations.edit.public_to_friends_only") %>
             </div>
           </div>
         <% end %>
         <%= f.fields_for :speak_languages do |s| %>
           <div class="form_box user-margin-bottom">
             <div class="profile-title">
-              <p>話せる言語</p>
+              <p><%= t("devise/registrations.edit.speaking_languages") %></p>
             </div>
             <div class="profile-content">
               <%= s.select :speak_language, LanguageList::COMMON_LANGUAGES.map { |lang| lang.name }, { include_blank: '-----------------'}, {id: 'speak_language', class: 'language-margin'} %>
-              <%= s.select :rank, [["初級者", "初級者"], ["中級者", "中級者"], ["上級者", "上級者"], ["ネイティブ", "ネイティブ"]], { include_blank: '-----------------'}, {id: 'rank'} %><br />
-              <%= s.radio_button :speak_language_status, :公開, checked: resource.speak_languages[s.index].speak_language_status == "公開" %>公開
-              <%= s.radio_button :speak_language_status, :非公開, checked: resource.speak_languages[s.index].speak_language_status == "非公開" %>非公開
-              <%= s.radio_button :speak_language_status, :フレンドのみ公開, checked: resource.speak_languages[s.index].speak_language_status == "フレンドのみ公開" %>フレンドのみ公開
+              <%= s.select :rank, [[t("devise/registrations.edit.beginner"), "初級者"], [t("devise/registrations.edit.intermediate"), "中級者"], [t("devise/registrations.edit.senior"), "上級者"], [t("devise/registrations.edit.native"), "ネイティブ"]], { include_blank: '-----------------'}, {id: 'rank'} %><br />
+              <%= s.radio_button :speak_language_status, :公開, checked: resource.speak_languages[s.index].speak_language_status == "公開" %><%= t("devise/registrations.edit.public") %>
+              <%= s.radio_button :speak_language_status, :非公開, checked: resource.speak_languages[s.index].speak_language_status == "非公開" %><%= t("devise/registrations.edit.private") %>
+              <%= s.radio_button :speak_language_status, :フレンドのみ公開, checked: resource.speak_languages[s.index].speak_language_status == "フレンドのみ公開" %><%= t("devise/registrations.edit.public_to_friends_only") %>
             </div>
           </div>
         <% end %>
@@ -163,26 +186,24 @@
   </div>
 
   <div>
-    <h1 class="page-title">プレイ可能なゲーム</h1>
+    <h1 class="page-title"><%= t("devise/registrations.edit.playing_games") %></h1>
   </div>
   <div class="container main-contents">
     <div class="row">
       <div class="col-md-2">
       </div>
       <div class="col-md-8 profile-field">
-        <% resource.games.each do |game| %>
-          <%= f.fields_for :games do |g| %>
-            <div class="form_box user-margin-bottom">
-              <div class="profile-content bottom-fit-box">
-                <%= g.label :name, 'ゲーム名：', class: "left-fit-box" %> <%= g.text_field :name %>
-              </div>
-              <%= g.fields_for :game_relations do |r| %>
-                <div class="profile-content">
-                  <%= r.label :game_platform_id, 'ゲームプラットフォーム：' %> <%= r.select :game_platform_id, GamePlatform.all.map { |p| [p.name, p.id] }, { include_blank: '-----------------------'}, {id: 'game_platform_name'} %>
-                </div>
-              <% end %>
+        <%= f.fields_for :games do |g| %>
+          <div class="form_box user-margin-bottom">
+            <div class="profile-content bottom-fit-box">
+              <%= g.label :name, t("devise/registrations.edit.game_name") %> <%= g.text_field :name %>
             </div>
-          <% end %>
+            <%= g.fields_for :game_relations do |r| %>
+              <div class="profile-content">
+                <%= r.label :game_platform_id, t("devise/registrations.edit.game_platform") %> <%= r.select :game_platform_id, GamePlatform.all.map { |p| [p.name, p.id] }, { include_blank: '-----------------------'}, {id: 'game_platform_name'} %>
+              </div>
+            <% end %>
+          </div>
         <% end %>
       </div>
       <div class="col-md-2">
@@ -191,7 +212,7 @@
   </div>
 
   <div>
-    <h1 class="page-title">外部アカウント</h1>
+    <h1 class="page-title"><%= t("devise/registrations.edit.game_accounts") %></h1>
   </div>
   <div class="container main-contents">
     <div class="row">
@@ -205,9 +226,9 @@
             </div>
             <div class="profile-content">
               <%= a.text_field :discord_id %><br />
-              <%= a.radio_button :discord_id_status, :公開, checked: resource.game_account.discord_id_status == "公開" %>公開
-              <%= a.radio_button :discord_id_status, :非公開, checked: resource.game_account.discord_id_status == "非公開" %>非公開
-              <%= a.radio_button :discord_id_status, :フレンドのみ公開, checked: resource.game_account.discord_id_status == "フレンドのみ公開" %>フレンドのみ公開
+              <%= a.radio_button :discord_id_status, :公開, checked: resource.game_account.discord_id_status == "公開" %><%= t("devise/registrations.edit.public") %>
+              <%= a.radio_button :discord_id_status, :非公開, checked: resource.game_account.discord_id_status == "非公開" %><%= t("devise/registrations.edit.private") %>
+              <%= a.radio_button :discord_id_status, :フレンドのみ公開, checked: resource.game_account.discord_id_status == "フレンドのみ公開" %><%= t("devise/registrations.edit.public_to_friends_only") %>
             </div>
           </div>
           <div class="form_box user-margin-bottom">
@@ -216,9 +237,9 @@
             </div>
             <div class="profile-content">
               <%= a.text_field :twitter_id %><br />
-              <%= a.radio_button :twitter_id_status, :公開, checked: resource.game_account.twitter_id_status == "公開" %>公開
-              <%= a.radio_button :twitter_id_status, :非公開, checked: resource.game_account.twitter_id_status == "非公開" %>非公開
-              <%= a.radio_button :twitter_id_status, :フレンドのみ公開, checked: resource.game_account.twitter_id_status == "フレンドのみ公開" %>フレンドのみ公開
+              <%= a.radio_button :twitter_id_status, :公開, checked: resource.game_account.twitter_id_status == "公開" %><%= t("devise/registrations.edit.public") %>
+              <%= a.radio_button :twitter_id_status, :非公開, checked: resource.game_account.twitter_id_status == "非公開" %><%= t("devise/registrations.edit.private") %>
+              <%= a.radio_button :twitter_id_status, :フレンドのみ公開, checked: resource.game_account.twitter_id_status == "フレンドのみ公開" %><%= t("devise/registrations.edit.public_to_friends_only") %>
             </div>
           </div>
           <div class="form_box user-margin-bottom">
@@ -227,9 +248,9 @@
             </div>
             <div class="profile-content">
               <%= a.text_field :steam_id %><br />
-              <%= a.radio_button :steam_id_status, :公開, checked: resource.game_account.steam_id_status == "公開" %>公開
-              <%= a.radio_button :steam_id_status, :非公開, checked: resource.game_account.steam_id_status == "非公開" %>非公開
-              <%= a.radio_button :steam_id_status, :フレンドのみ公開, checked: resource.game_account.steam_id_status == "フレンドのみ公開" %>フレンドのみ公開
+              <%= a.radio_button :steam_id_status, :公開, checked: resource.game_account.steam_id_status == "公開" %><%= t("devise/registrations.edit.public") %>
+              <%= a.radio_button :steam_id_status, :非公開, checked: resource.game_account.steam_id_status == "非公開" %><%= t("devise/registrations.edit.private") %>
+              <%= a.radio_button :steam_id_status, :フレンドのみ公開, checked: resource.game_account.steam_id_status == "フレンドのみ公開" %><%= t("devise/registrations.edit.public_to_friends_only") %>
             </div>
           </div>
           <div class="form_box user-margin-bottom">
@@ -238,9 +259,9 @@
             </div>
             <div class="profile-content">
               <%= a.text_field :origin_id %><br />
-              <%= a.radio_button :origin_id_status, :公開, checked: resource.game_account.origin_id_status == "公開" %>公開
-              <%= a.radio_button :origin_id_status, :非公開, checked: resource.game_account.origin_id_status == "非公開" %>非公開
-              <%= a.radio_button :origin_id_status, :フレンドのみ公開, checked: resource.game_account.origin_id_status == "フレンドのみ公開" %>フレンドのみ公開
+              <%= a.radio_button :origin_id_status, :公開, checked: resource.game_account.origin_id_status == "公開" %><%= t("devise/registrations.edit.public") %>
+              <%= a.radio_button :origin_id_status, :非公開, checked: resource.game_account.origin_id_status == "非公開" %><%= t("devise/registrations.edit.private") %>
+              <%= a.radio_button :origin_id_status, :フレンドのみ公開, checked: resource.game_account.origin_id_status == "フレンドのみ公開" %><%= t("devise/registrations.edit.public_to_friends_only") %>
             </div>
           </div>
           <div class="form_box user-margin-bottom">
@@ -249,9 +270,9 @@
             </div>
             <div class="profile-content">
               <%= a.text_field :riot_id %><br />
-              <%= a.radio_button :riot_id_status, :公開, checked: resource.game_account.riot_id_status == "公開" %>公開
-              <%= a.radio_button :riot_id_status, :非公開, checked: resource.game_account.riot_id_status == "非公開" %>非公開
-              <%= a.radio_button :riot_id_status, :フレンドのみ公開, checked: resource.game_account.riot_id_status == "フレンドのみ公開" %>フレンドのみ公開
+              <%= a.radio_button :riot_id_status, :公開, checked: resource.game_account.riot_id_status == "公開" %><%= t("devise/registrations.edit.public") %>
+              <%= a.radio_button :riot_id_status, :非公開, checked: resource.game_account.riot_id_status == "非公開" %><%= t("devise/registrations.edit.private") %>
+              <%= a.radio_button :riot_id_status, :フレンドのみ公開, checked: resource.game_account.riot_id_status == "フレンドのみ公開" %><%= t("devise/registrations.edit.public_to_friends_only") %>
             </div>
           </div>
           <div class="form_box user-margin-bottom">
@@ -260,9 +281,9 @@
             </div>
             <div class="profile-content">
               <%= a.text_field :psn_id %><br />
-              <%= a.radio_button :psn_id_status, :公開, checked: resource.game_account.psn_id_status == "公開" %>公開
-              <%= a.radio_button :psn_id_status, :非公開, checked: resource.game_account.psn_id_status == "非公開" %>非公開
-              <%= a.radio_button :psn_id_status, :フレンドのみ公開, checked: resource.game_account.psn_id_status == "フレンドのみ公開" %>フレンドのみ公開
+              <%= a.radio_button :psn_id_status, :公開, checked: resource.game_account.psn_id_status == "公開" %><%= t("devise/registrations.edit.public") %>
+              <%= a.radio_button :psn_id_status, :非公開, checked: resource.game_account.psn_id_status == "非公開" %><%= t("devise/registrations.edit.private") %>
+              <%= a.radio_button :psn_id_status, :フレンドのみ公開, checked: resource.game_account.psn_id_status == "フレンドのみ公開" %><%= t("devise/registrations.edit.public_to_friends_only") %>
             </div>
           </div>
           <div class="form_box user-margin-bottom">
@@ -271,31 +292,31 @@
             </div>
             <div class="profile-content">
               <%= a.text_field :xbox_id %><br />
-              <%= a.radio_button :xbox_id_status, :公開, checked: resource.game_account.xbox_id_status == "公開" %>公開
-              <%= a.radio_button :xbox_id_status, :非公開, checked: resource.game_account.xbox_id_status == "非公開" %>非公開
-              <%= a.radio_button :xbox_id_status, :フレンドのみ公開, checked: resource.game_account.xbox_id_status == "フレンドのみ公開" %>フレンドのみ公開
+              <%= a.radio_button :xbox_id_status, :公開, checked: resource.game_account.xbox_id_status == "公開" %><%= t("devise/registrations.edit.public") %>
+              <%= a.radio_button :xbox_id_status, :非公開, checked: resource.game_account.xbox_id_status == "非公開" %><%= t("devise/registrations.edit.private") %>
+              <%= a.radio_button :xbox_id_status, :フレンドのみ公開, checked: resource.game_account.xbox_id_status == "フレンドのみ公開" %><%= t("devise/registrations.edit.public_to_friends_only") %>
             </div>
           </div>
           <div class="form_box user-margin-bottom">
             <div class="profile-title">
-              <%= a.label :nintendo_id, '任天堂ID', class: "content_field form-label" %>
+              <%= a.label :nintendo_id, t("devise/registrations.edit.nintendo_id"), class: "content_field form-label" %>
             </div>
             <div class="profile-content">
               <%= a.text_field :nintendo_id %><br />
-              <%= a.radio_button :nintendo_id_status, :公開, checked: resource.game_account.nintendo_id_status == "公開" %>公開
-              <%= a.radio_button :nintendo_id_status, :非公開, checked: resource.game_account.nintendo_id_status == "非公開" %>非公開
-              <%= a.radio_button :nintendo_id_status, :フレンドのみ公開, checked: resource.game_account.nintendo_id_status == "フレンドのみ公開" %>フレンドのみ公開
+              <%= a.radio_button :nintendo_id_status, :公開, checked: resource.game_account.nintendo_id_status == "公開" %><%= t("devise/registrations.edit.public") %>
+              <%= a.radio_button :nintendo_id_status, :非公開, checked: resource.game_account.nintendo_id_status == "非公開" %><%= t("devise/registrations.edit.private") %>
+              <%= a.radio_button :nintendo_id_status, :フレンドのみ公開, checked: resource.game_account.nintendo_id_status == "フレンドのみ公開" %><%= t("devise/registrations.edit.public_to_friends_only") %>
             </div>
           </div>
           <div class="form_box user-margin-bottom">
             <div class="profile-title">
-              <%= a.label :other_id, 'その他ID', class: "content_field form-label" %>
+              <%= a.label :other_id, t("devise/registrations.edit.other_id"), class: "content_field form-label" %>
             </div>
             <div class="profile-content">
               <%= a.text_field :other_id %><br />
-              <%= a.radio_button :other_id_status, :公開, checked: resource.game_account.other_id_status == "公開" %>公開
-              <%= a.radio_button :other_id_status, :非公開, checked: resource.game_account.other_id_status == "非公開" %>非公開
-              <%= a.radio_button :other_id_status, :フレンドのみ公開, checked: resource.game_account.other_id_status == "フレンドのみ公開" %>フレンドのみ公開
+              <%= a.radio_button :other_id_status, :公開, checked: resource.game_account.other_id_status == "公開" %><%= t("devise/registrations.edit.public") %>
+              <%= a.radio_button :other_id_status, :非公開, checked: resource.game_account.other_id_status == "非公開" %><%= t("devise/registrations.edit.private") %>
+              <%= a.radio_button :other_id_status, :フレンドのみ公開, checked: resource.game_account.other_id_status == "フレンドのみ公開" %><%= t("devise/registrations.edit.public_to_friends_only") %>
             </div>
           </div>
         <% end %>
@@ -309,7 +330,11 @@
       <div class="col-md-8">
         <div class="btn-position">
           <div>
-            <%= f.submit "更新", class: "btn btn-success btn-lg update-btn" %>
+            <% if params[:locale] == "ja" %>
+              <%= f.submit "更新", class: "btn btn-success btn-lg update-btn" %>
+            <% else %>
+              <%= f.submit "Edit", class: "btn btn-success btn-lg update-btn" %>
+            <% end %>
           </div>
         </div>
       </div>
@@ -323,7 +348,11 @@
     <div class="col-md-2">
     </div>
     <div class="col-md-8 btn-position">
-      <%= button_to "アカウントの削除", registration_path(resource_name), data: { confirm: "本当にアカウントを削除しますか？" }, method: :delete, class: "btn btn-danger btn-lg delete-btn" %>
+      <% if params[:locale] == "ja" %>
+        <%= button_to "アカウントの削除", registration_path(resource_name), data: { confirm: "本当にアカウントを削除しますか？" }, method: :delete, class: "btn btn-danger btn-lg delete-btn" %>
+      <% else %>
+        <%= button_to "Delete", registration_path(resource_name), data: { confirm: "Are you sure you want to delete your account?" }, method: :delete, class: "btn btn-danger btn-lg delete-btn" %>
+      <% end %>
     </div>
     <div class="col-md-2">
     </div>

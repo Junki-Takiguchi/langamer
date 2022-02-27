@@ -1,5 +1,5 @@
 <div>
-  <h1 class="page-title">基本情報</h1>
+  <h1 class="page-title"><%= t("users.user_show.basic_information") %></h1>
 </div>
 <div class="container main-contents">
   <div class="row">
@@ -9,14 +9,18 @@
       </div>
       <% if current_user.id == @user.id %>
         <div class="recruitment-img">
-          <%= button_to "プロフィールの編集", edit_user_registration_path, method: :get, class: "btn btn-success btn-lg" %>
+          <% if params[:locale] == "ja" %>
+            <%= button_to "プロフィールの編集", edit_user_registration_path, method: :get, class: "btn btn-success btn-lg" %>
+          <% else %>
+            <%= button_to "Edit your account", edit_user_registration_path, method: :get, class: "btn btn-success btn-lg" %>
+          <% end %>
         </div>
       <% end %>
     </div>
     <div class="col-md-8 profile-field">
       <div class="form_box">
         <div class="profile-title">
-          <p>アカウント名：</p>
+          <p><%= t("users.user_show.account_name") %></p>
         </div>
         <div class="profile-content">
           <p class="content-padding"><%= @profile.account_name %></p>
@@ -26,7 +30,7 @@
         <br />
         <div class="form_box">
           <div class="profile-title">
-            <p>登録メールアドレス：</p>
+            <p><%= t("users.user_show.email") %></p>
           </div>
           <div class="profile-content">
             <p class="content-padding"><%= @user.email %></p>
@@ -37,12 +41,20 @@
         <br />
         <div class="form_box">
           <div class="profile-title">
-            <p>居住地：</p>
+            <p><%= t("users.user_show.living_country") %></p>
           </div>
           <div class="profile-content">
             <p class="content-padding"><%= @profile.country_name(@profile.living_country) %>
               <% if current_user.id == @user.id %>
-                | <%= @profile.living_country_status %>
+                <% if params[:locale] == "ja" %>
+                  | <%= @profile.living_country_status %>
+                <% elsif @profile.living_country_status == "公開" %>
+                  | Public
+                <% elsif @profile.living_country_status == "非公開" %>
+                  | Private
+                <% else %>
+                  | Public to friends only
+                <% end %>
               <% end %>
             </p>
           </div>
@@ -52,12 +64,20 @@
         <br />
         <div class="form_box">
           <div class="profile-title">
-            <p>出身国：</p>
+            <p><%= t("users.user_show.native_country") %></p>
           </div>
           <div class="profile-content">
             <p class="content-padding"><%= @profile.country_name(@profile.native_country) %>
               <% if current_user.id == @user.id %>
-                | <%= @profile.native_country_status %>
+                <% if params[:locale] == "ja" %>
+                  | <%= @profile.native_country_status %>
+                <% elsif @profile.native_country_status == "公開" %>
+                  | Public
+                <% elsif @profile.native_country_status == "非公開" %>
+                  | Private
+                <% else %>
+                  | Public to friends only
+                <% end %>
               <% end %>
             </p>
           </div>
@@ -67,12 +87,20 @@
         <br />
         <div class="form_box">
           <div class="profile-title">
-            <p>生年月日：</p>
+            <p><%= t("users.user_show.date_of_birth") %></p>
           </div>
           <div class="profile-content">
             <p class="content-padding"><%= @profile.date_of_birth %>
               <% if current_user.id == @user.id %>
-                | <%= @profile.date_of_birth_status %>
+                <% if params[:locale] == "ja" %>
+                  | <%= @profile.date_of_birth_status %>
+                <% elsif @profile.date_of_birth_status == "公開" %>
+                  | Public
+                <% elsif @profile.date_of_birth_status == "非公開" %>
+                  | Private
+                <% else %>
+                  | Public to friends only
+                <% end %>
               <% end %>
             </p>
           </div>
@@ -82,12 +110,29 @@
         <br />
         <div class="form_box">
           <div class="profile-title">
-            <p>性別：</p>
+            <p><%= t("users.user_show.gender") %></p>
           </div>
           <div class="profile-content">
-            <p class="content-padding"><%= @profile.gender %>
+            <p class="content-padding">
+              <% if params[:locale] == "ja" %>
+                <%= @profile.gender %>
+              <% elsif @profile.gender == "男性" %>
+                Male
+              <% elsif @profile.gender == "女性" %>
+                Female
+              <% else %>
+                Gender Identity
+              <% end %>
               <% if current_user.id == @user.id %>
-                | <%= @profile.gender_status %>
+                <% if params[:locale] == "ja" %>
+                  | <%= @profile.gender_status %>
+                <% elsif @profile.gender_status == "公開" %>
+                  | Public
+                <% elsif @profile.gender_status == "非公開" %>
+                  | Private
+                <% else %>
+                  | Public to friends only
+                <% end %>
               <% end %>
             </p>
           </div>
@@ -97,7 +142,11 @@
     <div class="col-md-2">
       <% if current_user != @user && FriendRelation.check_friend_status(current_user, @user) %>
         <div class="button-padding">
-          <%= button_to 'チャット', chat_message_path(@user.id), method: :get, class: "btn btn-primary btn-lg w-75" %>
+          <% if params[:locale] == "ja" %>
+            <%= button_to 'チャット', chat_message_path(@user.id), method: :get, class: "btn btn-primary btn-lg w-75" %>
+          <% else %>
+            <%= button_to 'Chat', chat_message_path(@user.id), method: :get, class: "btn btn-primary btn-lg w-75" %>
+          <% end %>
         </div>
       <% end %>
       <div class="button-padding">
@@ -109,7 +158,7 @@
 
 <% if @profile.self_introduction.present?%>
   <div>
-    <h1 class="page-title">自己紹介</h1>
+    <h1 class="page-title"><%= t("users.user_show.self_introduction") %></h1>
   </div>
   <div class="container">
   <div class="row">
@@ -122,7 +171,7 @@
     </div>
   </div>
 <% end %>
-  <h1 class="page-title">言語情報</h1>
+  <h1 class="page-title"><%= t("users.user_show.language_information") %></h1>
 </div>
 <div class="container">
   <div class="row">
@@ -133,12 +182,31 @@
         <% if @user.release_info(current_user, @user, learn_language.learn_language, learn_language.learn_language_status ) == true %>
           <div class="form_box">
             <div class="profile-title">
-              <p>学習中の言語：</p>
+              <p><%= t("users.user_show.learning_languages") %></p>
             </div>
             <div class="profile-content">
-              <p class="content-padding"><%= learn_language.learn_language %>：<%= learn_language.rank %>
+              <p class="content-padding"><%= learn_language.learn_language %>：
+                <% if params[:locale] == "ja" %>
+                  <%= learn_language.rank %>
+                <% elsif learn_language.rank == "初級者" %>
+                  Beginner
+                <% elsif learn_language.rank == "中級者" %>
+                  Intermediate
+                <% elsif learn_language.rank == "上級者" %>
+                  Senior
+                <% else %>
+                  Native
+                <% end %>
                 <% if current_user.id == @user.id %>
-                  | <%= learn_language.learn_language_status %>
+                  <% if params[:locale] == "ja" %>
+                    | <%= learn_language.learn_language_status %>
+                  <% elsif learn_language.learn_language_status == "公開" %>
+                    | Public
+                  <% elsif learn_language.learn_language_status == "非公開" %>
+                    | Private
+                  <% else %>
+                    | Public to friends only
+                  <% end %>
                 <% end %>
               </p>
             </div>
@@ -149,12 +217,31 @@
         <% if @user.release_info(current_user, @user, speak_language.speak_language, speak_language.speak_language_status ) == true %>
           <div class="form_box">
             <div class="profile-title">
-              <p>話せる言語：</p>
+              <p><%= t("users.user_show.speaking_languages") %></p>
             </div>
             <div class="profile-content">
-              <p class="content-padding"><%= speak_language.speak_language %>：<%= speak_language.rank %>
+              <p class="content-padding"><%= speak_language.speak_language %>：
+                <% if params[:locale] == "ja" %>
+                  <%= speak_language.rank %>
+                <% elsif speak_language.rank == "初級者" %>
+                  Beginner
+                <% elsif speak_language.rank == "中級者" %>
+                  Intermediate
+                <% elsif speak_language.rank == "上級者" %>
+                  Senior
+                <% else %>
+                  Native
+                <% end %>
                 <% if current_user.id == @user.id %>
-                  | <%= speak_language.speak_language_status %>
+                  <% if params[:locale] == "ja" %>
+                    | <%= speak_language.speak_language_status %>
+                  <% elsif speak_language.speak_language_status == "公開" %>
+                    | Public
+                  <% elsif speak_language.speak_language_status == "非公開" %>
+                    | Private
+                  <% else %>
+                    | Public to friends only
+                  <% end %>
                 <% end %>
               </p>
             </div>
@@ -167,7 +254,7 @@
   </div>
 </div>
 <div>
-  <h1 class="page-title">プレイ可能なゲーム</h1>
+  <h1 class="page-title"><%= t("users.user_show.playing_games") %></h1>
 </div>
 <div class="container">
   <div class="row">
@@ -177,7 +264,7 @@
       <% @games.each do |game| %>
         <div class="form_box">
           <div class="profile-title">
-            <p><%= game.game_relation_game_platforms[0].name %>:</p>
+            <p><%= game.game_relation_game_platforms[0].name %></p>
           </div>
           <div class="profile-content">
             <p class="content-padding"><%= game.name %></p>
@@ -190,7 +277,7 @@
   </div>
 </div>
 <div>
-  <h1 class="page-title">外部アカウント</h1>
+  <h1 class="page-title"><%= t("users.user_show.game_accounts") %></h1>
 </div>
 <div class="container">
   <div class="row">
@@ -200,12 +287,20 @@
       <% if @game_account.twitter_id.present? && @user.release_info(current_user, @user, @game_account.twitter_id, @game_account.twitter_id_status ) == true %>
         <div class="form_box">
           <div class="profile-title">
-            <p>Twitter ID:</p>
+            <p>Twitter ID</p>
           </div>
           <div class="profile-content">
             <p class="content-padding"><%= @game_account.twitter_id %>
               <% if current_user.id == @user.id %>
-                | <%= @game_account.twitter_id_status %>
+                <% if params[:locale] == "ja" %>
+                  | <%= @game_account.twitter_id_status %>
+                <% elsif @game_account.twitter_id_status == "公開" %>
+                  | Public
+                <% elsif @game_account.twitter_id_status == "非公開" %>
+                  | Private
+                <% else %>
+                  | Public to friends only
+                <% end %>
               <% end %>
             </p>
           </div>
@@ -214,12 +309,20 @@
       <% if @game_account.discord_id.present? && @user.release_info(current_user, @user, @game_account.discord_id, @game_account.discord_id_status ) == true %>
         <div class="form_box">
           <div class="profile-title">
-            <p>Discord ID:</p>
+            <p>Discord ID</p>
           </div>
           <div class="profile-content">
             <p class="content-padding"><%= @game_account.discord_id %>
               <% if current_user.id == @user.id %>
-                | <%= @game_account.discord_id_status %>
+                <% if params[:locale] == "ja" %>
+                  | <%= @game_account.discord_id_status %>
+                <% elsif @game_account.discord_id_status == "公開" %>
+                  | Public
+                <% elsif @game_account.discord_id_status == "非公開" %>
+                  | Private
+                <% else %>
+                  | Public to friends only
+                <% end %>
               <% end %>
             </p>
           </div>
@@ -229,12 +332,20 @@
       <% if @game_account.steam_id.present? && @user.release_info(current_user, @user, @game_account.steam_id, @game_account.steam_id_status ) == true %>
         <div class="form_box">
           <div class="profile-title">
-            <p>Steam ID:</p>
+            <p>Steam ID</p>
           </div>
           <div class="profile-content">
             <p class="content-padding"><%= @game_account.steam_id %>
               <% if current_user.id == @user.id %>
-                | <%= @game_account.steam_id_status %>
+                <% if params[:locale] == "ja" %>
+                  | <%= @game_account.steam_id_status %>
+                <% elsif @game_account.steam_id_status == "公開" %>
+                  | Public
+                <% elsif @game_account.steam_id_status == "非公開" %>
+                  | Private
+                <% else %>
+                  | Public to friends only
+                <% end %>
               <% end %>
             </p>
           </div>
@@ -244,12 +355,20 @@
       <% if @game_account.origin_id.present? && @user.release_info(current_user, @user, @game_account.origin_id, @game_account.origin_id_status ) == true %>
         <div class="form_box">
           <div class="profile-title">
-            <p>Origin ID:</p>
+            <p>Origin ID</p>
           </div>
           <div class="profile-content">
             <p class="content-padding"><%= @game_account.origin_id %>
               <% if current_user.id == @user.id %>
-                | <%= @game_account.origin_id_status %>
+                <% if params[:locale] == "ja" %>
+                  | <%= @game_account.origin_id_status %>
+                <% elsif @game_account.origin_id_status == "公開" %>
+                  | Public
+                <% elsif @game_account.origin_id_status == "非公開" %>
+                  | Private
+                <% else %>
+                  | Public to friends only
+                <% end %>
               <% end %>
             </p>
           </div>
@@ -259,12 +378,20 @@
       <% if @game_account.riot_id.present? && @user.release_info(current_user, @user, @game_account.riot_id, @game_account.riot_id_status ) == true %>
         <div class="form_box">
           <div class="profile-title">
-            <p>Riot ID:</p>
+            <p>Riot ID</p>
           </div>
           <div class="profile-content">
             <p class="content-padding"><%= @game_account.riot_id %>
               <% if current_user.id == @user.id %>
-                | <%= @game_account.riot_id_status %>
+                <% if params[:locale] == "ja" %>
+                  | <%= @game_account.riot_id_status %>
+                <% elsif @game_account.riot_id_status == "公開" %>
+                  | Public
+                <% elsif @game_account.riot_id_status == "非公開" %>
+                  | Private
+                <% else %>
+                  | Public to friends only
+                <% end %>
               <% end %>
             </p>
           </div>
@@ -274,12 +401,20 @@
       <% if @game_account.psn_id.present? && @user.release_info(current_user, @user, @game_account.psn_id, @game_account.psn_id_status ) == true %>
         <div class="form_box">
           <div class="profile-title">
-            <p>PSN ID:</p>
+            <p>PSN ID</p>
           </div>
           <div class="profile-content">
             <p class="content-padding"><%= @game_account.psn_id %>
               <% if current_user.id == @user.id %>
-                | <%= @game_account.psn_id_status %>
+                <% if params[:locale] == "ja" %>
+                  | <%= @game_account.psn_id_status %>
+                <% elsif @game_account.psn_id_status == "公開" %>
+                  | Public
+                <% elsif @game_account.psn_id_status == "非公開" %>
+                  | Private
+                <% else %>
+                  | Public to friends only
+                <% end %>
               <% end %>
             </p>
           </div>
@@ -289,12 +424,20 @@
       <% if @game_account.xbox_id.present? && @user.release_info(current_user, @user, @game_account.xbox_id, @game_account.xbox_id_status ) == true %>
         <div class="form_box">
           <div class="profile-title">
-            <p>Xbox ID:</p>
+            <p>Xbox ID</p>
           </div>
           <div class="profile-content">
             <p class="content-padding"><%= @game_account.xbox_id %>
               <% if current_user.id == @user.id %>
-                | <%= @game_account.xbox_id_status %>
+                <% if params[:locale] == "ja" %>
+                  | <%= @game_account.xbox_id_status %>
+                <% elsif @game_account.xbox_id_status == "公開" %>
+                  | Public
+                <% elsif @game_account.xbox_id_status == "非公開" %>
+                  | Private
+                <% else %>
+                  | Public to friends only
+                <% end %>
               <% end %>
             </p>
           </div>
@@ -304,12 +447,20 @@
       <% if @game_account.nintendo_id.present? && @user.release_info(current_user, @user, @game_account.nintendo_id, @game_account.nintendo_id_status ) == true %>
         <div class="form_box">
           <div class="profile-title">
-            <p>任天堂ID:</p>
+            <p><%= t("users.user_show.nintendo_id") %></p>
           </div>
           <div class="profile-content">
             <p class="content-padding"><%= @game_account.nintendo_id %>
               <% if current_user.id == @user.id %>
-                | <%= @game_account.nintendo_id_status %>
+                <% if params[:locale] == "ja" %>
+                  | <%= @game_account.nintendo_id_status %>
+                <% elsif @game_account.nintendo_id_status == "公開" %>
+                  | Public
+                <% elsif @game_account.nintendo_id_status == "非公開" %>
+                  | Private
+                <% else %>
+                  | Public to friends only
+                <% end %>
               <% end %>
             </p>
           </div>
@@ -319,15 +470,24 @@
       <% if @game_account.other_id.present? && @user.release_info(current_user, @user, @game_account.other_id, @game_account.other_id_status ) == true %>
         <div class="form_box">
           <div class="profile-title">
-            <p>その他ID:</p>
+            <p><%= t("users.user_show.other_id") %></p>
           </div>
           <div class="profile-content">
             <p class="content-padding"><%= @game_account.other_id %>
               <% if current_user.id == @user.id %>
-                | <%= @game_account.other_id_status %>
+                <% if params[:locale] == "ja" %>
+                  | <%= @game_account.other_id_status %>
+                <% elsif @game_account.other_id_status == "公開" %>
+                  | Public
+                <% elsif @game_account.other_id_status == "非公開" %>
+                  | Private
+                <% else %>
+                  | Public to friends only
+                <% end %>
               <% end %>
             </p>
           </div>
+        </div>
       <% end %>
     </div>
     <div class="col-md-2 button-padding">

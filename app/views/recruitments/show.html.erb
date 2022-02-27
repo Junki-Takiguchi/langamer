@@ -1,9 +1,9 @@
 <div>
   <h1 class="page-title">
     <% if current_user.id == @user.id %>
-      自分の募集投稿画面
+      <%= t("recruitments.show.my_recruitment_page") %>
     <% else %>
-      <%= @profile.account_name %>さんの募集詳細ページ
+      <%= @profile.account_name %><%= t("recruitments.show.recruitment_detail") %>
     <% end %>
   </h1>
 </div>
@@ -13,23 +13,31 @@
     </div>
     <div class="col-lg-10 contents">
       <div>
-        <h2 class="content_field form-label recruitment-title">タイトル</h2>
+        <h2 class="content_field form-label recruitment-title"><%= t("recruitments.show.title") %></h2>
         <p class="form-control show-content"><%= @recruitment.title %></p>
       </div>
       <div>
-        <h2 class="content_field form-label recruitment-title">募集内容</h2>
+        <h2 class="content_field form-label recruitment-title"><%= t("recruitments.show.recruitment_content") %></h2>
         <div class="show-content">
           <%= safe_join(@recruitment.content.split("\n"), tag(:br, class: "form-control textarea-show-box") ) %>
         </div>
-        <!-- <p class="form-control show-content"><%#= @recruitment.content %></p> -->
       </div>
       <% if current_user.id == @user.id %>
-        <div class="basic-button">
-          <%= button_to "投稿編集", "/recruitments/#{@recruitment.id}/edit", method: :get, class: "btn btn-success btn-lg w-25" %>
-        </div>
-        <div class="danger-button">
-          <%= button_to "投稿削除", "/recruitments/#{@recruitment.id}", { method: :delete, class: "btn btn-danger btn-lg w-25", data: { confirm: '本当に削除しますか？' } } %>
-        </div>
+        <% if params[:locale] == "ja" %>
+          <div class="basic-button">
+            <%= button_to "投稿編集", edit_recruitment_path, method: :get, class: "btn btn-success btn-lg w-25" %>
+          </div>
+          <div class="danger-button">
+            <%= button_to "投稿削除", recruitment_path, { method: :delete, class: "btn btn-danger btn-lg w-25", data: { confirm: '本当に削除しますか？' } } %>
+          </div>
+        <% else %>
+          <div class="basic-button">
+            <%= button_to "Edit a post", edit_recruitment_path, method: :get, class: "btn btn-success btn-lg w-25" %>
+          </div>
+          <div class="danger-button">
+            <%= button_to "Delete a post", recruitment_path, { method: :delete, class: "btn btn-danger btn-lg w-25", data: { confirm: 'Are you sure you want to delete it?' } } %>
+          </div>
+        <% end %>
       <% end %>
     </div>
   </div>
