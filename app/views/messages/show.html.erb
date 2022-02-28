@@ -1,5 +1,5 @@
 <div>
-  <h1 class="page-title"><%= @profile.account_name %></h1>
+  <h1 class="page-title"><%= link_to @profile.account_name, user_path(@user.id) %></h1>
 </div>
 <div class="container main-contents message-title-container">
   <div class="row">
@@ -8,8 +8,8 @@
     <div class="col-md-10">
       <table class="message-container message-table">
         <tr>
-          <th class="left-box left-th left-name-title"><%= @profile.account_name %></th>
-          <th class="right-box right-th right-name-title"><%= current_user.user_detail.account_name %></th>
+          <th class="left-box left-th left-name-title"><%= link_to @profile.account_name, user_path(@user.id) %></th>
+          <th class="right-box right-th right-name-title"><%= link_to current_user.user_detail.account_name, user_path(current_user.id) %></th>
         </tr>
       </table>
     </div>
