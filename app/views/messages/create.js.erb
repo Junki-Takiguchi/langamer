@@ -14,7 +14,7 @@ $('.message').append('<tr>\
                         <p class="message-user-name"><%= current_user.user_detail.account_name %></p>\
                       </div>\
                       <div class="post-time">\
-                        <p class="message-date"><%= Message.find_by(message: params[:message][:message]).relative_post_date(Message.find_by(message: params[:message][:message]).created_at) %></p>\
+                        <p class="message-date"><%= Message.find_by(message: params[:message][:message]).relative_post_date(Message.find_by(message: params[:message][:message]).created_at, params[:locale]) %></p>\
                       </div>\
                       <div>\
                         <p class="message-text left-message-text"><%= params[:message][:message] %></p>\
