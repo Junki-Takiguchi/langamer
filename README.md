@@ -4,7 +4,7 @@
 Langamer
 
 公開 URL
-http://18.176.195.123:8080/
+https://www.language-gamer.com/ja/
 
 - Ruby version
   3.0.3
@@ -66,14 +66,15 @@ $ rails server -b 0.0.0.0
 - カタログ設計、テーブル定義書の URL
   [カタログ設計、テーブル定義書](https://docs.google.com/spreadsheets/d/12Lw16JhcY7DwdeNVp7J68OEt14decfDoZw2hDI-oTEo/edit?usp=sharing)
 
-- ワイヤーフレームの URL
-  [ワイヤーフレーム](https://drive.google.com/file/d/1ZFj1g5KjL58iOdleaSZqAbxB5T0XJ4aT/view?usp=sharing)
+- ワイヤーフレーム
+  ![wire-frame](https://user-images.githubusercontent.com/92371564/156359501-7570b342-457e-4943-979d-7820b3aaa159.png)
 
-- ER 図のスクリーンショット
+- ER 図
   ![Entity Relationship Diagram](https://user-images.githubusercontent.com/92371564/154703801-d1220428-0695-45ff-916f-26b04ffaaadb.png)
 
-- 画面遷移図のスクリーンショット
+- 画面遷移図
   ![screen_transition_diagram](https://user-images.githubusercontent.com/92371564/155551216-cca00251-1468-4e44-afa5-0edaae8281fb.png)
+  
+- 本番実行環境
+- ![AWS環境](https://user-images.githubusercontent.com/92371564/156358961-5041c6ee-5b40-463d-8568-ee4b83e1d6e2.PNG)
 
-- 作成した各ファイルは以下の URL に格納されています。
-  [DIC*卒業課題*設計資料](https://drive.google.com/drive/folders/1k4fdALXObLL_1xP7nWCBqqavKQHhvWXM?usp=sharing)
