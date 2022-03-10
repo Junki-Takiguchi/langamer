@@ -26,16 +26,6 @@ class FriendRelation < ApplicationRecord
     end
   end
 
-  def branch_method
-    if FriendRelation.are_you_applicant?(current_user, other_user)
-      # ...処理１
-    elsif FriendRelation.are_you_receiver?(current_user, other_user)
-      # ...処理２
-    else
-      # ...処理３
-    end
-  end
-
   def self.are_you_applicant?(current_user, other_user)
     if FriendRelation.exists?(from_applicant_id: current_user.id, to_target_id: other_user.id)
       FriendRelation.find_by(from_applicant_id: current_user.id, to_target_id: other_user.id).status == "申請中"
