@@ -9,7 +9,7 @@
         </div>
         <div class="col-lg-6">
           <div class="chatroom-box">
-            <%= link_to chat_message_path(chat_user.user.id), id: 'message-box' do %>
+            <%= link_to message_path(chat_user.user.id), id: 'message-box' do %>
               <div class="chat_img-position">
                 <%= image_tag chat_user.profile_picture.url, size: '70x70' %>
               </div>
