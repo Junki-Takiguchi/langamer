@@ -12,62 +12,61 @@ https://www.language-gamer.com/ja/
 
 ## どのような価値を提供し、問題を解決するか
 
-このサービスを通じてオンラインゲームをしながら言語交換出来る友人を見つけることで、
-ゲームの世界を共有し、常に変化する環境で会話をする機会を提供します。
-それにより、一般的な英会話における話題性の乏しさの解消と、
+このサービスを通じてオンラインゲームをしながら言語交換出来る友人を見つけることで、<br>
+ゲームの世界を共有し、常に変化する環境で会話をする機会を提供します。<br>
+それにより、一般的な英会話における話題性の乏しさの解消と、<br>
 ゲーム内の共通用語を用いることで、語学初学者でも言いたいことを伝えやすく、理解しやすいコミュニケーション環境を提供します。
 
 ## 主な使用技術
 
-Ruby 3.0.3
-Ruby on Rails 6.0.4.4
-AWS EC2/S3/VPC/Route53/ALB/ACM
-Docker/docker-compose
-jquery 3.6.0
-Bootstrap 5.0.2
-GoogleFonts
-Google Analytics
+Ruby 3.0.3<br>
+Ruby on Rails 6.0.4.4<br>
+AWS EC2/S3/VPC/Route53/ALB/ACM<br>
+Docker/docker-compose<br>
+jquery 3.6.0<br>
+Bootstrap 5.0.2<br>
+GoogleFonts<br>
+Google Analytics<br>
 
 ## 主な使用 Gem
 
-devise
-rails_admin
-carrier_wave
-kaminari
-ransack
-fog
-aws
-unicorn
-language_list
-country_select
+devise<br>
+rails_admin<br>
+carrier_wave<br>
+kaminari<br>
+ransack<br>
+fog-aws<br>
+unicorn<br>
+language_list<br>
+country_select<br>
 
 ## 主な機能
 
-- ユーザー機能
-  ユーザー作成 編集 削除
-  ユーザーログイン / ログアウト
-  ゲストユーザーログイン機能
+- ユーザー機能<br>
+  ユーザー作成 編集 削除<br>
+  ユーザーログイン / ログアウト<br>
+  ゲストユーザーログイン機能<br>
 
 - ユーザー情報の公開設定機能
-  公開 / 非公開 / フレンドのみ公開
+  公開 / 非公開 / フレンドのみ公開<br>
 
 - 募集投稿機能
-  募集投稿 作成 / 編集 / 削除
-  投稿検索機能
+  募集投稿 作成 / 編集 / 削除<br>
+  投稿検索機能<br>
 
 - フレンド機能：
-  フレンド申請機能
-  フレンド申請承認機能
-  フレンド申請却下機能
-  フレンド削除機能
+  フレンド申請機能<br>
+  フレンド申請承認機能<br>
+  フレンド申請却下機能<br>
+  フレンド削除機能<br>
 
 - メッセージ機能
-  チャットルーム作成機能
-  メッセージ作成機能
+  チャットルーム作成機能<br>
+  メッセージ作成機能<br>
 
 - その他
-  多言語対応（JP/EN）
-  固有ドメイン / SSL 化対応
+  多言語対応（JP/EN）<br>
+  固有ドメイン / SSL 化対応<br>
 
 ## アプリケーションの実行手順（クローンから起動までの手順）
 
